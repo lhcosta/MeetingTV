@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49CB4C4A238D93BE00DFDAD4 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */; };
 		49EB44C123871068002F434D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C023871068002F434D /* AppDelegate.swift */; };
 		49EB44C323871068002F434D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C223871068002F434D /* ViewController.swift */; };
 		49EB44C623871068002F434D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44C423871068002F434D /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
 		49EB44BD23871068002F434D /* MeetingTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EB44C023871068002F434D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49EB44C223871068002F434D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,6 +43,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49CB4C48238D939600DFDAD4 /* CloudKit */ = {
+			isa = PBXGroup;
+			children = (
+				49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */,
+			);
+			path = CloudKit;
+			sourceTree = "<group>";
+		};
 		49EB44B423871068002F434D = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +73,7 @@
 			children = (
 				A4533FF0238C57D00089257A /* MeetingTV.entitlements */,
 				49EB44C023871068002F434D /* AppDelegate.swift */,
+				49CB4C48238D939600DFDAD4 /* CloudKit */,
 				49EB44C223871068002F434D /* ViewController.swift */,
 				49EB44C423871068002F434D /* Main.storyboard */,
 				49EB44CA2387106A002F434D /* Assets.xcassets */,
@@ -155,6 +166,7 @@
 				49EB44C323871068002F434D /* ViewController.swift in Sources */,
 				49EB44C923871068002F434D /* MeetingTV.xcdatamodeld in Sources */,
 				49EB44C123871068002F434D /* AppDelegate.swift in Sources */,
+				49CB4C4A238D93BE00DFDAD4 /* CloudManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
