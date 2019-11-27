@@ -16,7 +16,6 @@
 		49EB44C923871068002F434D /* MeetingTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C723871068002F434D /* MeetingTV.xcdatamodeld */; };
 		49EB44CB2387106A002F434D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44CA2387106A002F434D /* Assets.xcassets */; };
 		49EB44CE2387106A002F434D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44CC2387106A002F434D /* LaunchScreen.storyboard */; };
-		A41449DE238EB6130097AB65 /* Meetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41449DD238EB6130097AB65 /* Meetting.swift */; };
 		A45097B2238DAB0E009AB71E /* MeetingAdvertiserPeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45097B1238DAB0E009AB71E /* MeetingAdvertiserPeer.swift */; };
 		A4533FF3238C57D70089257A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4533FF2238C57D70089257A /* CloudKit.framework */; };
 /* End PBXBuildFile section */
@@ -33,7 +32,6 @@
 		49EB44CA2387106A002F434D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49EB44CD2387106A002F434D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		49EB44CF2387106A002F434D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A41449DD238EB6130097AB65 /* Meetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meetting.swift; sourceTree = "<group>"; };
 		A45097B1238DAB0E009AB71E /* MeetingAdvertiserPeer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAdvertiserPeer.swift; sourceTree = "<group>"; };
 		A4533FF0238C57D00089257A /* MeetingTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetingTV.entitlements; sourceTree = "<group>"; };
 		A4533FF2238C57D70089257A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -107,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				A45097B1238DAB0E009AB71E /* MeetingAdvertiserPeer.swift */,
-				A41449DD238EB6130097AB65 /* Meetting.swift */,
 			);
 			path = "Multipeer Connectivity";
 			sourceTree = "<group>";

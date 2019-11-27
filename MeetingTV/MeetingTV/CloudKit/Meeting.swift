@@ -17,138 +17,66 @@ utilizar como auxílio de manipulação de CKRecord Meeting
 
 struct Meeting {
     
+    //MARK:- JSON keys
+    enum CodingKeys : CodingKey {
+        case record, selectedTopics
+    }
+    
     //MARK:- Properties
     
     ///Record do tipo Meeting
     private(set) var record : CKRecord!
     
-    ///Gerenciador da reunião
-    var manager : CKRecord.Reference? {
-        didSet {
-            self.record.setValue(manager, forKey: "manager")
-        }
-    }
-    
+    ///Topicos que foram selecionados para reuniao
+    private(set) var selectedTopics : [Topic] = []
+
     ///Duração da reunião
     var duration : Int64? {
         didSet {
             self.record.setValue(duration, forKey: "duration")
         }
     }
-    
-    ///Funcionários que participaram da reunião
-    var employees : [CKRecord.Reference] {
-        didSet {
-            self.record.setValue(employees, forKey: "employees")
-        }
-    }
-    
-    ///Limite de tópicos de para cada funcionário
-    var limitTopic : Int64? {
-        didSet {
-            self.record.setValue(limitTopic, forKey: "limitTopic")
-        }
-    }
-    
-    ///Tópicos da reunião
-    private(set) var topics : [CKRecord.Reference]
-    
+
     ///Reunião finalizada
-    var finished : Bool {
+    var finished = Bool() {
         didSet {
             self.record.setValue(finished, forKey: "finished")
         }
     }
     
     ///Reunião iniciada
-    var started : Bool {
+    var started = Bool(){
         didSet {
             self.record.setValue(started, forKey: "started")
         }
     }
     
     ///Tema da reunião
-    var theme : String {
-        didSet {
-            self.record.setValue(theme, forKey: "theme")
-        }
-    }
+    private(set) var theme : String?
     
     ///Data da realização da reunião
-    var date : Date? {
-        didSet {
-            self.record.setValue(date, forKey: "date")
-        }
-    }
+    private(set) var date : Date?
     
-    //MARK: - Initializer
-    init(record : CKRecord) {
-   
+}
+
+extension Meeting : Decodable {
+    
+    //MARK:- Decoder
+    init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let record_data = try container.decode(Data.self, forKey: .record)
+        let topics = try container.decode([Topic].self, forKey: .selectedTopics) 
+        
+        guard let record = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(record_data) as? CKRecord else {return}
+        
         self.record = record
-        self.manager = record.value(forKey: "manager") as? CKRecord.Reference
+        self.selectedTopics = topics
         self.duration = record.value(forKey: "duration") as? Int64
-        self.employees = record.value(forKey: "employees") as? [CKRecord.Reference] ?? []
-        self.limitTopic = record.value(forKey: "limitTopic") as? Int64 ?? 3
         self.finished = record.value(forKey: "finished") as? Bool ?? false
         self.started = record.value(forKey: "started") as? Bool ?? false
         self.date = record.value(forKey: "date") as? Date
         self.theme = record.value(forKey: "theme") as? String ?? ""
-        self.topics = record.value(forKey: "topics") as? [CKRecord.Reference] ?? []
-    }
-        
-    //MARK:- Methods
-    
-    /**
-     Adicionando novos funcionários à reunião
-    - parameters: 
-        - employee: Novo funcionário 
-    */
-    mutating func addingNewEmployee(_ employee : CKRecord.Reference) {
-        self.employees.append(employee)
-        self.record.setValue(employees, forKey: "employees")
-    }
-    
-    /**
-     Remover funcionários da reunião
-    - parameters: 
-        - index : Indice do funcionário
-    */
-    mutating func removingEmployee(index : Int) {
-        self.employees.remove(at: index)
-        self.record.setValue(employees, forKey: "employees")
-    }
-    
-    /**
-     Adicionando novas pautas
-     - Parameter topic: Novo tópico
-     */
-    mutating func addingNewTopic(_ topic : CKRecord.Reference) {
-        self.topics.append(topic)
-        self.record.setValue(topics, forKey: "topics")
-    }
-    
-    /**
-     Filtragem das pautas de acordo com o author
-     - Parameter user: Usuário
-     - Returns:
-            - topics : Tópicos pertencentes ao usuário ou todos caso seja o gerenciador da reunião
-        
-     */
-    func filteringTopics(user : CKRecord) -> [CKRecord.Reference] {
-                
-        if user.value(forKey: "manager") as? Bool ?? false {
-            return self.topics
-        }
-        
-        let topics_owner = self.topics.filter { (topic) -> Bool in
-            
-            if(topic.value(forKey: "author") as? CKRecord.Reference == user.recordID) {
-                return true
-            }
-            
-            return false
-        }
-        
-        return topics_owner
     }
 }
