@@ -10,13 +10,13 @@
 		23B3DA8D238EE5F8003FF10B /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA8C238EE5F8003FF10B /* Topic.swift */; };
 		23B3DA90238EE936003FF10B /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA8F238EE936003FF10B /* MeetingViewController.swift */; };
 		23B3DA92238EEA15003FF10B /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA91238EEA15003FF10B /* Meeting.swift */; };
+		23B3DA94238EEF86003FF10B /* TopicsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */; };
 		49CB4C4A238D93BE00DFDAD4 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */; };
 		49EB44C123871068002F434D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C023871068002F434D /* AppDelegate.swift */; };
 		49EB44C623871068002F434D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44C423871068002F434D /* Main.storyboard */; };
 		49EB44C923871068002F434D /* MeetingTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C723871068002F434D /* MeetingTV.xcdatamodeld */; };
 		49EB44CB2387106A002F434D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44CA2387106A002F434D /* Assets.xcassets */; };
 		49EB44CE2387106A002F434D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44CC2387106A002F434D /* LaunchScreen.storyboard */; };
-		A41449DE238EB6130097AB65 /* Meetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41449DD238EB6130097AB65 /* Meetting.swift */; };
 		A45097B2238DAB0E009AB71E /* MeetingAdvertiserPeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45097B1238DAB0E009AB71E /* MeetingAdvertiserPeer.swift */; };
 		A4533FF3238C57D70089257A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4533FF2238C57D70089257A /* CloudKit.framework */; };
 /* End PBXBuildFile section */
@@ -25,6 +25,7 @@
 		23B3DA8C238EE5F8003FF10B /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		23B3DA8F238EE936003FF10B /* MeetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
 		23B3DA91238EEA15003FF10B /* Meeting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
+		23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsCollectionViewCell.swift; sourceTree = "<group>"; };
 		49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
 		49EB44BD23871068002F434D /* MeetingTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EB44C023871068002F434D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,12 +52,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		23B3DA8E238EE78C003FF10B /* CollectionViews */ = {
+		23B3DA8E238EE78C003FF10B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				23B3DA8F238EE936003FF10B /* MeetingViewController.swift */,
+				23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */,
 			);
-			path = CollectionViews;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		49CB4C48238D939600DFDAD4 /* CloudKit */ = {
@@ -92,7 +94,7 @@
 				A4533FF0238C57D00089257A /* MeetingTV.entitlements */,
 				49EB44C023871068002F434D /* AppDelegate.swift */,
 				49EB44C423871068002F434D /* Main.storyboard */,
-				23B3DA8E238EE78C003FF10B /* CollectionViews */,
+				23B3DA8E238EE78C003FF10B /* ViewControllers */,
 				49CB4C48238D939600DFDAD4 /* CloudKit */,
 				A45097B3238DAB16009AB71E /* Multipeer Connectivity */,
 				49EB44CA2387106A002F434D /* Assets.xcassets */,
@@ -193,6 +195,7 @@
 			files = (
 				23B3DA92238EEA15003FF10B /* Meeting.swift in Sources */,
 				23B3DA90238EE936003FF10B /* MeetingViewController.swift in Sources */,
+				23B3DA94238EEF86003FF10B /* TopicsCollectionViewCell.swift in Sources */,
 				23B3DA8D238EE5F8003FF10B /* Topic.swift in Sources */,
 				49EB44C923871068002F434D /* MeetingTV.xcdatamodeld in Sources */,
 				49EB44C123871068002F434D /* AppDelegate.swift in Sources */,

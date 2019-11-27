@@ -20,25 +20,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7SH-sw-82h">
-                                <rect key="frame" x="224" y="293" width="1473" height="495"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XL1-OE-ypc">
+                                <rect key="frame" x="631" y="68" width="658" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FWd-HV-LTx">
-                                    <size key="itemSize" width="310" height="284"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7SH-sw-82h">
+                                <rect key="frame" x="224" y="405" width="1473" height="271"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FWd-HV-LTx">
+                                    <size key="itemSize" width="349" height="278.5"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="xsG-LU-HG2">
-                                        <rect key="frame" x="0.0" y="0.0" width="310" height="284"/>
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="Cell" id="xsG-LU-HG2" customClass="TopicsCollectionViewCell" customModule="MeetingTV" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="-4" width="349" height="278.5"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="baJ-kF-dHC">
-                                            <rect key="frame" x="0.0" y="0.0" width="310" height="284"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="349" height="278.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJJ-V4-GMr">
+                                                    <rect key="frame" x="129" y="36" width="90" height="46"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Autor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIo-Ov-Ux3">
+                                                    <rect key="frame" x="129" y="194" width="92" height="46"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="uIo-Ov-Ux3" firstAttribute="leading" secondItem="baJ-kF-dHC" secondAttribute="leading" constant="129" id="J6T-qd-i52"/>
+                                                <constraint firstItem="rJJ-V4-GMr" firstAttribute="centerY" secondItem="baJ-kF-dHC" secondAttribute="centerY" constant="-80.25" id="Srj-6b-47j"/>
+                                                <constraint firstAttribute="trailing" secondItem="uIo-Ov-Ux3" secondAttribute="trailing" constant="128" id="fhn-Dt-hXv"/>
+                                                <constraint firstItem="uIo-Ov-Ux3" firstAttribute="centerY" secondItem="baJ-kF-dHC" secondAttribute="centerY" constant="77.75" id="pK9-sO-LF3"/>
+                                                <constraint firstItem="rJJ-V4-GMr" firstAttribute="leading" secondItem="baJ-kF-dHC" secondAttribute="leading" constant="129" id="y9C-X3-dOd"/>
+                                                <constraint firstAttribute="trailing" secondItem="rJJ-V4-GMr" secondAttribute="trailing" constant="130" id="zEs-cJ-pcG"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="310" height="284"/>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <size key="customSize" width="349" height="278.5"/>
+                                        <connections>
+                                            <outlet property="topicAuthor" destination="uIo-Ov-Ux3" id="5pa-I1-A13"/>
+                                            <outlet property="topicDescription" destination="rJJ-V4-GMr" id="QIW-fj-vVS"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -47,6 +80,7 @@
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                     </view>
                     <connections>
+                        <outlet property="meetingTittle" destination="XL1-OE-ypc" id="gSd-Pd-Exp"/>
                         <outlet property="topicsCollectionView" destination="7SH-sw-82h" id="DJO-Ap-hfo"/>
                     </connections>
                 </viewController>
