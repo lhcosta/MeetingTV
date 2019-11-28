@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		49CB4C4A238D93BE00DFDAD4 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */; };
 		49EB44C123871068002F434D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C023871068002F434D /* AppDelegate.swift */; };
 		49EB44C323871068002F434D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C223871068002F434D /* ViewController.swift */; };
 		49EB44C623871068002F434D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44C423871068002F434D /* Main.storyboard */; };
@@ -18,7 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
+		4967E59E23904F020090DF0F /* CloudManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudManager.h; sourceTree = "<group>"; };
+		4967E59F23904F020090DF0F /* CloudManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudManager.m; sourceTree = "<group>"; };
+		4967E5A5239050B50090DF0F /* MeetingTV-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MeetingTV-Bridging-Header.h"; sourceTree = "<group>"; };
 		49EB44BD23871068002F434D /* MeetingTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EB44C023871068002F434D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49EB44C223871068002F434D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +47,9 @@
 		49CB4C48238D939600DFDAD4 /* CloudKit */ = {
 			isa = PBXGroup;
 			children = (
-				49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */,
+				4967E5A5239050B50090DF0F /* MeetingTV-Bridging-Header.h */,
+				4967E59E23904F020090DF0F /* CloudManager.h */,
+				4967E59F23904F020090DF0F /* CloudManager.m */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -124,6 +127,7 @@
 				TargetAttributes = {
 					49EB44BC23871068002F434D = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -166,7 +170,6 @@
 				49EB44C323871068002F434D /* ViewController.swift in Sources */,
 				49EB44C923871068002F434D /* MeetingTV.xcdatamodeld in Sources */,
 				49EB44C123871068002F434D /* AppDelegate.swift in Sources */,
-				49CB4C4A238D93BE00DFDAD4 /* CloudManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +313,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MeetingTV/MeetingTV.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3H798M6N3T;
@@ -320,6 +324,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuartetoFantastico.Meeting.tvOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MeetingTV/CloudKit/MeetingTV-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
@@ -329,6 +335,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MeetingTV/MeetingTV.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3H798M6N3T;
@@ -339,6 +346,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuartetoFantastico.Meeting.tvOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MeetingTV/CloudKit/MeetingTV-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
