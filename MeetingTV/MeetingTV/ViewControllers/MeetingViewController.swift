@@ -9,38 +9,55 @@
 import UIKit
 import CloudKit
 
+
+/// Tela inicial da Meeting espelhada
 class MeetingViewController: UIViewController {
     
+    /// Título da Meeting
     @IBOutlet var meetingTittle: UILabel!
+    
+    /// Collection View com os Topics da Meeting
     @IBOutlet var topicsCollectionView: UICollectionView!
+    
+    /// Meeting em si (Que será passada pelo Multipeer)
     var meeting: Meeting!
+    
+    /// Topics da meeting, serão passados pelo Multipeer, não será carregado pela Reference do record da Meeting
     var topics: [Topic] = []
     
-    let leftFocusGuide = UIFocusGuide()
-    let rightFocusGuide = UIFocusGuide()
-    let bottomFocusGuide = UIFocusGuide()
-    let topFocusGuide = UIFocusGuide()
+    /// Index Path do Topic focado da CollectionView
+    var currTopicOnCollection: IndexPath?
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        topicsCollectionView.delegate = self
+        topicsCollectionView.dataSource = self
+        
+        //MARK: SIMULAÇÃO
+        /// Inicializando a Meeting (será substituída pelo que vier do Multipeer)
         let record = CKRecord(recordType: "Meeting")
         meeting = Meeting(record: record)
-        
         meeting.theme = "Reunião semestral."
-        
         meetingTittle.text = meeting.theme
         
-        
-        for i in 0...30 {
+        /// Adicionando Topics falsos na reunião para teste
+        for i in 0...4 {
             topics.append(createTopic(tittle: "\(i)", authorName: "author\(i)"))
         }
         
-        topicsCollectionView.delegate = self
-        topicsCollectionView.dataSource = self        
+        /// Adicionando conclusions na Topic criada.
+        for i in 0...6 {
+            addConclusion("Conclusion\(i)")
+        }
     }
     
     
+    /// Método feito para testes dos Topics
+    /// - Parameters:
+    ///   - tittle: Topic em si.
+    ///   - authorName: Nome do autor que criou o tópico
     func createTopic(tittle: String, authorName: String) -> Topic {
         
         let record = CKRecord(recordType: "Meeting")
@@ -51,16 +68,13 @@ class MeetingViewController: UIViewController {
         return newTopic
     }
     
-//    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-//
-//        if let nextFocusedItem = context.nextFocusedItem as? TopicsCollectionViewCell {
-//
-//            leftFocusGuide.preferredFocusEnvironments = [topicsCollectionView]
-//            rightFocusGuide.preferredFocusEnvironments = [topicsCollectionView]
-//            bottomFocusGuide.preferredFocusEnvironments = [topicsCollectionView]
-//            topFocusGuide.preferredFocusEnvironments = [topicsCollectionView]
-//        }
-//    }
+    
+    /// Arrumar quando a função de subscription for adicionada.
+    /// - Parameter conclusion: Conclusion do Topic
+    func addConclusion(_ conclusion: String) {
+        
+        topics[0].sendConclusion(conclusion)
+    }
 }
 
 
@@ -77,25 +91,22 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         cell.backgroundColor = .blue
         cell.topicDescription.text = topics[indexPath.row].description
         cell.topicAuthor.text = topics[indexPath.row].authorName
+        cell.conclusions = topics[indexPath.row].conclusions
+        
+        ///1- TableViewCell sendo adicionada pelo código;
+        ///2/3- Setamos o delegate e dataSource da tableView da célula;
+        ///4- Focus será configurado no momento de Front-End.
+        cell.conclusionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        cell.conclusionsTableView.delegate = cell
+        cell.conclusionsTableView.dataSource = cell
+//        cell.updateFocus()
         return cell
     }
     
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        topics[indexPath.row].discussed = !topics[indexPath.row].discussed
-        
-        for topic in topics {
-            print("\(topic.authorName), \(topic.discussed)")
-        }
-    }
-    
-    
-//    func indexPathForPreferredFocusedView(in collectionView: UICollectionView) -> IndexPath? {
-//        return IndexPath(item: 0, section: 0)
-//    }
-    
-    
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        
+        currTopicOnCollection = context.nextFocusedIndexPath
         
         if let nextCell = context.nextFocusedItem as? TopicsCollectionViewCell {
             nextCell.backgroundColor = .gray
@@ -104,5 +115,14 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         if let previousCell = context.previouslyFocusedItem as? TopicsCollectionViewCell {
             previousCell.backgroundColor = .blue
         }
+    }
+}
+
+
+extension MeetingViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: collectionView.bounds.width/3, height: collectionView.bounds.height)
     }
 }
