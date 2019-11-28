@@ -9,17 +9,25 @@
 #ifndef Timer_h
 #define Timer_h
 
+#import <UIKit/UIKit.h>
 
 #endif /* Chronometer_h */
 
-@interface Chronometer {
+@protocol UpdateTimerDelegate
 
-    NSTimer *timer;
-    int seconds;
-    int minutes;
-    int hours;
+- (void)updateLabelDelegate:(NSString*)stringLabel;
 
-}
+@end
+
+@interface Chronometer : NSObject 
+
+- (instancetype)initWithDelegate:(id<UpdateTimerDelegate>) delegate;
+
+@property (nonatomic) NSTimer *timer;
+@property (nonatomic) NSInteger seconds;
+@property (nonatomic) NSInteger minutes;
+@property (nonatomic) NSInteger hours;
+@property (nonatomic, weak) id< UpdateTimerDelegate > delegate;
 
 - (void)config;
 - (void)setTimer;
