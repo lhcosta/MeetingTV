@@ -8,6 +8,7 @@
 
 import UIKit
 import MultipeerConnectivity
+import CloudKit
 
 protocol MeetingConnectionPeerDelegate : AnyObject {
     func receiveMeetingFromPeer(data : Data)
@@ -45,6 +46,12 @@ class MeetingAdvertiserPeer: NSObject {
         
         self.session.delegate = self
         self.serviceAdvertiser.delegate = self
+        
+        self.serviceAdvertiser.startAdvertisingPeer()
+    }
+    
+    deinit {
+        self.serviceAdvertiser.stopAdvertisingPeer()
     }
 
 }
@@ -68,6 +75,8 @@ extension MeetingAdvertiserPeer : MCSessionDelegate {
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         //TODO:-
+
+        ///Data from Meeting
         self.delegate?.receiveMeetingFromPeer(data: data)
     }
     
