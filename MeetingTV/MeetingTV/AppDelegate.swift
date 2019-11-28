@@ -99,7 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-     
+        
 //        let userInfo = notification.request.content.observationInfo
 //        
 //        guard let CKnotification = CKQueryNotification(fromRemoteNotificationDictionary: userInfo) else { return }
