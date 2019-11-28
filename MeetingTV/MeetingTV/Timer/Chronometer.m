@@ -7,48 +7,50 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Timer.h"
+#import "Chronometer.h"
 
-@interface Chronometer ()
+@implementation Chronometer
 
-@end
+- (instancetype)initWithDelegate:(id<UpdateTimerDelegate>) delegate{
+    self = [super init];
+    if (self) {
+        _delegate = delegate;
+    }
+    
+    return self;
+}
 
-@implementation
 - (void)config {
-    seconds = 0;
-    minutes = 0;
-    hours = 0;
+    _seconds = 0;
+    _minutes = 0;
+    _hours = 0;
     
     [self setTimer];
 }
 
 - (void)setTimer {
-    timer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector: @selector(updateTimer) userInfo: nil repeats: YES];
+    _timer = [NSTimer scheduledTimerWithTimeInterval: 1 target:self selector: @selector(updateTimer) userInfo: nil repeats: YES];
 }
 
 - (void)updateTimer {
-    seconds += 1;
-    if (seconds == 60) {
-        minutes += 1;
-        seconds = 0;
+    _seconds += 1;
+    if (_seconds == 60) {
+        _minutes += 1;
+        _seconds = 0;
     }
-    if (minutes == 60) {
-        hours += 1;
-        minutes = 0;
+    if (_minutes == 60) {
+        _hours += 1;
+        _minutes = 0;
     }
     
-    NSString *secondsString = [NSString stringWithFormat:@"%02d", seconds];
-    NSString *minutesString = [NSString stringWithFormat:@"%02d:", minutes];
-    NSString *hoursString = [NSString stringWithFormat:@"%02d:", hours];
+    NSString *secondsString = [NSString stringWithFormat:@"%02ld", (long)_seconds];
+    NSString *minutesString = [NSString stringWithFormat:@"%02ld:", (long)_minutes];
+    NSString *hoursString = [NSString stringWithFormat:@"%02ld:", (long)_hours];
     
     NSString *chronometerString = [hoursString stringByAppendingFormat:@"%@", minutesString];
     NSString *chronometerString2 = [chronometerString stringByAppendingFormat:@"%@", secondsString];
     
-//    _labelTimer.text = chronometerString2;
+    [_delegate updateLabelDelegate:(chronometerString2)];
 }
-
-@protocol UpdateTimerDelegate <NSObject>
-
-<#methods#>
-
 @end
+
