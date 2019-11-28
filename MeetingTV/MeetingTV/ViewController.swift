@@ -8,13 +8,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UpdateTimerDelegate {
+    
+    @IBOutlet weak var timerLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let myTimer = Chronometer(delegate: self)
+        myTimer?.config()
+    
     }
-
-
+    
+    func updateLabel(_ stringLabel: String!) {
+        timerLabel.text = stringLabel
+    }
+    
 }
 
