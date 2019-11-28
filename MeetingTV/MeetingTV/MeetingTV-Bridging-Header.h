@@ -7,3 +7,4 @@
 //
 
 #import "Chronometer.h"
+#import "CloudManager.h"
