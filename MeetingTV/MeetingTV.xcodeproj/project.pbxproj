@@ -52,13 +52,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		23B3DA8E238EE78C003FF10B /* ViewControllers */ = {
+		23B3DA8E238EE78C003FF10B /* CollectionViews */ = {
 			isa = PBXGroup;
 			children = (
 				23B3DA8F238EE936003FF10B /* MeetingViewController.swift */,
 				23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */,
 			);
-			path = ViewControllers;
+			path = CollectionViews;
 			sourceTree = "<group>";
 		};
 		49CB4C48238D939600DFDAD4 /* CloudKit */ = {
@@ -94,7 +94,7 @@
 				A4533FF0238C57D00089257A /* MeetingTV.entitlements */,
 				49EB44C023871068002F434D /* AppDelegate.swift */,
 				49EB44C423871068002F434D /* Main.storyboard */,
-				23B3DA8E238EE78C003FF10B /* ViewControllers */,
+				23B3DA8E238EE78C003FF10B /* CollectionViews */,
 				49CB4C48238D939600DFDAD4 /* CloudKit */,
 				A45097B3238DAB16009AB71E /* Multipeer Connectivity */,
 				49EB44CA2387106A002F434D /* Assets.xcassets */,
