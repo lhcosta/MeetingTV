@@ -32,30 +32,48 @@ struct Meeting {
 
     ///Duração da reunião
     var duration : Int64? {
-        didSet {
-            self.record.setValue(duration, forKey: "duration")
+        set {
+            self.record.setValue(newValue, forKey: "duration")
+        }
+        
+        get {
+            return self.record.value(forKey: "duration") as? Int64
         }
     }
 
     ///Reunião finalizada
-    var finished = Bool() {
-        didSet {
-            self.record.setValue(finished, forKey: "finished")
+    var finished : Bool {
+        set {
+            self.record.setValue(newValue, forKey: "finished")
         }
+        
+        get {
+            self.record.value(forKey: "finished") as? Bool ?? false
+        }
+        
     }
     
     ///Reunião iniciada
-    var started = Bool(){
-        didSet {
-            self.record.setValue(started, forKey: "started")
+    var started : Bool {
+        set {
+            self.record.setValue(newValue, forKey: "started")
         }
+        
+        get {
+            return self.record.value(forKey: "started") as? Bool ?? false
+        }
+        
     }
     
     ///Tema da reunião
-    private(set) var theme : String?
+    var theme : String? {
+        return self.record.value(forKey: "theme") as? String
+    }
     
     ///Data da realização da reunião
-    private(set) var date : Date?
+    var date : Date? {
+        return self.record.value(forKey: "date") as? Date
+    }
     
 }
 
@@ -73,10 +91,5 @@ extension Meeting : Decodable {
         
         self.record = record
         self.selectedTopics = topics
-        self.duration = record.value(forKey: "duration") as? Int64
-        self.finished = record.value(forKey: "finished") as? Bool ?? false
-        self.started = record.value(forKey: "started") as? Bool ?? false
-        self.date = record.value(forKey: "date") as? Date
-        self.theme = record.value(forKey: "theme") as? String ?? ""
     }
 }
