@@ -11,7 +11,6 @@
 		23B3DA90238EE936003FF10B /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA8F238EE936003FF10B /* MeetingViewController.swift */; };
 		23B3DA92238EEA15003FF10B /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA91238EEA15003FF10B /* Meeting.swift */; };
 		23B3DA94238EEF86003FF10B /* TopicsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */; };
-		49CB4C4A238D93BE00DFDAD4 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */; };
 		49EB44C123871068002F434D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C023871068002F434D /* AppDelegate.swift */; };
 		49EB44C623871068002F434D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44C423871068002F434D /* Main.storyboard */; };
 		49EB44C923871068002F434D /* MeetingTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C723871068002F434D /* MeetingTV.xcdatamodeld */; };
@@ -27,7 +26,6 @@
 		23B3DA8F238EE936003FF10B /* MeetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
 		23B3DA91238EEA15003FF10B /* Meeting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
 		23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsCollectionViewCell.swift; sourceTree = "<group>"; };
-		49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
 		4967E59E23904F020090DF0F /* CloudManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudManager.h; sourceTree = "<group>"; };
 		4967E59F23904F020090DF0F /* CloudManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudManager.m; sourceTree = "<group>"; };
 		49EB44BD23871068002F434D /* MeetingTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,13 +55,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		23B3DA8E238EE78C003FF10B /* CollectionViews */ = {
+		23B3DA8E238EE78C003FF10B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				23B3DA8F238EE936003FF10B /* MeetingViewController.swift */,
 				23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */,
 			);
-			path = CollectionViews;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		49CB4C48238D939600DFDAD4 /* CloudKit */ = {
@@ -101,7 +99,7 @@
 				A4533FF0238C57D00089257A /* MeetingTV.entitlements */,
 				49EB44C023871068002F434D /* AppDelegate.swift */,
 				49EB44C423871068002F434D /* Main.storyboard */,
-				23B3DA8E238EE78C003FF10B /* CollectionViews */,
+				23B3DA8E238EE78C003FF10B /* ViewControllers */,
 				49CB4C48238D939600DFDAD4 /* CloudKit */,
 				A45097B3238DAB16009AB71E /* Multipeer Connectivity */,
 				49EB44CA2387106A002F434D /* Assets.xcassets */,

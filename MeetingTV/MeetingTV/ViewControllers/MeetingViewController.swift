@@ -45,8 +45,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         /// Inicializando a Meeting (será substituída pelo que vier do Multipeer)
         let record = CKRecord(recordType: "Meeting")
         meeting = Meeting(record: record)
-        meeting.theme = "Reunião semestral."
-        meetingTittle.text = meeting.theme
+//        meeting.theme = "Reunião semestral."
+        meetingTittle.text = "Reunião semestral."
         
         /// Adicionando Topics falsos na reunião para teste
         for i in 0...4 {
