@@ -11,64 +11,60 @@ import CloudKit
 
 
 /// Struct utilizada na criação de uma pauta, edição desta 
-struct Topic {
+struct Topic  {
+    
+    enum CodingKeys : String, CodingKey {
+        case record
+    }
     
     //MARK: - Properties
     /// Record do tipo Topic
-    private(set) var record: CKRecord
+    private(set) var record: CKRecord!
     
     /// Topico em si.
-    var description: String {
-        didSet { self.record["description"] = description }
+    var description : String? {
+        set { self.record["description"] = newValue }
+        get { return self.record.value(forKey: "description") as? String } 
     }
     
     /// Referência do autor do Topic.
     var author: CKRecord.Reference? {
-        didSet { self.record["author"] = author }
+        set { self.record["author"] = newValue }
+        get { return self.record.value(forKey: "author") as? CKRecord.Reference}
     }
     
     /// Nome do autor para espelhamaneto na TV. (não sendo necessária a requisição no servidor)
-    var authorName: String {
-        didSet { self.record["authorName"] = authorName }
+    var authorName : String? {
+        set { self.record["authorName"] = newValue }
+        get { return self.record.value(forKey: "authorName") as? String}
     }
     
     /// Se já foi discutida ou não durante a reunião
     /// Será usada para filtrar as pautas não discutidas e discutidas para a visualização do autor delas.
-    var discussed: Bool {
-        didSet { self.record["discussed"] = discussed }
+    var discussed : Bool {
+        set { self.record["discussed"] = newValue }
+        get { return self.record.value(forKey: "discussed") as? Bool ?? false}
     }
     
     /// Conclusões enviadas pelos funcionários/gerente durante a reunião (quando já discutida?)
-    var conclusions: [String] {
-        didSet { self.record["conclusions"] = conclusions }
+    var conclusions : [String] {
+        set { self.record["conclusions"] = newValue }
+        get { return self.record.value(forKey: "conclusions") as? [String] ?? []}
     }
     
     /// Tempo final levado para a discussão da pauta
     /// Este valor é armazenado automaticamente pelo sistema ao término da reunião.
     var duration: Date? {
-        didSet { self.record["duration"] = duration }
+        set { self.record["duration"] = newValue }
+        get { return self.record.value(forKey: "duration") as? Date}
     }
     
     /// Atributo que decide se o tópico vai ou não para a Meeting, setado peli gerente. (criador da Meeting)
-    var selectedForReunion: Bool {
-        didSet { self.record["selectedForReunion"] = selectedForReunion }
+    var selectedForReunion : Bool {
+        set { self.record["selectedForReunion"] = newValue }
+        get { return self.record.value(forKey: "selectedForReunion") as? Bool ?? false}
     }
-    
-    
-    //MARK: - Initializer
-    init(record: CKRecord) {
         
-        self.record = record
-        self.description = record["description"] as? String ?? ""
-        self.author = record["author"] as? CKRecord.Reference
-        self.authorName = record["authorName"] as? String ?? "Desconhecido"
-        self.discussed = record["discussed"] as? Bool ?? false
-        self.conclusions = record["conclusions"] as? [String] ?? []
-        self.duration = record["duration"] as? Date ?? Date()
-        self.selectedForReunion = record["selectedForReunion"] as? Bool ?? false
-    }
-    
-    
     //MARK: - Methods
     /// Adicionar/editar a pauta do Topic
     /// - Parameter description: Pauta em si.
@@ -94,4 +90,20 @@ struct Topic {
         self.duration = duration
         self.record["duration"] = self.duration
     }
+}
+
+extension Topic : Decodable {
+    
+    //MARK:- Decoder
+    init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let record_data = try container.decode(Data.self, forKey: .record)
+        
+        guard let record = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(record_data) as? CKRecord else {return}
+        
+        self.record = record
+    }
+    
 }

@@ -11,7 +11,10 @@ import CloudKit
 
 
 /// Tela inicial da Meeting espelhada
-class MeetingViewController: UIViewController {
+class MeetingViewController: UIViewController, UpdateTimerDelegate {
+    
+    /// Label que será exibida o tempo de duração da Meeting
+    @IBOutlet weak var labelTimer: UILabel!
     
     /// Título da Meeting
     @IBOutlet var meetingTittle: UILabel!
@@ -32,6 +35,9 @@ class MeetingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let chronometer = Chronometer(delegate: self)
+        chronometer?.config()
+        
         topicsCollectionView.delegate = self
         topicsCollectionView.dataSource = self
         
@@ -51,6 +57,11 @@ class MeetingViewController: UIViewController {
         for i in 0...6 {
             addConclusion("Conclusion\(i)")
         }
+    }
+    
+    
+    func updateLabel(_ stringLabel: String!) {
+        labelTimer.text = stringLabel
     }
     
     

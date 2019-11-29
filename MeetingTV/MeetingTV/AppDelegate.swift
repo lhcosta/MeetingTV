@@ -17,6 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let userNotCenter = UNUserNotificationCenter.current()
+        userNotCenter.delegate = self
+        
+        userNotCenter.requestAuthorization(options: [.providesAppNotificationSettings], completionHandler: { (permission, error) in
+            print("===>\(permission)/\(error)")
+        })
+        
+        DispatchQueue.main.async {
+            application.registerForRemoteNotifications()
+        }
+
         return true
     }
 
@@ -84,5 +95,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        
+//        let userInfo = notification.request.content.observationInfo
+//        
+//        guard let CKnotification = CKQueryNotification(fromRemoteNotificationDictionary: userInfo) else { return }
+//        
+//        guard let recordID = CKnotification.recordID else { return }
+//        
+//        let record = CKRecord(recordType: "Topic", recordID: recordID)
+//        
+//        guard let keys = CKnotification.recordFields else { return }
+//        
+//        for key in keys {
+//            print(key)
+//        }
+    }
 }
 
