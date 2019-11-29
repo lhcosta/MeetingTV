@@ -10,7 +10,6 @@
 		23B3DA8D238EE5F8003FF10B /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA8C238EE5F8003FF10B /* Topic.swift */; };
 		23B3DA90238EE936003FF10B /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA8F238EE936003FF10B /* MeetingViewController.swift */; };
 		23B3DA92238EEA15003FF10B /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA91238EEA15003FF10B /* Meeting.swift */; };
-		49CB4C4A238D93BE00DFDAD4 /* CloudManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */; };
 		49EB44C123871068002F434D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C023871068002F434D /* AppDelegate.swift */; };
 		49EB44C623871068002F434D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44C423871068002F434D /* Main.storyboard */; };
 		49EB44C923871068002F434D /* MeetingTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C723871068002F434D /* MeetingTV.xcdatamodeld */; };
@@ -18,13 +17,15 @@
 		49EB44CE2387106A002F434D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44CC2387106A002F434D /* LaunchScreen.storyboard */; };
 		A45097B2238DAB0E009AB71E /* MeetingAdvertiserPeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45097B1238DAB0E009AB71E /* MeetingAdvertiserPeer.swift */; };
 		A4533FF3238C57D70089257A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4533FF2238C57D70089257A /* CloudKit.framework */; };
+		E261A25A238F051F004A7D90 /* Chronometer.m in Sources */ = {isa = PBXBuildFile; fileRef = E261A259238F051F004A7D90 /* Chronometer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		23B3DA8C238EE5F8003FF10B /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		23B3DA8F238EE936003FF10B /* MeetingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingViewController.swift; sourceTree = "<group>"; };
 		23B3DA91238EEA15003FF10B /* Meeting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meeting.swift; sourceTree = "<group>"; };
-		49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudManager.swift; sourceTree = "<group>"; };
+		4967E59E23904F020090DF0F /* CloudManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudManager.h; sourceTree = "<group>"; };
+		4967E59F23904F020090DF0F /* CloudManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudManager.m; sourceTree = "<group>"; };
 		49EB44BD23871068002F434D /* MeetingTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EB44C023871068002F434D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49EB44C523871068002F434D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +36,9 @@
 		A45097B1238DAB0E009AB71E /* MeetingAdvertiserPeer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAdvertiserPeer.swift; sourceTree = "<group>"; };
 		A4533FF0238C57D00089257A /* MeetingTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetingTV.entitlements; sourceTree = "<group>"; };
 		A4533FF2238C57D70089257A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		E261A259238F051F004A7D90 /* Chronometer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chronometer.m; sourceTree = "<group>"; };
+		E261A25B238F0565004A7D90 /* Chronometer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chronometer.h; sourceTree = "<group>"; };
+		E261A25D23900F28004A7D90 /* MeetingTV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeetingTV-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +66,8 @@
 			children = (
 				23B3DA91238EEA15003FF10B /* Meeting.swift */,
 				23B3DA8C238EE5F8003FF10B /* Topic.swift */,
-				49CB4C49238D93BE00DFDAD4 /* CloudManager.swift */,
+				4967E59E23904F020090DF0F /* CloudManager.h */,
+				4967E59F23904F020090DF0F /* CloudManager.m */,
 			);
 			path = CloudKit;
 			sourceTree = "<group>";
@@ -87,6 +92,7 @@
 		49EB44BF23871068002F434D /* MeetingTV */ = {
 			isa = PBXGroup;
 			children = (
+				E261A258238F0500004A7D90 /* Timer */,
 				A4533FF0238C57D00089257A /* MeetingTV.entitlements */,
 				49EB44C023871068002F434D /* AppDelegate.swift */,
 				49EB44C423871068002F434D /* Main.storyboard */,
@@ -97,6 +103,7 @@
 				49EB44CC2387106A002F434D /* LaunchScreen.storyboard */,
 				49EB44CF2387106A002F434D /* Info.plist */,
 				49EB44C723871068002F434D /* MeetingTV.xcdatamodeld */,
+				E261A25D23900F28004A7D90 /* MeetingTV-Bridging-Header.h */,
 			);
 			path = MeetingTV;
 			sourceTree = "<group>";
@@ -115,6 +122,15 @@
 				A4533FF2238C57D70089257A /* CloudKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E261A258238F0500004A7D90 /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				E261A259238F051F004A7D90 /* Chronometer.m */,
+				E261A25B238F0565004A7D90 /* Chronometer.h */,
+			);
+			path = Timer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +165,7 @@
 				TargetAttributes = {
 					49EB44BC23871068002F434D = {
 						CreatedOnToolsVersion = 11.2.1;
+						LastSwiftMigration = 1120;
 					};
 				};
 			};
@@ -193,8 +210,8 @@
 				23B3DA8D238EE5F8003FF10B /* Topic.swift in Sources */,
 				49EB44C923871068002F434D /* MeetingTV.xcdatamodeld in Sources */,
 				49EB44C123871068002F434D /* AppDelegate.swift in Sources */,
+				E261A25A238F051F004A7D90 /* Chronometer.m in Sources */,
 				A45097B2238DAB0E009AB71E /* MeetingAdvertiserPeer.swift in Sources */,
-				49CB4C4A238D93BE00DFDAD4 /* CloudManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +355,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MeetingTV/MeetingTV.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3H798M6N3T;
@@ -348,6 +366,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuartetoFantastico.Meeting.tvOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MeetingTV/MeetingTV-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
@@ -357,6 +377,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MeetingTV/MeetingTV.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3H798M6N3T;
@@ -367,6 +388,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuartetoFantastico.Meeting.tvOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MeetingTV/MeetingTV-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 			};
