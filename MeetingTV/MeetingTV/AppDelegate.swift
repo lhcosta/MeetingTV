@@ -98,21 +98,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: UNUserNotificationCenterDelegate {
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
-//        let userInfo = notification.request.content.observationInfo
-//        
-//        guard let CKnotification = CKQueryNotification(fromRemoteNotificationDictionary: userInfo) else { return }
-//        
-//        guard let recordID = CKnotification.recordID else { return }
-//        
-//        let record = CKRecord(recordType: "Topic", recordID: recordID)
-//        
-//        guard let keys = CKnotification.recordFields else { return }
-//        
-//        for key in keys {
-//            print(key)
-//        }
+        guard let CKnotification = CKQueryNotification(fromRemoteNotificationDictionary: userInfo) else { return }
+                
+        guard let recordID = CKnotification.recordID else { return }
+        
+        let record = CKRecord(recordType: "Topic", recordID: recordID)
+        
+
+        guard let keys = CKnotification.recordFields else { return }
+        
+        //Recebendo record e mudanças no record através do dicionário de chaves keys
+        // TODO: - Falta atualizar as pautas na viewcontroller da reunião
     }
 }
 
