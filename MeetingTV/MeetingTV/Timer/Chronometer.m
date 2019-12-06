@@ -24,8 +24,6 @@
     _seconds = 0;
     _minutes = 0;
     _hours = 0;
-    
-    [self setTimer];
 }
 
 - (void)setTimer {
@@ -51,6 +49,21 @@
     NSString *chronometerString2 = [chronometerString stringByAppendingFormat:@"%@", secondsString];
     
     [_delegate updateLabelDelegate:(chronometerString2)];
+}
+
+- (NSString*) getTime {
+    NSString *secondsString = [NSString stringWithFormat:@"%02ld", (long)_seconds];
+    NSString *minutesString = [NSString stringWithFormat:@"%02ld:", (long)_minutes];
+    NSString *hoursString = [NSString stringWithFormat:@"%02ld:", (long)_hours];
+    
+    NSString *chronometerString = [hoursString stringByAppendingFormat:@"%@", minutesString];
+    NSString *chronometerString2 = [chronometerString stringByAppendingFormat:@"%@", secondsString];
+    
+    return chronometerString2;
+}
+
+- (void)pauseTimer {
+    [_timer invalidate];
 }
 @end
 

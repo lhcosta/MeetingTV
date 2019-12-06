@@ -32,5 +32,6 @@
 - (void)config;
 - (void)setTimer;
 - (void)updateTimer;
-
+- (void)pauseTimer;
+- (NSString*)getTime;
 @end

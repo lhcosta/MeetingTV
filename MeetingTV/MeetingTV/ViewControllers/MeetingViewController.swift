@@ -13,8 +13,9 @@ import CloudKit
 /// Tela inicial da Meeting espelhada
 class MeetingViewController: UIViewController, UpdateTimerDelegate {
     
-    /// Label que será exibida o tempo de duração da Meeting
+    /// Label que será exibida o tempo de duração da Meeting/Tópico
     @IBOutlet weak var labelTimer: UILabel!
+    @IBOutlet weak var labelTimerTopic: UILabel!
     
     /// Título da Meeting
     @IBOutlet var meetingTittle: UILabel!
@@ -32,13 +33,17 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     var currTopicOnCollection: IndexPath?
     
     /// Focus será terminado no momento do Front-End.
-
+    
+    
+    // Timer das pautas
+    var topicsTimer: [Chronometer] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let chronometer = Chronometer(delegate: self)
-        chronometer?.config()
+        let timerMeeting = Chronometer(delegate: self)
+        timerMeeting?.config()
+        timerMeeting?.setTimer()
         
         topicsCollectionView.delegate = self
         topicsCollectionView.dataSource = self
@@ -63,6 +68,12 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Inicializa o timer de todas as pautas
+        for i in 0..<topics.count {
+            self.topicsTimer.append(Chronometer())
+            self.topicsTimer[i].config()
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
     }
@@ -156,6 +167,20 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
 //            collectionView.isScrollEnabled = false
             let indexPath = collectionView.indexPath(for: cell)
 //            collectionView.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
+            
+            if topicsTimer.count > 0 {
+                print(topicsTimer.count)
+                topicsTimer[indexPath!.row-1].setTimer()
+            }
+        }
+        
+        if let cellReference = context.previouslyFocusedItem as? UIButton {
+            guard let cell = cellReference.superview?.superview as? TopicsCollectionViewCell else { return }
+            let indexPathCell = collectionView.indexPath(for: cell)
+            print("Index Anterior: \(indexPathCell)")
+            topicsTimer[indexPathCell!.row-1].pauseTimer()
+            
+            self.labelTimerTopic.text = topicsTimer[indexPathCell!.row-1].getTime()
         }
     }
 }
