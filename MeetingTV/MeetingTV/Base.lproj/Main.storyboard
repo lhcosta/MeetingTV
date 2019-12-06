@@ -86,14 +86,14 @@
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                     </view>
                     <connections>
-                        <outlet property="meetingTittle" destination="XL1-OE-ypc" id="gSd-Pd-Exp"/>
                         <outlet property="labelTimer" destination="iVo-or-c9X" id="BLW-s5-c7K"/>
+                        <outlet property="meetingTittle" destination="XL1-OE-ypc" id="gSd-Pd-Exp"/>
                         <outlet property="topicsCollectionView" destination="7SH-sw-82h" id="DJO-Ap-hfo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="69" y="69"/>
+            <point key="canvasLocation" x="-457" y="43"/>
         </scene>
     </scenes>
 </document>

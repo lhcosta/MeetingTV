@@ -30,7 +30,6 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     
     /// Index Path do Topic focado da CollectionView
     var currTopicOnCollection: IndexPath?
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +58,26 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
+    }
+    
+    /// Método para atualizar célula de pauta quando receber notificação do cloudkit
+    /// - Parameter notification: notificação recebida no notificationcenter
+    @objc private func updateTopicCell(_ notification: NSNotification) {
+        guard let topicUpdated = notification.object as? [String: Any] else { return }
+        
+        if let recordName = topicUpdated["recordName"] as? String {
+            if let row = self.topics.firstIndex(where: {$0.recordName == recordName}) {
+                if let conclusions = topicUpdated["conclusion"] as? [String]{
+                    topics[row].conclusions = conclusions
+                    topicsCollectionView.reloadItems(at: [IndexPath(row: row, section: 0)])
+                }
+            }
+        }
+    }
     
     func updateLabel(_ stringLabel: String!) {
         labelTimer.text = stringLabel
@@ -78,7 +97,6 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         
         return newTopic
     }
-    
     
     /// Arrumar quando a função de subscription for adicionada.
     /// - Parameter conclusion: Conclusion do Topic
