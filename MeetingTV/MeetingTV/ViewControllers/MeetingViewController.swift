@@ -41,7 +41,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let timerMeeting = Chronometer(delegate: self)
+        let timerMeeting = Chronometer(delegate: self, isMeeting: true)
         timerMeeting?.config()
         timerMeeting?.setTimer()
         
@@ -71,7 +71,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         
         // Inicializa o timer de todas as pautas
         for i in 0..<topics.count {
-            self.topicsTimer.append(Chronometer())
+            self.topicsTimer.append(Chronometer(delegate: self, isMeeting: false))
             self.topicsTimer[i].config()
         }
         
@@ -98,10 +98,13 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         }
     }
     
-    func updateLabel(_ stringLabel: String!) {
+    func updateLabelMeeting(_ stringLabel: String!) {
         labelTimer.text = stringLabel
     }
     
+    func updateLabelTopic(_ stringLabel: String!) {
+        labelTimerTopic.text = stringLabel
+    }
     
     /// Método feito para testes dos Topics
     /// - Parameters:
@@ -177,10 +180,10 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         if let cellReference = context.previouslyFocusedItem as? UIButton {
             guard let cell = cellReference.superview?.superview as? TopicsCollectionViewCell else { return }
             let indexPathCell = collectionView.indexPath(for: cell)
-            print("Index Anterior: \(indexPathCell)")
+            print("Index Anterior: \(String(describing: indexPathCell))")
             topicsTimer[indexPathCell!.row-1].pauseTimer()
             
-            self.labelTimerTopic.text = topicsTimer[indexPathCell!.row-1].getTime()
+//            self.labelTimerTopic.text = topicsTimer[indexPathCell!.row-1].getTime()
         }
     }
 }

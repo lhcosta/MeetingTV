@@ -15,19 +15,22 @@
 
 @protocol UpdateTimerDelegate
 
-- (void)updateLabelDelegate:(NSString*)stringLabel;
+@optional
+- (void)updateLabelDelegateMeeting:(NSString*)stringLabel;
+- (void)updateLabelDelegateTopic:(NSString*)stringLabel;
 
 @end
 
 @interface Chronometer : NSObject 
 
-- (instancetype)initWithDelegate:(id<UpdateTimerDelegate>) delegate;
+- (instancetype)initWithDelegate:(id<UpdateTimerDelegate>) delegate isMeeting:(BOOL) isMeeting;
 
 @property (nonatomic) NSTimer *timer;
 @property (nonatomic) NSInteger seconds;
 @property (nonatomic) NSInteger minutes;
 @property (nonatomic) NSInteger hours;
 @property (nonatomic, weak) id< UpdateTimerDelegate > delegate;
+@property (nonatomic) BOOL isMeeting;
 
 - (void)config;
 - (void)setTimer;
