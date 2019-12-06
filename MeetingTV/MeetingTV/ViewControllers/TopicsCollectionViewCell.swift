@@ -19,49 +19,41 @@ class TopicsCollectionViewCell: UICollectionViewCell {
     
     /// TableView que conterá uma lista das Conclusions desse Topic.
     @IBOutlet var conclusionsTableView: UITableView!
+    @IBOutlet var checkButton: UIButton!
+    
+    var toNextCell = false
     
     var conclusions: [String] = []
     
-    /// Focus será terminado no momento do Front-End.
-//    let bottomFocusGuide = UIFocusGuide()
-//    let topFocusGuide = UIFocusGuide()
-//    let leftFocusGuide = UIFocusGuide()
-//    let rightFocusGuide = UIFocusGuide()
+    var thisIndexPath: IndexPath?
+    
+    let rightFocusGuide = UIFocusGuide()
+    
+    
+    override func awakeFromNib() {
+        setupFocus()
+    }
     
     
     /// View (filha dessa Cell) que entrará em Focus quando esta CollectionViewCell estiver em Focus.
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
-        return [conclusionsTableView]
+        return [checkButton]
     }
     
     
-    /// Focus será terminado no momento do Front-End.
-//    func updateFocus() {
-//
-//        addLayoutGuide(bottomFocusGuide)
-//        bottomFocusGuide.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-//        bottomFocusGuide.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-//        bottomFocusGuide.topAnchor.constraint(equalTo: self.conclusionsTableView.bottomAnchor).isActive = true
-//        bottomFocusGuide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//
-//        addLayoutGuide(topFocusGuide)
-//        topFocusGuide.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-//        topFocusGuide.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-//        topFocusGuide.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//        topFocusGuide.bottomAnchor.constraint(equalTo: self.topicAuthor.topAnchor).isActive = true
-//
-//        addLayoutGuide(leftFocusGuide)
-//        leftFocusGuide.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-//        leftFocusGuide.rightAnchor.constraint(equalTo: self.conclusionsTableView.leftAnchor).isActive = true
-//        leftFocusGuide.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//        leftFocusGuide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//
-//        addLayoutGuide(rightFocusGuide)
-//        rightFocusGuide.leftAnchor.constraint(equalTo: self.conclusionsTableView.rightAnchor).isActive = true
-//        rightFocusGuide.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-//        rightFocusGuide.topAnchor.constraint(equalTo: topAnchor).isActive = true
-//        rightFocusGuide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
-//    }
+    override var canBecomeFocused: Bool {
+        return false
+    }
+    
+    
+    func setupFocus() {
+
+        addLayoutGuide(rightFocusGuide)
+        rightFocusGuide.leftAnchor.constraint(equalTo: checkButton.rightAnchor).isActive = true
+        rightFocusGuide.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        rightFocusGuide.topAnchor.constraint(equalTo: checkButton.bottomAnchor).isActive = true
+        rightFocusGuide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+    }
 }
 
 
@@ -71,11 +63,18 @@ extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
         return conclusions.count
     }
 
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         /// Setamos a textLabel da TableViewCell com a respecticva Conclusion.
         cell.textLabel?.text = conclusions[indexPath.row]
         return cell
+    }
+    
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        guard let _ = context.nextFocusedItem as? UITableViewCell else { return }
+        rightFocusGuide.preferredFocusEnvironments = [checkButton]
     }
 }
