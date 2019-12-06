@@ -31,6 +31,9 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     /// Index Path do Topic focado da CollectionView
     var currTopicOnCollection: IndexPath?
     
+    /// Focus será terminado no momento do Front-End.
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,13 +51,13 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         meetingTittle.text = "Reunião semestral."
         
         /// Adicionando Topics falsos na reunião para teste
-        for i in 0...4 {
+        for i in 0...9 {
             topics.append(createTopic(tittle: "\(i)", authorName: "author\(i)"))
         }
         
         /// Adicionando conclusions na Topic criada.
         for i in 0...6 {
-            addConclusion("Conclusion\(i)")
+            addConclusion("Conclusionnnnnnnnnnnnn\(i)")
         }
     }
     
@@ -63,6 +66,11 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
     }
+    
+    override var preferredFocusEnvironments: [UIFocusEnvironment] {
+        return [topicsCollectionView]
+    }
+    
     
     /// Método para atualizar célula de pauta quando receber notificação do cloudkit
     /// - Parameter notification: notificação recebida no notificationcenter
@@ -102,7 +110,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     /// - Parameter conclusion: Conclusion do Topic
     func addConclusion(_ conclusion: String) {
         
-        topics[0].sendConclusion(conclusion)
+        topics[1].sendConclusion(conclusion)
     }
 }
 
@@ -117,18 +125,24 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TopicsCollectionViewCell
-        cell.backgroundColor = .blue
-        cell.topicDescription.text = topics[indexPath.row].description
-        cell.topicAuthor.text = topics[indexPath.row].authorName
-        cell.conclusions = topics[indexPath.row].conclusions
         
-        ///1- TableViewCell sendo adicionada pelo código;
-        ///2/3- Setamos o delegate e dataSource da tableView da célula;
-        ///4- Focus será configurado no momento de Front-End.
-        cell.conclusionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        cell.conclusionsTableView.delegate = cell
-        cell.conclusionsTableView.dataSource = cell
-//        cell.updateFocus()
+        cell.isHidden = false
+        if indexPath.row == 0 || indexPath.row == topics.count-1 {
+            cell.isHidden = true
+        } else {
+            cell.topicDescription.text = topics[indexPath.row].description
+            cell.topicAuthor.text = topics[indexPath.row].authorName
+            cell.conclusions = topics[indexPath.row].conclusions
+            
+            ///1- TableViewCell sendo adicionada pelo código;
+            ///2/3- Setamos o delegate e dataSource da tableView da célula;
+            ///4- Focus será configurado no momento de Front-End.
+            cell.conclusionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+            cell.conclusionsTableView.delegate = cell
+            cell.conclusionsTableView.dataSource = cell
+            cell.thisIndexPath = indexPath
+        }
+        
         return cell
     }
     
@@ -137,12 +151,11 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         currTopicOnCollection = context.nextFocusedIndexPath
         
-        if let nextCell = context.nextFocusedItem as? TopicsCollectionViewCell {
-            nextCell.backgroundColor = .gray
-        }
-        
-        if let previousCell = context.previouslyFocusedItem as? TopicsCollectionViewCell {
-            previousCell.backgroundColor = .blue
+        if let button = context.nextFocusedItem as? UIButton {
+            guard let cell = button.superview?.superview as? TopicsCollectionViewCell else { return }
+//            collectionView.isScrollEnabled = false
+            let indexPath = collectionView.indexPath(for: cell)
+//            collectionView.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
         }
     }
 }
@@ -152,6 +165,11 @@ extension MeetingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.width/3, height: collectionView.bounds.height)
+        return CGSize(width: collectionView.bounds.width*0.3, height: collectionView.bounds.width*0.3)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return collectionView.frame.size.width * 0.07
     }
 }
