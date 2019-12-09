@@ -34,16 +34,17 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     
     /// Focus será terminado no momento do Front-End.
     
+    // Variável responsável por guardar o anterior perdido
+    var previousIndex = 0
     
     // Timer das pautas
     var topicsTimer: [Chronometer] = []
     
+    //Flag primeiro Foco - Se existe um foco anteriro
+    var hasPrevious = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let timerMeeting = Chronometer(delegate: self, isMeeting: true)
-        timerMeeting?.config()
-        timerMeeting?.setTimer()
         
         topicsCollectionView.delegate = self
         topicsCollectionView.dataSource = self
@@ -75,6 +76,13 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
             self.topicsTimer[i].config()
         }
         
+        let timerMeeting = Chronometer(delegate: self, isMeeting: true)
+        timerMeeting?.config()
+        
+        // Start nos Timers tanto da Reunião quanto de cada tópico
+        timerMeeting?.setTimer()
+        topicsTimer[0].setTimer()
+        
         NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
     }
     
@@ -98,6 +106,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         }
     }
     
+    // Funções de Atualização do Timer na Tela
     func updateLabelMeeting(_ stringLabel: String!) {
         labelTimer.text = stringLabel
     }
@@ -160,31 +169,40 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         
         currTopicOnCollection = context.nextFocusedIndexPath
+        
+        collectionView.remembersLastFocusedIndexPath = true
+        
+        if hasPrevious {
+            // Verifica se o anterior possui valor, caso contrário o movimento de swipe foi muito rapido entre os Itens
+            if let index = context.previouslyFocusedIndexPath {
+                print("Index Anterior: \(index.row))")
+                // Pausa o Timer do último Item de fato acessado
+                topicsTimer[previousIndex].pauseTimer()
+                
+                let indexNext = context.nextFocusedIndexPath
+                print("Index Previous: \(previousIndex+1))")
+                print("Index Atual: \(indexNext!.row)")
+                
+                // Guarda o index do Item que está em foco para utiliza-lo como o ultimo Item de fato acessado
+                previousIndex = indexNext!.row-1
+                
+                // Inicia a contage do Timer do Item atual
+                topicsTimer[indexNext!.row-1].setTimer()
+            }
+        } else {
+            hasPrevious = true
+        }
         
         if let button = context.nextFocusedItem as? UIButton {
             guard let cell = button.superview?.superview as? TopicsCollectionViewCell else { return }
 //            collectionView.isScrollEnabled = false
             let indexPath = collectionView.indexPath(for: cell)
 //            collectionView.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
-            
-            if topicsTimer.count > 0 {
-                print(topicsTimer.count)
-                topicsTimer[indexPath!.row-1].setTimer()
-            }
         }
         
-        if let cellReference = context.previouslyFocusedItem as? UIButton {
-            guard let cell = cellReference.superview?.superview as? TopicsCollectionViewCell else { return }
-            let indexPathCell = collectionView.indexPath(for: cell)
-            print("Index Anterior: \(String(describing: indexPathCell))")
-            topicsTimer[indexPathCell!.row-1].pauseTimer()
-            
-//            self.labelTimerTopic.text = topicsTimer[indexPathCell!.row-1].getTime()
-        }
     }
 }
 
