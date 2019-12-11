@@ -115,6 +115,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                     </view>
+                    <navigationItem key="navigationItem" id="E1S-6w-Rhn"/>
                     <connections>
                         <outlet property="labelTimer" destination="iVo-or-c9X" id="BLW-s5-c7K"/>
                         <outlet property="labelTimerTopic" destination="y5g-wN-NWf" id="3gx-PY-fBa"/>
@@ -124,7 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-457" y="43"/>
+            <point key="canvasLocation" x="659" y="356"/>
         </scene>
         <!--Presentation View Controller-->
         <scene sceneID="k5U-2y-7Ff">
@@ -145,6 +146,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4o-71-Veg">
+                                <rect key="frame" x="847" y="827" width="192" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="YK0-Bt-tHw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dl8-3P-bBS"/>
                     </view>
