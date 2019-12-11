@@ -102,16 +102,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         
         guard let CKnotification = CKQueryNotification(fromRemoteNotificationDictionary: userInfo) else { return }
-                
         guard let recordID = CKnotification.recordID else { return }
-        
-        let record = CKRecord(recordType: "Topic", recordID: recordID)
-        
-
         guard let keys = CKnotification.recordFields else { return }
         
-        //Recebendo record e mudanças no record através do dicionário de chaves keys
-        // TODO: - Falta atualizar as pautas na viewcontroller da reunião
+        var updatedTopic = keys
+        updatedTopic["recordName"] = recordID.recordName
+        NotificationCenter.default.post(name: NSNotification.Name("topicUpdate"), object: updatedTopic)
     }
 }
 

@@ -64,6 +64,11 @@ struct Topic  {
         set { self.record["selectedForReunion"] = newValue }
         get { return self.record.value(forKey: "selectedForReunion") as? Bool ?? false}
     }
+    
+    /// Atributo utilizado para reconhecer o record (recordID em formato de String)
+      var recordName : String {
+        get { return self.record.recordID.recordName }
+      }
         
     //MARK: - Methods
     /// Adicionar/editar a pauta do Topic

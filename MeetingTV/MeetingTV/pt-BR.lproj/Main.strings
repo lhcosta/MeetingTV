@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XL1-OE-ypc"; */
+"XL1-OE-ypc.text" = "Label";
+
+/* Class = "UILabel"; text = "00:00:00"; ObjectID = "iVo-or-c9X"; */
+"iVo-or-c9X.text" = "00:00:00";
+
+/* Class = "UILabel"; text = "Topic"; ObjectID = "rJJ-V4-GMr"; */
+"rJJ-V4-GMr.text" = "Topic";
+
+/* Class = "UILabel"; text = "Autor"; ObjectID = "uIo-Ov-Ux3"; */
+"uIo-Ov-Ux3.text" = "Autor";

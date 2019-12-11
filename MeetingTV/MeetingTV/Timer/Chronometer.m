@@ -11,10 +11,12 @@
 
 @implementation Chronometer
 
-- (instancetype)initWithDelegate:(id<UpdateTimerDelegate>) delegate{
+// isMeeting - true | false
+- (instancetype)initWithDelegate:(id<UpdateTimerDelegate>) delegate isMeeting:(BOOL)isMeeting{
     self = [super init];
     if (self) {
         _delegate = delegate;
+        _isMeeting = isMeeting;
     }
     
     return self;
@@ -24,8 +26,6 @@
     _seconds = 0;
     _minutes = 0;
     _hours = 0;
-    
-    [self setTimer];
 }
 
 - (void)setTimer {
@@ -50,7 +50,30 @@
     NSString *chronometerString = [hoursString stringByAppendingFormat:@"%@", minutesString];
     NSString *chronometerString2 = [chronometerString stringByAppendingFormat:@"%@", secondsString];
     
-    [_delegate updateLabelDelegate:(chronometerString2)];
+    if (_isMeeting) {
+        [_delegate updateLabelDelegateMeeting:(chronometerString2)];
+    } else {
+        [_delegate updateLabelDelegateTopic:(chronometerString2)];
+    }
+    
+    
+    
+    
+}
+
+- (NSString*) getTime {
+    NSString *secondsString = [NSString stringWithFormat:@"%02ld", (long)_seconds];
+    NSString *minutesString = [NSString stringWithFormat:@"%02ld:", (long)_minutes];
+    NSString *hoursString = [NSString stringWithFormat:@"%02ld:", (long)_hours];
+    
+    NSString *chronometerString = [hoursString stringByAppendingFormat:@"%@", minutesString];
+    NSString *chronometerString2 = [chronometerString stringByAppendingFormat:@"%@", secondsString];
+    
+    return chronometerString2;
+}
+
+- (void)pauseTimer {
+    [_timer invalidate];
 }
 @end
 
