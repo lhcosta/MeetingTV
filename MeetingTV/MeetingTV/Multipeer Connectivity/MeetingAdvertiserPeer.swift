@@ -36,6 +36,8 @@ class MeetingAdvertiserPeer: NSObject {
     /// Identificação do peer
     private var peer : MCPeerID!
     
+    private var meeting : Meeting!
+    
     //MARK:- Initializer
     override init() {
         super.init()
@@ -45,14 +47,21 @@ class MeetingAdvertiserPeer: NSObject {
         self.session = MCSession(peer: self.peer, securityIdentity: nil, encryptionPreference: .required)
         
         self.session.delegate = self
-        self.serviceAdvertiser.delegate = self
-        
-        self.serviceAdvertiser.startAdvertisingPeer()
+        self.serviceAdvertiser.delegate = self        
     }
     
-    deinit {
-        self.serviceAdvertiser.stopAdvertisingPeer()
+    /// Receber convites de browsers.
+    func startAdvertisingPeer() {
+        NSLog("%@", "Start to advertiser")
+        self.serviceAdvertiser.startAdvertisingPeer()
     }
+
+    /// Parar de receber convites de browsers.
+    func stopAdvertiserPeer() {
+        self.serviceAdvertiser.stopAdvertisingPeer()
+        NSLog("%@", "Stop to advertiser")
+    }
+    
 
 }
 
@@ -71,12 +80,20 @@ extension MeetingAdvertiserPeer : MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         //TODO:-
+        
+        switch state {
+            case .connected:
+                self.stopAdvertiserPeer()
+            case .notConnected:
+                self.startAdvertisingPeer()
+            default:
+                break
+        }
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         //TODO:-
-
-        ///Data from Meeting
+        //Data from Meeting
         self.delegate?.receiveMeetingFromPeer(data: data)
     }
     
