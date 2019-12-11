@@ -40,7 +40,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     // Timer das pautas
     var topicsTimer: [Chronometer] = []
     
-    //Flag primeiro Foco - Se existe um foco anteriro
+    //Flag primeiro Foco - Se existe um foco anterior
     var hasPrevious = false
     
     override func viewDidLoad() {
@@ -61,10 +61,14 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
             topics.append(createTopic(tittle: "\(i)", authorName: "author\(i)"))
         }
         
+        addConclusion("")
         /// Adicionando conclusions na Topic criada.
         for i in 0...6 {
             addConclusion("Conclusionnnnnnnnnnnnn\(i)")
         }
+        
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

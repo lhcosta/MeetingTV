@@ -29,6 +29,10 @@ class TopicsCollectionViewCell: UICollectionViewCell {
     
     let rightFocusGuide = UIFocusGuide()
     
+    var count = 0
+    
+    var conclusionsArray = [String]()
+    
     
     override func awakeFromNib() {
         setupFocus()
@@ -60,7 +64,17 @@ class TopicsCollectionViewCell: UICollectionViewCell {
 extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return conclusions.count
+        conclusionsArray = []
+        count = 0
+        
+        for conclusion in conclusions {
+            if conclusion != "" {
+                conclusionsArray.append(conclusion)
+                count += 1
+            }
+        }
+        print("Array: \(conclusionsArray), conclusions: \(conclusions)")
+        return count
     }
 
     
@@ -68,7 +82,8 @@ extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         /// Setamos a textLabel da TableViewCell com a respecticva Conclusion.
-        cell.textLabel?.text = conclusions[indexPath.row]
+        print("Con: ", conclusionsArray[indexPath.row])
+        cell.textLabel?.text = conclusionsArray[indexPath.row]
         return cell
     }
     
