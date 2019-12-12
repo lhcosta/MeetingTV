@@ -52,18 +52,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         topicsCollectionView.delegate = self
         topicsCollectionView.dataSource = self
         
-        
-        //MARK:- Meeting Multipeer
-        let decoder = JSONDecoder()
-        
-        if let data = meetingData {
-            do {
-                self.meeting = try decoder.decode(Meeting.self, from: data)
-            } catch let error as NSError {
-                print("Decoder -> \(error.userInfo)")
-            }
-        }
-        
+        self.decoderMeeting()
         self.meetingTittle.text = self.meeting.theme
     
         //MARK: SIMULAÇÃO
@@ -238,5 +227,23 @@ extension MeetingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return collectionView.frame.size.width * 0.07
+    }
+}
+
+//MARK:- Decoder Meeting
+extension MeetingViewController {
+        
+    func decoderMeeting() {
+        
+        let decoder = JSONDecoder()
+        
+        if let data = meetingData {
+            do {
+                self.meeting = try decoder.decode(Meeting.self, from: data)
+            } catch let error as NSError {
+                print("Decoder -> \(error.userInfo)")
+            }
+        }
+        
     }
 }
