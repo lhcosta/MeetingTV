@@ -19,7 +19,7 @@
 		49F09A9F239985D600B7DFD3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49F09AA1239985D600B7DFD3 /* Localizable.strings */; };
 		49F09AA42399860D00B7DFD3 /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F09AA62399860D00B7DFD3 /* Welcome.storyboard */; };
 		49F09AAC2399862000B7DFD3 /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49F09AAE2399862000B7DFD3 /* Timer.storyboard */; };
-		A423781723A16FC500700BE1 /* PresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A423781623A16FC500700BE1 /* PresentationViewController.swift */; };
+		A423781723A16FC500700BE1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A423781623A16FC500700BE1 /* WelcomeViewController.swift */; };
 		A45097B2238DAB0E009AB71E /* MeetingAdvertiserPeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45097B1238DAB0E009AB71E /* MeetingAdvertiserPeer.swift */; };
 		A4533FF3238C57D70089257A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4533FF2238C57D70089257A /* CloudKit.framework */; };
 		E261A25A238F051F004A7D90 /* Chronometer.m in Sources */ = {isa = PBXBuildFile; fileRef = E261A259238F051F004A7D90 /* Chronometer.m */; };
@@ -56,7 +56,7 @@
 		49F09AD4239A8ACB00B7DFD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Timer.strings; sourceTree = "<group>"; };
 		49F09AD6239A8ADA00B7DFD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		49F09AD8239A95E200B7DFD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		A423781623A16FC500700BE1 /* PresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationViewController.swift; sourceTree = "<group>"; };
+		A423781623A16FC500700BE1 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		A45097B1238DAB0E009AB71E /* MeetingAdvertiserPeer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAdvertiserPeer.swift; sourceTree = "<group>"; };
 		A4533FF0238C57D00089257A /* MeetingTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetingTV.entitlements; sourceTree = "<group>"; };
 		A4533FF2238C57D70089257A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
@@ -80,7 +80,7 @@
 		23B3DA8E238EE78C003FF10B /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A423781623A16FC500700BE1 /* PresentationViewController.swift */,
+				A423781623A16FC500700BE1 /* WelcomeViewController.swift */,
 				23B3DA8F238EE936003FF10B /* MeetingViewController.swift */,
 				23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */,
 			);
@@ -251,7 +251,7 @@
 				23B3DA90238EE936003FF10B /* MeetingViewController.swift in Sources */,
 				23B3DA94238EEF86003FF10B /* TopicsCollectionViewCell.swift in Sources */,
 				23B3DA8D238EE5F8003FF10B /* Topic.swift in Sources */,
-				A423781723A16FC500700BE1 /* PresentationViewController.swift in Sources */,
+				A423781723A16FC500700BE1 /* WelcomeViewController.swift in Sources */,
 				49EB44C923871068002F434D /* MeetingTV.xcdatamodeld in Sources */,
 				49EB44C123871068002F434D /* AppDelegate.swift in Sources */,
 				E261A25A238F051F004A7D90 /* Chronometer.m in Sources */,

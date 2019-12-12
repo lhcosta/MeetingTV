@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PresentationViewController: UIViewController {
+class WelcomeViewController: UIViewController {
 
     //MARK:- Properties
     private var multipeer : MeetingAdvertiserPeer?
