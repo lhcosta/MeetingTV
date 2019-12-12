@@ -19,8 +19,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tela inicial" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTr-Na-osH">
-                                <rect key="frame" x="696" y="60" width="431" height="168"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Recebendo dados" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HTr-Na-osH">
+                                <rect key="frame" x="809" y="517" width="303" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
@@ -29,10 +29,23 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="jb5-hV-RDi"/>
                     </view>
+                    <connections>
+                        <segue destination="WVO-S2-D3b" kind="show" identifier="ShowMeeting" id="SN2-wv-813"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jg0-s1-Wzp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-360" y="-35"/>
+            <point key="canvasLocation" x="-1016" y="-242"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="IxL-Gm-kdG">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="WVO-S2-D3b" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="N9r-bL-3hv"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vWS-KH-Mbp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="420" y="-242"/>
         </scene>
     </scenes>
 </document>

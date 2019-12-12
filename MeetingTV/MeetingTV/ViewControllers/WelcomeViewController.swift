@@ -17,19 +17,23 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         
         self.multipeer = MeetingAdvertiserPeer()
+        self.multipeer?.delegate = self
         self.multipeer?.startAdvertisingPeer()
-        
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        guard let viewController = segue.destination as? MeetingViewController else {return}
+        viewController.meetingData = sender as? Data
     }
-    */
-
 }
+
+extension WelcomeViewController : MeetingConnectionPeerDelegate {
+    
+    func receiveMeetingFromPeer(data: Data) {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "ShowMeeting", sender: data)
+        }
+    }
+    
+}
+

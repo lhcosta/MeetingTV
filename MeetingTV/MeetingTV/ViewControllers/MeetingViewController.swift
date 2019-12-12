@@ -43,18 +43,35 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     //Flag primeiro Foco - Se existe um foco anterior
     var hasPrevious = false
     
+    ///Data da Meeting recebida pelo Multipeer
+    var meetingData : Data?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         topicsCollectionView.delegate = self
         topicsCollectionView.dataSource = self
         
+        
+        //MARK:- Meeting Multipeer
+        let decoder = JSONDecoder()
+        
+        if let data = meetingData {
+            do {
+                self.meeting = try decoder.decode(Meeting.self, from: data)
+            } catch let error as NSError {
+                print("Decoder -> \(error.userInfo)")
+            }
+        }
+        
+        self.meetingTittle.text = self.meeting.theme
+    
         //MARK: SIMULAÇÃO
         /// Inicializando a Meeting (será substituída pelo que vier do Multipeer)
         let record = CKRecord(recordType: "Meeting")
         meeting = Meeting(record: record)
 //        meeting.theme = "Reunião semestral."
-        meetingTittle.text = "Reunião semestral."
+        //meetingTittle.text = "Reunião semestral."
         
         /// Adicionando Topics falsos na reunião para teste
         for i in 0...9 {
