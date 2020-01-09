@@ -14,7 +14,7 @@ import CloudKit
 class MeetingViewController: UIViewController, UpdateTimerDelegate {
     
     /// Label que será exibida o tempo de duração da Meeting/Tópico
-    @IBOutlet weak var labelTimer: UILabel!
+    @IBOutlet weak var buttonTimer: UIButton!
     @IBOutlet weak var labelTimerTopic: UILabel!
     
     /// Título da Meeting
@@ -80,6 +80,9 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        ///Este comportamento agora será realizado ao clicar no botão de Iniciar Timer
+        
         // Inicializa o timer de todas as pautas
         for i in 0..<topics.count {
             self.topicsTimer.append(Chronometer(delegate: self, isMeeting: false))
@@ -96,10 +99,17 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
     }
     
+    @IBAction func openConfig(_ sender: Any) {
+        let blurEffect = UIBlurEffect(style: .extraLight)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.frame
+
+        self.view.insertSubview(blurEffectView, at: 0)
+    }
+    
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
         return [topicsCollectionView]
     }
-    
     
     /// Método para atualizar célula de pauta quando receber notificação do cloudkit
     /// - Parameter notification: notificação recebida no notificationcenter
@@ -118,7 +128,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     
     // Funções de Atualização do Timer na Tela
     func updateLabelMeeting(_ stringLabel: String!) {
-        labelTimer.text = stringLabel
+        buttonTimer.titleLabel?.text = stringLabel
     }
     
     func updateLabelTopic(_ stringLabel: String!) {
