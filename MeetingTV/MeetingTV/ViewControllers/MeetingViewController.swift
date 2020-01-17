@@ -53,14 +53,14 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         topicsCollectionView.dataSource = self
         
         self.decoderMeeting()
-        self.meetingTittle.text = self.meeting.theme
+        
     
         //MARK: SIMULAÇÃO
         /// Inicializando a Meeting (será substituída pelo que vier do Multipeer)
         let record = CKRecord(recordType: "Meeting")
         meeting = Meeting(record: record)
-//        meeting.theme = "Reunião semestral."
-        //meetingTittle.text = "Reunião semestral."
+//        self.meetingTittle.text = self.meeting.theme
+        self.meetingTittle.text = "Reunião semestral"
         
         /// Adicionando Topics falsos na reunião para teste
         for i in 0...9 {
@@ -157,7 +157,9 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     }
 }
 
-
+//
+// MARK: - CollectionView Delegate/DataSource
+//
 extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -180,9 +182,9 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
             ///1- TableViewCell sendo adicionada pelo código;
             ///2/3- Setamos o delegate e dataSource da tableView da célula;
             ///4- Focus será configurado no momento de Front-End.
-            cell.conclusionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-            cell.conclusionsTableView.delegate = cell
-            cell.conclusionsTableView.dataSource = cell
+//            cell.conclusionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+//            cell.conclusionsTableView.delegate = cell
+//            cell.conclusionsTableView.dataSource = cell
             cell.thisIndexPath = indexPath
         }
         
@@ -216,11 +218,39 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
             hasPrevious = true
         }
         
+        //
+        // Foco customizado dos botoes
+        //
         if let button = context.nextFocusedItem as? UIButton {
             guard let cell = button.superview?.superview as? TopicsCollectionViewCell else { return }
 //            collectionView.isScrollEnabled = false
-            let indexPath = collectionView.indexPath(for: cell)
+//            let indexPath = collectionView.indexPath(for: cell)
 //            collectionView.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
+            let animation = CABasicAnimation(keyPath: "shadowOffset")
+            animation.fromValue = button.layer.shadowOffset
+            animation.toValue = CGSize(width: 6, height: 10)
+            animation.duration = 0.12
+            button.layer.add(animation, forKey: animation.keyPath)
+            button.layer.shadowOffset = CGSize(width: 6, height: 10)
+            
+            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            }, completion: nil)
+        }
+        
+        if let previousButton = context.previouslyFocusedItem as? UIButton {
+            
+            let animation = CABasicAnimation(keyPath: "shadowOffset")
+            animation.fromValue = previousButton.layer.shadowOffset
+            animation.toValue = CGSize(width: 0, height: 5)
+            animation.duration = 0.12
+            previousButton.layer.add(animation, forKey: animation.keyPath)
+            previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+            
+            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                previousButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
+            
         }
         
     }
@@ -231,7 +261,8 @@ extension MeetingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.width*0.3, height: collectionView.bounds.width*0.3)
+        return CGSize(width: collectionView.bounds.height*1.37, height: collectionView.bounds.height)
+//        return CGSize(width: 568, height: 414)
     }
     
     

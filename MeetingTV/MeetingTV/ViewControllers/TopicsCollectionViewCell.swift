@@ -18,8 +18,16 @@ class TopicsCollectionViewCell: UICollectionViewCell {
     @IBOutlet var topicAuthor: UILabel!
     
     /// TableView que conterá uma lista das Conclusions desse Topic.
-    @IBOutlet var conclusionsTableView: UITableView!
+//    @IBOutlet var conclusionsTableView: UITableView!
     @IBOutlet var checkButton: UIButton!
+    @IBOutlet var viewMoreButton: UIButton!
+    @IBOutlet var separatorView: UIView!
+    
+    @IBOutlet var infoButtonWidth: NSLayoutConstraint!
+    @IBOutlet var infoButtonHeight: NSLayoutConstraint!
+    @IBOutlet var checkButtonWidth: NSLayoutConstraint!
+    @IBOutlet var checkButtonHeight: NSLayoutConstraint!
+    
     
     var toNextCell = false
     
@@ -35,6 +43,10 @@ class TopicsCollectionViewCell: UICollectionViewCell {
     
     
     override func awakeFromNib() {
+        
+        self.contentView.clipsToBounds = false
+        setupDesigns()
+        setupConstraints()
         setupFocus()
     }
     
@@ -50,8 +62,34 @@ class TopicsCollectionViewCell: UICollectionViewCell {
     }
     
     
+    func setupDesigns() {
+        
+        viewMoreButton.layer.masksToBounds = false
+        viewMoreButton.layer.shadowOpacity = 0.4
+        viewMoreButton.layer.shadowRadius = 7
+        viewMoreButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+        viewMoreButton.clipsToBounds = false
+        viewMoreButton.layer.cornerRadius = 7
+        
+//        checkButton.layer.masksToBounds = false
+//        checkButton.layer.shadowOpacity = 0.4
+//        checkButton.layer.shadowRadius = 7
+//        checkButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+//        checkButton.clipsToBounds = false
+    }
+    
+    
+    func setupConstraints() {
+        /*Numeros "reais"*/
+        self.infoButtonWidth.constant = self.bounds.width*0.4/*0.27*/
+        self.infoButtonHeight.constant = self.bounds.height*0.07
+        
+        self.checkButtonWidth.constant = self.bounds.height*0.08/*0.07*/
+        self.checkButtonHeight.constant = self.bounds.height*0.08/*0.07*/
+    }
+    
+    
     func setupFocus() {
-
         addLayoutGuide(rightFocusGuide)
         rightFocusGuide.leftAnchor.constraint(equalTo: checkButton.rightAnchor).isActive = true
         rightFocusGuide.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
@@ -61,35 +99,35 @@ class TopicsCollectionViewCell: UICollectionViewCell {
 }
 
 
-extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        conclusionsArray = []
-        count = 0
-        
-        for conclusion in conclusions {
-            if conclusion != "" {
-                conclusionsArray.append(conclusion)
-                count += 1
-            }
-        }
-        print("Array: \(conclusionsArray), conclusions: \(conclusions)")
-        return count
-    }
-
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        /// Setamos a textLabel da TableViewCell com a respecticva Conclusion.
-        print("Con: ", conclusionsArray[indexPath.row])
-        cell.textLabel?.text = conclusionsArray[indexPath.row]
-        return cell
-    }
-    
-    
-    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-        guard let _ = context.nextFocusedItem as? UITableViewCell else { return }
-        rightFocusGuide.preferredFocusEnvironments = [checkButton]
-    }
-}
+//extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        conclusionsArray = []
+//        count = 0
+//
+//        for conclusion in conclusions {
+//            if conclusion != "" {
+//                conclusionsArray.append(conclusion)
+//                count += 1
+//            }
+//        }
+//        print("Array: \(conclusionsArray), conclusions: \(conclusions)")
+//        return count
+//    }
+//
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+//        /// Setamos a textLabel da TableViewCell com a respecticva Conclusion.
+//        print("Con: ", conclusionsArray[indexPath.row])
+//        cell.textLabel?.text = conclusionsArray[indexPath.row]
+//        return cell
+//    }
+//
+//
+//    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+//        guard let _ = context.nextFocusedItem as? UITableViewCell else { return }
+//        rightFocusGuide.preferredFocusEnvironments = [checkButton]
+//    }
+//}
