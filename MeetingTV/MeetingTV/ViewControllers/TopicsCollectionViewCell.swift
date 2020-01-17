@@ -48,6 +48,11 @@ class TopicsCollectionViewCell: UICollectionViewCell {
         setupDesigns()
         setupConstraints()
         setupFocus()
+        
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowRadius = 5
+        self.layer.shadowOffset = CGSize(width: 4, height: 8)
+        self.layer.cornerRadius = 6
     }
     
     
@@ -65,17 +70,19 @@ class TopicsCollectionViewCell: UICollectionViewCell {
     func setupDesigns() {
         
         viewMoreButton.layer.masksToBounds = false
-        viewMoreButton.layer.shadowOpacity = 0.4
+        viewMoreButton.layer.shadowOpacity = 0.2
         viewMoreButton.layer.shadowRadius = 7
-        viewMoreButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+        viewMoreButton.layer.shadowOffset = CGSize(width: 0, height: 10)
         viewMoreButton.clipsToBounds = false
         viewMoreButton.layer.cornerRadius = 7
         
-//        checkButton.layer.masksToBounds = false
-//        checkButton.layer.shadowOpacity = 0.4
-//        checkButton.layer.shadowRadius = 7
-//        checkButton.layer.shadowOffset = CGSize(width: 0, height: 5)
-//        checkButton.clipsToBounds = false
+        checkButton.setBackgroundImage(UIImage(named: "uncheckButton"), for: .normal)
+        checkButton.layer.masksToBounds = false
+        checkButton.layer.shadowOpacity = 0.2
+        checkButton.layer.shadowRadius = 5
+        checkButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+        checkButton.clipsToBounds = false
+        checkButton.layer.cornerRadius = 7
     }
     
     

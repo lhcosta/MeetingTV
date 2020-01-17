@@ -49,6 +49,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        topicsCollectionView.clipsToBounds = false
         topicsCollectionView.delegate = self
         topicsCollectionView.dataSource = self
         
@@ -98,6 +99,68 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
     }
+    
+    
+    @IBAction func checkTopicButton(_ sender: Any) {
+        
+        guard let button = sender as? UIButton else { return }
+        guard let collectionCell = button.superview?.superview as? TopicsCollectionViewCell else {
+            return
+        }
+        guard let indexPath = self.topicsCollectionView.indexPath(for: collectionCell) else {
+            return
+        }
+        
+        selectingAnimation(button: button)
+        
+        if topics[indexPath.row].discussed {
+            button.setBackgroundImage(UIImage(named: "uncheckButton"), for: .normal)
+            topics[indexPath.row].discussed = false
+        } else {
+            button.setBackgroundImage(UIImage(named: "checkButton"), for: .normal)
+            topics[indexPath.row].discussed = true
+        }
+    }
+    
+    
+    @IBAction func moreInfoButton(_ sender: Any) {
+        
+        guard let button = sender as? UIButton else { return }
+        selectingAnimation(button: button)
+    }
+    
+    
+    
+    func selectingAnimation(button: UIButton) {
+        
+        var time = 0.06
+        
+        let animation = CABasicAnimation(keyPath: "shadowOffset")
+        animation.fromValue = button.layer.shadowOffset
+        animation.toValue = CGSize(width: 0, height: 5)
+        animation.duration = time + 0.1
+        button.layer.add(animation, forKey: animation.keyPath)
+        button.layer.shadowOffset = CGSize(width: 0, height: 8)
+        
+        UIView.animate(withDuration: time, delay: 0, options: [.curveEaseInOut], animations: {
+            button.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }, completion: nil)
+        
+        let animation2 = CABasicAnimation(keyPath: "shadowOffset")
+        animation2.fromValue = button.layer.shadowOffset
+        animation2.toValue = CGSize(width: 0, height: 20)
+        animation2.duration = time + 0.1
+        button.layer.shadowOpacity = 0.3
+        button.layer.add(animation2, forKey: animation.keyPath)
+        button.layer.shadowOffset = CGSize(width: 0, height: 20)
+
+        UIView.animate(withDuration: time + 0.02, delay: 0.1, options: [.curveEaseInOut], animations: {
+            button.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            
+        }, completion: nil)
+    }
+    
+    
     
     @IBAction func openConfig(_ sender: Any) {
         let blurEffect = UIBlurEffect(style: .extraLight)
@@ -223,27 +286,29 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         //
         if let button = context.nextFocusedItem as? UIButton {
             guard let cell = button.superview?.superview as? TopicsCollectionViewCell else { return }
-//            collectionView.isScrollEnabled = false
-//            let indexPath = collectionView.indexPath(for: cell)
-//            collectionView.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
+            collectionView.isScrollEnabled = false
+            let indexPath = collectionView.indexPath(for: cell)
+            collectionView.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
+            
             let animation = CABasicAnimation(keyPath: "shadowOffset")
             animation.fromValue = button.layer.shadowOffset
-            animation.toValue = CGSize(width: 6, height: 10)
-            animation.duration = 0.12
+            animation.toValue = CGSize(width: 0, height: 20)
+            animation.duration = 0.1
+            button.layer.shadowOpacity = 0.3
             button.layer.add(animation, forKey: animation.keyPath)
-            button.layer.shadowOffset = CGSize(width: 6, height: 10)
-            
+            button.layer.shadowOffset = CGSize(width: 0, height: 20)
+
             UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-                button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                button.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             }, completion: nil)
         }
         
         if let previousButton = context.previouslyFocusedItem as? UIButton {
-            
+                
             let animation = CABasicAnimation(keyPath: "shadowOffset")
             animation.fromValue = previousButton.layer.shadowOffset
             animation.toValue = CGSize(width: 0, height: 5)
-            animation.duration = 0.12
+            animation.duration = 0.1
             previousButton.layer.add(animation, forKey: animation.keyPath)
             previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
             
