@@ -16,6 +16,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     /// Label que será exibida o tempo de duração da Meeting/Tópico
     @IBOutlet weak var buttonTimer: UIButton!
     @IBOutlet weak var labelTimerTopic: UILabel!
+    @IBOutlet var endMeetingButton: UIButton!
     
     /// Título da Meeting
     @IBOutlet var meetingTittle: UILabel!
@@ -46,6 +47,10 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     ///Data da Meeting recebida pelo Multipeer
     var meetingData : Data?
     
+    let bottomFocusGuide = UIFocusGuide()
+    
+    var flag = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,6 +59,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         topicsCollectionView.dataSource = self
         
         self.decoderMeeting()
+        
+        self.setupFocus()
         
     
         //MARK: SIMULAÇÃO
@@ -67,15 +74,16 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         for i in 0...9 {
             topics.append(createTopic(tittle: "\(i)", authorName: "author\(i)"))
         }
+        topics.insert(Topic(record: nil), at: 0)
+        topics.append(Topic(record: nil))
+        topics.append(Topic(record: nil))
+        topics.append(Topic(record: nil))
         
         addConclusion("")
         /// Adicionando conclusions na Topic criada.
         for i in 0...6 {
             addConclusion("Conclusionnnnnnnnnnnnn\(i)")
         }
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -98,6 +106,28 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         topicsTimer[0].setTimer()
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
+    }
+    
+    
+    func setupFocus() {
+        
+        view.addLayoutGuide(bottomFocusGuide)
+        bottomFocusGuide.leftAnchor.constraint(equalTo: topicsCollectionView.leftAnchor).isActive = true
+        bottomFocusGuide.rightAnchor.constraint(equalTo: endMeetingButton.rightAnchor).isActive = true
+        bottomFocusGuide.topAnchor.constraint(equalTo: topicsCollectionView.bottomAnchor).isActive = true
+        bottomFocusGuide.bottomAnchor.constraint(equalTo: endMeetingButton.topAnchor).isActive = true
+    }
+    
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        
+        guard let nextView = context.nextFocusedItem as? UIButton else { return }
+        switch nextView {
+        case endMeetingButton:
+            bottomFocusGuide.preferredFocusEnvironments = [topicsCollectionView]
+        default:
+            bottomFocusGuide.preferredFocusEnvironments = [endMeetingButton]
+        }
     }
     
     
@@ -235,12 +265,18 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TopicsCollectionViewCell
         
         cell.isHidden = false
-        if indexPath.row == 0 || indexPath.row == topics.count-1 {
+        if indexPath.row == 0 || indexPath.row >= topics.count-3 {
             cell.isHidden = true
         } else {
             cell.topicDescription.text = topics[indexPath.row].description
             cell.topicAuthor.text = topics[indexPath.row].authorName
             cell.conclusions = topics[indexPath.row].conclusions
+            cell.contentView.alpha = 0.3
+            if topics[indexPath.row].discussed {
+                cell.checkButton.setBackgroundImage(UIImage(named: "checkButton"), for: .normal)
+            } else {
+                cell.checkButton.setBackgroundImage(UIImage(named: "uncheckButton"), for: .normal)
+            }
             
             ///1- TableViewCell sendo adicionada pelo código;
             ///2/3- Setamos o delegate e dataSource da tableView da célula;
@@ -254,53 +290,68 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         
-        currTopicOnCollection = context.nextFocusedIndexPath
+        if let currTopicOnCollection = context.nextFocusedView?.superview?.superview as? TopicsCollectionViewCell, flag != 0 {
+            UIView.animate(withDuration: 0.2) {
+                currTopicOnCollection.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                currTopicOnCollection.contentView.alpha = 1
+            }
+        }
+        
+        if let prevTopicOnCollection = context.previouslyFocusedView?.superview?.superview as? TopicsCollectionViewCell, context.nextFocusedIndexPath != context.previouslyFocusedIndexPath {
+            UIView.animate(withDuration: 0.2) {
+                prevTopicOnCollection.transform = CGAffineTransform(scaleX: 1, y: 1)
+                prevTopicOnCollection.contentView.alpha = 0.3
+            }
+        }
+        flag = 1
         
         collectionView.remembersLastFocusedIndexPath = true
         
-        if hasPrevious {
-            // Verifica se o anterior possui valor, caso contrário o movimento de swipe foi muito rapido entre os Itens
-            if let index = context.previouslyFocusedIndexPath {
-                print("Index Anterior: \(index.row))")
-                // Pausa o Timer do último Item de fato acessado
-                topicsTimer[previousIndex].pauseTimer()
-                
-                let indexNext = context.nextFocusedIndexPath
-                print("Index Previous: \(previousIndex+1))")
-                print("Index Atual: \(indexNext!.row)")
-                
-                // Guarda o index do Item que está em foco para utiliza-lo como o ultimo Item de fato acessado
-                previousIndex = indexNext!.row-1
-                
-                // Inicia a contage do Timer do Item atual
-                topicsTimer[indexNext!.row-1].setTimer()
-            }
-        } else {
-            hasPrevious = true
-        }
+//        if hasPrevious {
+//            // Verifica se o anterior possui valor, caso contrário o movimento de swipe foi muito rapido entre os Itens
+//            if let index = context.previouslyFocusedIndexPath {
+//                print("Index Anterior: \(index.row))")
+//                // Pausa o Timer do último Item de fato acessado
+//                topicsTimer[previousIndex].pauseTimer()
+//
+//                let indexNext = context.nextFocusedIndexPath
+//                print("Index Previous: \(previousIndex+1))")
+//                print("Index Atual: \(indexNext!.row)")
+//
+//                // Guarda o index do Item que está em foco para utiliza-lo como o ultimo Item de fato acessado
+//                previousIndex = indexNext!.row-1
+//
+//                // Inicia a contage do Timer do Item atual
+//                topicsTimer[indexNext!.row-1].setTimer()
+//            }
+//        } else {
+//            hasPrevious = true
+//        }
         
         //
         // Foco customizado dos botoes
         //
         if let button = context.nextFocusedItem as? UIButton {
-            guard let cell = button.superview?.superview as? TopicsCollectionViewCell else { return }
-            collectionView.isScrollEnabled = false
-            let indexPath = collectionView.indexPath(for: cell)
-            collectionView.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
-            
-            let animation = CABasicAnimation(keyPath: "shadowOffset")
-            animation.fromValue = button.layer.shadowOffset
-            animation.toValue = CGSize(width: 0, height: 20)
-            animation.duration = 0.1
-            button.layer.shadowOpacity = 0.3
-            button.layer.add(animation, forKey: animation.keyPath)
-            button.layer.shadowOffset = CGSize(width: 0, height: 20)
+            if let cell = button.superview?.superview as? TopicsCollectionViewCell {
+                collectionView.isScrollEnabled = false
+                let indexPath = collectionView.indexPath(for: cell)
+                collectionView.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
+                
+                let animation = CABasicAnimation(keyPath: "shadowOffset")
+                animation.fromValue = button.layer.shadowOffset
+                animation.toValue = CGSize(width: 0, height: 20)
+                animation.duration = 0.1
+                button.layer.shadowOpacity = 0.3
+                button.layer.add(animation, forKey: animation.keyPath)
+                button.layer.shadowOffset = CGSize(width: 0, height: 20)
 
-            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-                button.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-            }, completion: nil)
+                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                    button.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                }, completion: nil)
+            }
         }
         
         if let previousButton = context.previouslyFocusedItem as? UIButton {
@@ -326,13 +377,19 @@ extension MeetingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.height*1.37, height: collectionView.bounds.height)
+        return CGSize(width: collectionView.bounds.height*1.37*0.9, height: collectionView.bounds.height*0.9)
 //        return CGSize(width: 568, height: 414)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return collectionView.frame.size.width * 0.07
+        return collectionView.frame.size.width * 0.1
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        return UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.size.height, right: 0)
     }
 }
 
@@ -350,6 +407,5 @@ extension MeetingViewController {
                 print("Decoder -> \(error.userInfo)")
             }
         }
-        
     }
 }

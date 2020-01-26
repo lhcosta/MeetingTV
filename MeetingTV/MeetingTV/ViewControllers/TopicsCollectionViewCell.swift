@@ -53,6 +53,8 @@ class TopicsCollectionViewCell: UICollectionViewCell {
         self.layer.shadowRadius = 5
         self.layer.shadowOffset = CGSize(width: 4, height: 8)
         self.layer.cornerRadius = 6
+        
+        self.layer.anchorPoint = CGPoint(x: 0.5, y: 0)
     }
     
     
