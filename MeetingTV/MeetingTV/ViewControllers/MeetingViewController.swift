@@ -309,26 +309,26 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         collectionView.remembersLastFocusedIndexPath = true
         
-//        if hasPrevious {
-//            // Verifica se o anterior possui valor, caso contrário o movimento de swipe foi muito rapido entre os Itens
-//            if let index = context.previouslyFocusedIndexPath {
-//                print("Index Anterior: \(index.row))")
-//                // Pausa o Timer do último Item de fato acessado
-//                topicsTimer[previousIndex].pauseTimer()
-//
-//                let indexNext = context.nextFocusedIndexPath
-//                print("Index Previous: \(previousIndex+1))")
-//                print("Index Atual: \(indexNext!.row)")
-//
-//                // Guarda o index do Item que está em foco para utiliza-lo como o ultimo Item de fato acessado
-//                previousIndex = indexNext!.row-1
-//
-//                // Inicia a contage do Timer do Item atual
-//                topicsTimer[indexNext!.row-1].setTimer()
-//            }
-//        } else {
-//            hasPrevious = true
-//        }
+        if hasPrevious {
+            // Verifica se o anterior possui valor, caso contrário o movimento de swipe foi muito rapido entre os Itens
+            if let index = context.previouslyFocusedIndexPath {
+                print("Index Anterior: \(index.row))")
+                // Pausa o Timer do último Item de fato acessado
+                topicsTimer[previousIndex].pauseTimer()
+
+                let indexNext = context.nextFocusedIndexPath
+                print("Index Previous: \(previousIndex+1))")
+                print("Index Atual: \(indexNext!.row)")
+
+                // Guarda o index do Item que está em foco para utiliza-lo como o ultimo Item de fato acessado
+                previousIndex = indexNext!.row-1
+
+                // Inicia a contage do Timer do Item atual
+                topicsTimer[indexNext!.row-1].setTimer()
+            }
+        } else {
+            hasPrevious = true
+        }
         
         //
         // Foco customizado dos botoes
