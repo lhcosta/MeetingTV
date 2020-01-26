@@ -82,7 +82,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSW-u7-8gU">
-                                                    <rect key="frame" x="25" y="32.5" width="220" height="35"/>
+                                                    <rect key="frame" x="25" y="22.5" width="220" height="35"/>
                                                     <color key="backgroundColor" red="0.32497316599999998" green="0.47915506359999999" blue="0.99612778430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="PUR-Mf-0aP"/>
@@ -96,7 +96,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMO-y6-Ihg">
-                                                    <rect key="frame" x="498" y="32.5" width="35" height="35"/>
+                                                    <rect key="frame" x="498" y="22.5" width="35" height="35"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <accessibility key="accessibilityConfiguration" identifier="check"/>
                                                     <constraints>
@@ -128,11 +128,11 @@
                                                 <constraint firstItem="rJJ-V4-GMr" firstAttribute="centerX" secondItem="w7U-gz-WlT" secondAttribute="centerX" id="3Zn-MQ-QHR"/>
                                                 <constraint firstItem="iMO-y6-Ihg" firstAttribute="leading" secondItem="ld4-sd-MHo" secondAttribute="trailing" id="BKG-GQ-xBL"/>
                                                 <constraint firstAttribute="trailing" secondItem="iMO-y6-Ihg" secondAttribute="trailing" constant="25" id="CEy-Hb-mia"/>
-                                                <constraint firstItem="iMO-y6-Ihg" firstAttribute="centerY" secondItem="w7U-gz-WlT" secondAttribute="top" constant="50" id="c5C-J4-aN7"/>
+                                                <constraint firstItem="iMO-y6-Ihg" firstAttribute="centerY" secondItem="w7U-gz-WlT" secondAttribute="top" constant="40" id="c5C-J4-aN7"/>
                                                 <constraint firstItem="iMO-y6-Ihg" firstAttribute="leading" secondItem="uIo-Ov-Ux3" secondAttribute="trailing" id="csb-Tm-6rp"/>
                                                 <constraint firstItem="QSW-u7-8gU" firstAttribute="leading" secondItem="w7U-gz-WlT" secondAttribute="leading" constant="25" id="ekz-kh-DVX"/>
                                                 <constraint firstItem="uIo-Ov-Ux3" firstAttribute="top" secondItem="ld4-sd-MHo" secondAttribute="bottom" constant="25" id="oxd-cu-ms0"/>
-                                                <constraint firstItem="QSW-u7-8gU" firstAttribute="centerY" secondItem="w7U-gz-WlT" secondAttribute="top" constant="50" id="x2s-JS-qif"/>
+                                                <constraint firstItem="QSW-u7-8gU" firstAttribute="centerY" secondItem="w7U-gz-WlT" secondAttribute="top" constant="40" id="x2s-JS-qif"/>
                                                 <constraint firstAttribute="bottom" secondItem="uIo-Ov-Ux3" secondAttribute="bottom" constant="50" id="xjV-HE-q09"/>
                                                 <constraint firstItem="ld4-sd-MHo" firstAttribute="centerX" secondItem="w7U-gz-WlT" secondAttribute="centerX" id="zYS-Gs-nJt"/>
                                             </constraints>

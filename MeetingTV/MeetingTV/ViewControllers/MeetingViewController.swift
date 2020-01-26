@@ -293,7 +293,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         
-        if let currTopicOnCollection = context.nextFocusedView?.superview?.superview as? TopicsCollectionViewCell, flag != 0 {
+        if let currTopicOnCollection = context.nextFocusedView?.superview?.superview as? TopicsCollectionViewCell {
             UIView.animate(withDuration: 0.2) {
                 currTopicOnCollection.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
                 currTopicOnCollection.contentView.alpha = 1
@@ -306,7 +306,6 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 prevTopicOnCollection.contentView.alpha = 0.3
             }
         }
-        flag = 1
         
         collectionView.remembersLastFocusedIndexPath = true
         
