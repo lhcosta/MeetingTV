@@ -221,7 +221,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     
     // Funções de Atualização do Timer na Tela
     func updateLabelMeeting(_ stringLabel: String!) {
-        buttonTimer.titleLabel?.text = stringLabel
+        buttonTimer.setTitle(stringLabel, for: .normal)
     }
     
     func updateLabelTopic(_ stringLabel: String!) {
@@ -318,13 +318,13 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
 
                 let indexNext = context.nextFocusedIndexPath
                 print("Index Previous: \(previousIndex+1))")
-                print("Index Atual: \(indexNext!.row)")
-
+                print("Index Atual: \(indexNext?.row)")
+                
                 // Guarda o index do Item que está em foco para utiliza-lo como o ultimo Item de fato acessado
-                previousIndex = indexNext!.row-1
-
+                previousIndex = (indexNext?.row ?? previousIndex)-1
+                
                 // Inicia a contage do Timer do Item atual
-                topicsTimer[indexNext!.row-1].setTimer()
+                topicsTimer[(indexNext?.row ?? previousIndex)-1].setTimer()
             }
         } else {
             hasPrevious = true
