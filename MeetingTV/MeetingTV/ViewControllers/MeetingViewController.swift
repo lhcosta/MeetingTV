@@ -49,6 +49,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     
     let bottomFocusGuide = UIFocusGuide()
     
+    let topFocusGuide = UIFocusGuide()
+    
     var flag = 0
     
     override func viewDidLoad() {
@@ -113,20 +115,28 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         
         view.addLayoutGuide(bottomFocusGuide)
         bottomFocusGuide.leftAnchor.constraint(equalTo: topicsCollectionView.leftAnchor).isActive = true
-        bottomFocusGuide.rightAnchor.constraint(equalTo: endMeetingButton.rightAnchor).isActive = true
+        bottomFocusGuide.rightAnchor.constraint(equalTo: endMeetingButton.leftAnchor).isActive = true
         bottomFocusGuide.topAnchor.constraint(equalTo: topicsCollectionView.bottomAnchor).isActive = true
         bottomFocusGuide.bottomAnchor.constraint(equalTo: endMeetingButton.topAnchor).isActive = true
+        
+        view.addLayoutGuide(topFocusGuide)
+        topFocusGuide.leftAnchor.constraint(equalTo: topicsCollectionView.leftAnchor).isActive = true
+        topFocusGuide.rightAnchor.constraint(equalTo: buttonTimer.leftAnchor).isActive = true
+        topFocusGuide.topAnchor.constraint(equalTo: buttonTimer.topAnchor).isActive = true
+        topFocusGuide.bottomAnchor.constraint(equalTo: buttonTimer.bottomAnchor).isActive = true
     }
     
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         
         guard let nextView = context.nextFocusedItem as? UIButton else { return }
+        
         switch nextView {
         case endMeetingButton:
             bottomFocusGuide.preferredFocusEnvironments = [topicsCollectionView]
         default:
             bottomFocusGuide.preferredFocusEnvironments = [endMeetingButton]
+            topFocusGuide.preferredFocusEnvironments = [buttonTimer]
         }
     }
     
