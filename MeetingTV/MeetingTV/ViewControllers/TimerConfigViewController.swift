@@ -75,25 +75,16 @@ class TimerConfigViewController: UIViewController {
     }
     
     @IBAction func resetButton(_ sender: Any) {
-        
+        timeLabel.text = "00:00:00"
+        minutes = 0
+        hours = 0
     }
     
-    @IBAction func timeUp(_ sender: Any) {
-        if minutes == 50 {
-            minutes = 0
-            hours += 1
-        } else {
-            minutes += 10
-        }
-        
-        if hours == 24 {
-            hours = 0
-        }
-        
+    func labelTimerFormat() {
         var stringHours = String()
         var stringMinutes = String()
         
-        ///Conversão para o formato de horas correto
+        ///Conversão da String para o formato de horas correto
         if hours < 10 {
             stringHours = "0\(hours)"
         } else {
@@ -109,8 +100,31 @@ class TimerConfigViewController: UIViewController {
         timeLabel.text = "\(stringHours):\(stringMinutes):00"
     }
     
-    @IBAction func timeDown(_ sender: Any) {
+    @IBAction func timeUp(_ sender: Any) {
+        /// Lógica para a Label ser apresentada como Cronometro comum
+        if minutes == 50 {
+            minutes = 0
+            hours += 1
+        } else {
+            minutes += 10
+        }
         
+        if hours == 24 {
+            hours = 0
+        }
+        
+        labelTimerFormat()
+    }
+    
+    @IBAction func timeDown(_ sender: Any) {
+        if minutes != 0 {
+            minutes -= 10
+        } else if hours > 0 {
+            hours -= 1
+            minutes = 50
+        }
+        
+        labelTimerFormat()
     }
     
 }
