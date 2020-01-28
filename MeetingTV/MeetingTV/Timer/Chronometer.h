@@ -15,7 +15,6 @@
 
 @protocol UpdateTimerDelegate
 
-@optional
 - (void)updateLabelDelegateMeeting:(NSString*)stringLabel;
 - (void)updateLabelDelegateTopic:(NSString*)stringLabel;
 

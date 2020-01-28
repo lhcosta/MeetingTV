@@ -184,15 +184,15 @@
             </objects>
             <point key="canvasLocation" x="-306" y="339"/>
         </scene>
-        <!--View Controller-->
+        <!--Timer Config View Controller-->
         <scene sceneID="8lk-Kn-Fph">
             <objects>
-                <viewController id="xXj-38-DCd" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="currentContext" id="xXj-38-DCd" customClass="TimerConfigViewController" customModule="MeetingTV" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Eiv-xf-pvu"/>
                         <viewControllerLayoutGuide type="bottom" id="WrB-AZ-SQb"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="keu-Io-EYr">
+                    <view key="view" alpha="0.84999999999999998" contentMode="scaleToFill" id="keu-Io-EYr">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -201,12 +201,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Start"/>
+                                <connections>
+                                    <action selector="startButton:" destination="xXj-38-DCd" eventType="primaryActionTriggered" id="PTf-5Y-Rku"/>
+                                    <action selector="startButton:" destination="inw-k1-ZFc" eventType="primaryActionTriggered" id="kuB-2f-T9R"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vh-h9-X07">
                                 <rect key="frame" x="1164" y="859" width="450" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="resetButton:" destination="inw-k1-ZFc" eventType="primaryActionTriggered" id="5To-Gz-qxa"/>
+                                    <action selector="resetButton:" destination="xXj-38-DCd" eventType="primaryActionTriggered" id="KWP-tW-b9K"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="meeting time             counter" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsJ-YF-XPY">
                                 <rect key="frame" x="783" y="217.5" width="354" height="137"/>
@@ -249,6 +257,7 @@
                     <navigationItem key="navigationItem" id="CDf-Et-Cae"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2j7-GC-lv9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="inw-k1-ZFc" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2314" y="339"/>
         </scene>
