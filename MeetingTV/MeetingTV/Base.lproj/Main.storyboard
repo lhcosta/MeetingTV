@@ -230,6 +230,9 @@
                                 <color key="tintColor" red="0.31372549020000001" green="0.4941176471" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" backgroundImage="arrowtriangle.up.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="timeUp:" destination="xXj-38-DCd" eventType="primaryActionTriggered" id="avH-J0-E7o"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaZ-mQ-Fan">
                                 <rect key="frame" x="916" y="686.5" width="88" height="56"/>
@@ -238,6 +241,9 @@
                                 <color key="tintColor" red="0.31372549020000001" green="0.4941176471" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" backgroundImage="arrowtriangle.down.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="timeDown:" destination="xXj-38-DCd" eventType="primaryActionTriggered" id="UTb-Ba-Eju"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zbn-99-7Cy">
                                 <rect key="frame" x="930" y="148.5" width="60" height="60"/>
@@ -255,6 +261,13 @@
                         <viewLayoutGuide key="safeArea" id="rTB-9u-gsZ"/>
                     </view>
                     <navigationItem key="navigationItem" id="CDf-Et-Cae"/>
+                    <connections>
+                        <outlet property="buttonDown" destination="oaZ-mQ-Fan" id="fhd-e0-lwx"/>
+                        <outlet property="buttonUp" destination="4tL-pY-efD" id="uwn-bY-mZy"/>
+                        <outlet property="reset" destination="2vh-h9-X07" id="8nS-xR-Gv3"/>
+                        <outlet property="start" destination="cqg-VP-fNJ" id="aLM-dJ-D4R"/>
+                        <outlet property="timeLabel" destination="LiS-7G-gGH" id="AvN-aI-AZK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2j7-GC-lv9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="inw-k1-ZFc" userLabel="Exit" sceneMemberID="exit"/>
