@@ -26,18 +26,78 @@ class TimerConfigViewController: UIViewController {
     var minutes = 0
     var hours = 0
     
+    var topFocus = UIFocusGuide()
+    var bottomFocus = UIFocusGuide()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        setUpDelegate = self as? SetUpTimerDelegate
         
-        addFocusGuide(from: start, to: buttonDown, direction: .top)
-        addFocusGuide(from: reset, to: buttonDown, direction: .top)
-        addFocusGuide(from: buttonDown, to: buttonUp, direction: .top)
-        addFocusGuide(from: buttonDown, to: start, direction: .bottom)
-        addFocusGuide(from: buttonUp, to: buttonDown, direction: .bottom)
+        addFocus()
         
+//        addFocusGuide(from: start, to: buttonDown, direction: .top)
+//        addFocusGuide(from: reset, to: buttonDown, direction: .top)
+//        addFocusGuide(from: buttonDown, to: buttonUp, direction: .top)
+//        addFocusGuide(from: buttonDown, to: start, direction: .bottom)
+//        addFocusGuide(from: buttonUp, to: buttonDown, direction: .bottom)
+        
+    }
+    
+    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        if let button = context.nextFocusedItem as? UIButton {
+            
+            switch button {
+            case start:
+                topFocus.preferredFocusEnvironments = [buttonDown]
+            case buttonDown:
+                bottomFocus.preferredFocusEnvironments = [start]
+            default:
+                print("nada")
+            }
+                
+                let animation = CABasicAnimation(keyPath: "shadowOffset")
+                animation.fromValue = button.layer.shadowOffset
+                animation.toValue = CGSize(width: 0, height: 20)
+                animation.duration = 0.1
+                button.layer.shadowOpacity = 0.3
+                button.layer.add(animation, forKey: animation.keyPath)
+                button.layer.shadowOffset = CGSize(width: 0, height: 20)
+
+                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                    button.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                }, completion: nil)
+        }
+        
+        if let previousButton = context.previouslyFocusedItem as? UIButton {
+
+            let animation = CABasicAnimation(keyPath: "shadowOffset")
+            animation.fromValue = previousButton.layer.shadowOffset
+            animation.toValue = CGSize(width: 0, height: 5)
+            animation.duration = 0.1
+            previousButton.layer.add(animation, forKey: animation.keyPath)
+            previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+
+            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                previousButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
+
+        }
+    }
+    
+    func addFocus(){
+        view.addLayoutGuide(topFocus)
+        topFocus.leftAnchor.constraint(equalTo: start.leftAnchor).isActive = true
+        topFocus.rightAnchor.constraint(equalTo: reset.rightAnchor).isActive = true
+        topFocus.topAnchor.constraint(equalTo: buttonDown.bottomAnchor).isActive = true
+//        bottomFocus.bottomAnchor.constraint(equalTo: start.topAnchor).isActive = true
+        topFocus.heightAnchor.constraint(equalTo: buttonDown.heightAnchor).isActive = true
+        
+        view.addLayoutGuide(bottomFocus)
+                bottomFocus.leftAnchor.constraint(equalTo: start.leftAnchor).isActive = true
+                bottomFocus.rightAnchor.constraint(equalTo: reset.rightAnchor).isActive = true
+                bottomFocus.topAnchor.constraint(equalTo: start.bottomAnchor).isActive = true
+                bottomFocus.heightAnchor.constraint(equalTo: buttonDown.heightAnchor).isActive = true
     }
     
     func addFocusGuide(from origin: UIView, to destination: UIView, direction: UIRectEdge) {
@@ -68,9 +128,12 @@ class TimerConfigViewController: UIViewController {
         }
     }
     
+    
+    
     @IBAction func startButton(_ sender: Any) {
         self.setUpDelegate?.setUpTimer()
         
+        start.isEnabled = true
         dismiss(animated: true)
     }
     

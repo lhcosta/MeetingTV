@@ -214,7 +214,13 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     
     
     @IBAction func openConfig(_ sender: Any) {
-        
+        performSegue(withIdentifier: "openConfig", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? TimerConfigViewController {
+            vc.setUpDelegate = self
+        }
     }
     
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
