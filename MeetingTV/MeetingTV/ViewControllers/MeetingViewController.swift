@@ -40,6 +40,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     
     // Timer das pautas
     var topicsTimer: [Chronometer] = []
+    var timerMeeting: Chronometer?
     
     //Flag primeiro Foco - Se existe um foco anterior
     var hasPrevious = false
@@ -105,11 +106,11 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     
     func setUpTimer() {
         ///Configura o timer geral da Reunião
-        let timerMeeting = Chronometer(delegate: self, isMeeting: true)
+        self.timerMeeting = Chronometer(delegate: self, isMeeting: true)
         timerMeeting?.config()
 
         /// Configura o timer de todas as pautas
-        for i in 0..<topics.count {
+        for i in 0..<meeting.selectedTopics.count {
             self.topicsTimer.append(Chronometer(delegate: self, isMeeting: false))
             self.topicsTimer[i].config()
         }
@@ -185,6 +186,12 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         
         meeting.finished = true
         meeting.duration = buttonTimer.titleLabel?.text
+        timerMeeting?.pauseTimer()
+        
+        for i in 0..<meeting.selectedTopics.count {
+            meeting.selectedTopics[i].duration = topicsTimer[i].getTime()
+            topicsTimer[i].pauseTimer()
+        }
         
 //        CloudManager.shared().update([meeting.record], completionPerRecord: { (_, error) in
 //            if let error = error {
