@@ -181,6 +181,18 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     }
     
     
+    @IBAction func endMeeting(_ sender: Any) {
+        
+        meeting.finished = true
+        meeting.duration = buttonTimer.titleLabel?.text
+        
+//        CloudManager.shared().update([meeting.record], completionPerRecord: { (_, error) in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            }
+//        }, completionHandler: {})
+    }
+    
     
     func selectingAnimation(button: UIButton) {
         
@@ -389,9 +401,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
             UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
                 previousButton.transform = CGAffineTransform(scaleX: 1, y: 1)
             }, completion: nil)
-            
         }
-        
     }
 }
 
@@ -415,6 +425,7 @@ extension MeetingViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.size.height, right: 0)
     }
 }
+
 
 //MARK:- Decoder Meeting
 extension MeetingViewController {
