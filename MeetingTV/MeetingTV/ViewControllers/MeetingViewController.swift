@@ -11,7 +11,7 @@ import CloudKit
 
 
 /// Tela inicial da Meeting espelhada
-class MeetingViewController: UIViewController, UpdateTimerDelegate {
+class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDelegate {
     
     /// Label que será exibida o tempo de duração da Meeting/Tópico
     @IBOutlet weak var buttonTimer: UIButton!
@@ -44,6 +44,10 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     //Flag primeiro Foco - Se existe um foco anterior
     var hasPrevious = false
     
+    ///Flag do Botão Iniciar do Timer
+    ///O timer de cada pauta é monitorada através do foco para realizar a contagem do timer por pauta somente após o Timer ser iniciado
+    var timerStarted = false
+    
     ///Data da Meeting recebida pelo Multipeer
     var meetingData : Data?
     
@@ -53,6 +57,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     
     var flag = 0
     
+    var blurEffectView = UIVisualEffectView()
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -94,20 +100,25 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
         
         ///Este comportamento agora será realizado ao clicar no botão de Iniciar Timer
         
-        // Inicializa o timer de todas as pautas
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
+    }
+    
+    func setUpTimer() {
+        ///Configura o timer geral da Reunião
+        let timerMeeting = Chronometer(delegate: self, isMeeting: true)
+        timerMeeting?.config()
+
+        /// Configura o timer de todas as pautas
         for i in 0..<topics.count {
             self.topicsTimer.append(Chronometer(delegate: self, isMeeting: false))
             self.topicsTimer[i].config()
         }
-        
-        let timerMeeting = Chronometer(delegate: self, isMeeting: true)
-        timerMeeting?.config()
-        
-        // Start nos Timers tanto da Reunião quanto de cada tópico
+
+        /// Inicia nos Timers tanto da Reunião quanto de cada tópico
         timerMeeting?.setTimer()
         topicsTimer[0].setTimer()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
+        timerStarted = true
     }
     
     
@@ -215,11 +226,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
     
     
     @IBAction func openConfig(_ sender: Any) {
-        let blurEffect = UIBlurEffect(style: .extraLight)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.view.frame
-
-        self.view.insertSubview(blurEffectView, at: 0)
+        
     }
     
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
@@ -240,8 +247,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate {
             }
         }
     }
-    
-    // Funções de Atualização do Timer na Tela
+
     func updateLabelMeeting(_ stringLabel: String!) {
         buttonTimer.setTitle(stringLabel, for: .normal)
     }
@@ -332,21 +338,23 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         collectionView.remembersLastFocusedIndexPath = true
         
         if hasPrevious {
-            // Verifica se o anterior possui valor, caso contrário o movimento de swipe foi muito rapido entre os Itens
+            /// Verifica se o anterior possui valor, caso contrário o movimento de swipe foi muito rapido entre os Itens
             if let index = context.previouslyFocusedIndexPath {
-                print("Index Anterior: \(index.row))")
-                // Pausa o Timer do último Item de fato acessado
-                topicsTimer[previousIndex].pauseTimer()
-
+                if timerStarted {
+                    /// Pausa o Timer do último Item de fato acessado
+                    topicsTimer[previousIndex].pauseTimer()
+                }
                 let indexNext = context.nextFocusedIndexPath
                 print("Index Previous: \(previousIndex+1))")
                 print("Index Atual: \(indexNext?.row)")
                 
-                // Guarda o index do Item que está em foco para utiliza-lo como o ultimo Item de fato acessado
+                /// Guarda o index do Item que está em foco para utiliza-lo como o ultimo Item de fato acessado
                 previousIndex = (indexNext?.row ?? previousIndex)-1
                 
-                // Inicia a contage do Timer do Item atual
-                topicsTimer[(indexNext?.row ?? previousIndex)-1].setTimer()
+                if timerStarted {
+                    /// Inicia a contage do Timer do Item atual
+                    topicsTimer[(indexNext?.row ?? previousIndex)-1].setTimer()
+                }
             }
         } else {
             hasPrevious = true

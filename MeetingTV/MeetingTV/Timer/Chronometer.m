@@ -52,6 +52,7 @@
     
     if (_isMeeting) {
         [_delegate updateLabelDelegateMeeting:(chronometerString2)];
+        NSLog(@"aoasoao %@", chronometerString2);
     } else {
         [_delegate updateLabelDelegateTopic:(chronometerString2)];
     }
