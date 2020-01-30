@@ -28,6 +28,7 @@ class TimerConfigViewController: UIViewController {
     
     var topFocus = UIFocusGuide()
     var bottomFocus = UIFocusGuide()
+    var timeAlreadyStarted = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +36,6 @@ class TimerConfigViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         addFocus()
-        
-//        addFocusGuide(from: start, to: buttonDown, direction: .top)
-//        addFocusGuide(from: reset, to: buttonDown, direction: .top)
-//        addFocusGuide(from: buttonDown, to: buttonUp, direction: .top)
-//        addFocusGuide(from: buttonDown, to: start, direction: .bottom)
-//        addFocusGuide(from: buttonUp, to: buttonDown, direction: .bottom)
         
     }
     
@@ -86,13 +81,15 @@ class TimerConfigViewController: UIViewController {
     }
     
     func addFocus(){
+        
+        /// Configuração do Focus para acesso dos botões superiores - Up / Down
         view.addLayoutGuide(topFocus)
         topFocus.leftAnchor.constraint(equalTo: start.leftAnchor).isActive = true
         topFocus.rightAnchor.constraint(equalTo: reset.rightAnchor).isActive = true
         topFocus.topAnchor.constraint(equalTo: buttonDown.bottomAnchor).isActive = true
-//        bottomFocus.bottomAnchor.constraint(equalTo: start.topAnchor).isActive = true
         topFocus.heightAnchor.constraint(equalTo: buttonDown.heightAnchor).isActive = true
         
+        /// Configuração do Focus para acesso dos botões inferiores - Start / Reset
         view.addLayoutGuide(bottomFocus)
                 bottomFocus.leftAnchor.constraint(equalTo: start.leftAnchor).isActive = true
                 bottomFocus.rightAnchor.constraint(equalTo: reset.rightAnchor).isActive = true
@@ -128,12 +125,15 @@ class TimerConfigViewController: UIViewController {
         }
     }
     
-    
-    
     @IBAction func startButton(_ sender: Any) {
         self.setUpDelegate?.setUpTimer()
         
-        start.isEnabled = true
+        ///Caso o usuário ja tenha iniciado o Timer bloqueia a utilização do Start Novamente
+        if timeAlreadyStarted {
+            start.isEnabled = true
+            start.alpha = 0.5
+        }
+        
         dismiss(animated: true)
     }
     

@@ -110,7 +110,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         timerMeeting?.config()
 
         /// Configura o timer de todas as pautas
-        for i in 0..<meeting.selectedTopics.count {
+        for i in 0..<topics.count {
             self.topicsTimer.append(Chronometer(delegate: self, isMeeting: false))
             self.topicsTimer[i].config()
         }
@@ -229,8 +229,6 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
             
         }, completion: nil)
     }
-    
-    
     
     @IBAction func openConfig(_ sender: Any) {
         performSegue(withIdentifier: "openConfig", sender: self)
@@ -362,11 +360,15 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 print("Index Atual: \(indexNext?.row)")
                 
                 /// Guarda o index do Item que está em foco para utiliza-lo como o ultimo Item de fato acessado
-                previousIndex = (indexNext?.row ?? previousIndex)-1
+                if let index = indexNext?.row {
+                    previousIndex = index-1
+                }
                 
+                /// Inicia a contage do Timer do Item atual somente quando o timer for iniciado
                 if timerStarted {
-                    /// Inicia a contage do Timer do Item atual
-                    topicsTimer[(indexNext?.row ?? previousIndex)-1].setTimer()
+                    /// Inicia o Timer é iniciado em relação ao proximo item a ser focado por isso necessita o ( -1 ),
+                    /// caso este item perca a referencia o previousIndex de segurança
+                    topicsTimer[(indexNext?.row ?? (previousIndex+1) )-1].setTimer()
                 }
             }
         } else {
