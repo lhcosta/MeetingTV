@@ -11,6 +11,8 @@
 		23B3DA90238EE936003FF10B /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA8F238EE936003FF10B /* MeetingViewController.swift */; };
 		23B3DA92238EEA15003FF10B /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA91238EEA15003FF10B /* Meeting.swift */; };
 		23B3DA94238EEF86003FF10B /* TopicsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */; };
+		497FB2B023E49C68008059D9 /* sf-mono-cufonfonts in Resources */ = {isa = PBXBuildFile; fileRef = 497FB2AF23E49C67008059D9 /* sf-mono-cufonfonts */; };
+		497FB2B123E49C97008059D9 /* CloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967E59F23904F020090DF0F /* CloudManager.m */; };
 		49EB44C123871068002F434D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C023871068002F434D /* AppDelegate.swift */; };
 		49EB44C623871068002F434D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44C423871068002F434D /* Main.storyboard */; };
 		49EB44C923871068002F434D /* MeetingTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C723871068002F434D /* MeetingTV.xcdatamodeld */; };
@@ -33,6 +35,7 @@
 		23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicsCollectionViewCell.swift; sourceTree = "<group>"; };
 		4967E59E23904F020090DF0F /* CloudManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudManager.h; sourceTree = "<group>"; };
 		4967E59F23904F020090DF0F /* CloudManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudManager.m; sourceTree = "<group>"; };
+		497FB2AF23E49C67008059D9 /* sf-mono-cufonfonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "sf-mono-cufonfonts"; sourceTree = "<group>"; };
 		49EB44BD23871068002F434D /* MeetingTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EB44C023871068002F434D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49EB44C523871068002F434D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,7 +68,6 @@
 		E261A259238F051F004A7D90 /* Chronometer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chronometer.m; sourceTree = "<group>"; };
 		E261A25B238F0565004A7D90 /* Chronometer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chronometer.h; sourceTree = "<group>"; };
 		E261A25D23900F28004A7D90 /* MeetingTV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeetingTV-Bridging-Header.h"; sourceTree = "<group>"; };
-		E2DCB9F223E3B9D30059ADB0 /* sf-mono-cufonfonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "sf-mono-cufonfonts"; path = "../../../../../../Downloads/sf-mono-cufonfonts"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,7 +180,7 @@
 		E2DCB9F123E3B9BD0059ADB0 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
-				E2DCB9F223E3B9D30059ADB0 /* sf-mono-cufonfonts */,
+				497FB2AF23E49C67008059D9 /* sf-mono-cufonfonts */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -246,6 +248,7 @@
 			files = (
 				49F09AAC2399862000B7DFD3 /* Timer.storyboard in Resources */,
 				49F09A9F239985D600B7DFD3 /* Localizable.strings in Resources */,
+				497FB2B023E49C68008059D9 /* sf-mono-cufonfonts in Resources */,
 				49EB44CE2387106A002F434D /* LaunchScreen.storyboard in Resources */,
 				49EB44CB2387106A002F434D /* Assets.xcassets in Resources */,
 				49F09AA42399860D00B7DFD3 /* Welcome.storyboard in Resources */,
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497FB2B123E49C97008059D9 /* CloudManager.m in Sources */,
 				23B3DA92238EEA15003FF10B /* Meeting.swift in Sources */,
 				23B3DA90238EE936003FF10B /* MeetingViewController.swift in Sources */,
 				E254E3D423DF677A007224B1 /* TimerConfigViewController.swift in Sources */,

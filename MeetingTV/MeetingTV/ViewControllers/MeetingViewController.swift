@@ -189,11 +189,11 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
             topicsTimer[i].pauseTimer()
         }
         
-//        CloudManager.shared().update([meeting.record], completionPerRecord: { (_, error) in
-//            if let error = error {
-//                print(error.localizedDescription)
-//            }
-//        }, completionHandler: {})
+        CloudManager.shared().update([meeting.record], completionPerRecord: { (_, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }, completionHandler: {})
     }
     
     
