@@ -66,39 +66,15 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         topicsCollectionView.clipsToBounds = false
         topicsCollectionView.delegate = self
         topicsCollectionView.dataSource = self
-        
-        self.decoderMeeting()
-        
+                
         self.setupFocus()
-        
-    
-        //MARK: SIMULAÇÃO
-        /// Inicializando a Meeting (será substituída pelo que vier do Multipeer)
-        let record = CKRecord(recordType: "Meeting")
-        meeting = Meeting(record: record)
-//        self.meetingTittle.text = self.meeting.theme
-        self.meetingTittle.text = "Reunião semestral"
-        
-        /// Adicionando Topics falsos na reunião para teste
-        for i in 0...9 {
-            topics.append(createTopic(tittle: "\(i)", authorName: "author\(i)"))
-        }
-        topics.insert(Topic(record: nil), at: 0)
-        topics.append(Topic(record: nil))
-        topics.append(Topic(record: nil))
-        topics.append(Topic(record: nil))
-        
-        addConclusion("")
-        /// Adicionando conclusions na Topic criada.
-        for i in 0...6 {
-            addConclusion("Conclusionnnnnnnnnnnnn\(i)")
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
+        self.decoderMeeting()
+
         ///Este comportamento agora será realizado ao clicar no botão de Iniciar Timer
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
@@ -181,6 +157,9 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         
         guard let button = sender as? UIButton else { return }
         selectingAnimation(button: button)
+        
+        let topic = topics[button.tag]
+        
     }
     
     
@@ -205,7 +184,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     
     func selectingAnimation(button: UIButton) {
         
-        var time = 0.06
+        let time = 0.06
         
         let animation = CABasicAnimation(keyPath: "shadowOffset")
         animation.fromValue = button.layer.shadowOffset
@@ -326,6 +305,9 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
 //            cell.conclusionsTableView.delegate = cell
 //            cell.conclusionsTableView.dataSource = cell
             cell.thisIndexPath = indexPath
+            
+            //Tag utilizada para identificar o tópico quando escolhido.
+            cell.viewMoreButton.tag = indexPath.row
         }
         
         return cell
@@ -447,10 +429,15 @@ extension MeetingViewController {
         
         if let data = meetingData {
             do {
+                
                 self.meeting = try decoder.decode(Meeting.self, from: data)
+                self.meetingTittle.text = self.meeting.theme
+                self.topics = self.meeting.selectedTopics
+                
             } catch let error as NSError {
                 print("Decoder -> \(error.userInfo)")
             }
         }
     }
 }
+

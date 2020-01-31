@@ -11,7 +11,8 @@ import MultipeerConnectivity
 import CloudKit
 
 protocol MeetingConnectionPeerDelegate : AnyObject {
-    func receiveMeetingFromPeer(data : Data)
+    func willReceiveMeeting(deviceName : String)
+    func didReceiveMeeting(data : Data)
 }
 
 /// Conexão entre peers para o recebimento de dados enviados
@@ -70,7 +71,14 @@ extension MeetingAdvertiserPeer : MCNearbyServiceAdvertiserDelegate {
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         NSLog("%@", "Receive invitation from peer \(peerID)")
-        invitationHandler(true, self.session)
+        
+        if session.connectedPeers.count > 0 {
+            invitationHandler(false, self.session)
+        } else {
+            invitationHandler(true, self.session)
+            self.delegate?.willReceiveMeeting(deviceName: peerID.displayName)
+        }
+        
     }  
     
 } 
@@ -80,21 +88,13 @@ extension MeetingAdvertiserPeer : MCSessionDelegate {
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
         //TODO:-
-        
-        switch state {
-            case .connected:
-                self.stopAdvertiserPeer()
-            case .notConnected:
-                self.startAdvertisingPeer()
-            default:
-                break
-        }
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
         //TODO:-
         //Data from Meeting
-        self.delegate?.receiveMeetingFromPeer(data: data)
+        self.delegate?.didReceiveMeeting(data: data)
+        self.stopAdvertiserPeer()
     }
     
     func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
