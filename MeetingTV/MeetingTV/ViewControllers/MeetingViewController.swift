@@ -131,11 +131,11 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         bottomFocusGuide.topAnchor.constraint(equalTo: topicsCollectionView.bottomAnchor).isActive = true
         bottomFocusGuide.bottomAnchor.constraint(equalTo: endMeetingButton.topAnchor).isActive = true
         
-        view.addLayoutGuide(topFocusGuide)
-        topFocusGuide.leftAnchor.constraint(equalTo: topicsCollectionView.leftAnchor).isActive = true
-        topFocusGuide.rightAnchor.constraint(equalTo: buttonTimer.leftAnchor).isActive = true
-        topFocusGuide.topAnchor.constraint(equalTo: buttonTimer.topAnchor).isActive = true
-        topFocusGuide.bottomAnchor.constraint(equalTo: buttonTimer.bottomAnchor).isActive = true
+//        view.addLayoutGuide(topFocusGuide)
+//        topFocusGuide.leftAnchor.constraint(equalTo: topicsCollectionView.leftAnchor).isActive = true
+//        topFocusGuide.rightAnchor.constraint(equalTo: buttonTimer.leftAnchor).isActive = true
+//        topFocusGuide.topAnchor.constraint(equalTo: buttonTimer.topAnchor).isActive = true
+//        topFocusGuide.bottomAnchor.constraint(equalTo: buttonTimer.bottomAnchor).isActive = true
     }
     
     
@@ -146,9 +146,11 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         switch nextView {
         case endMeetingButton:
             bottomFocusGuide.preferredFocusEnvironments = [topicsCollectionView]
+        case buttonTimer:
+            bottomFocusGuide.preferredFocusEnvironments = [topicsCollectionView]
         default:
-            bottomFocusGuide.preferredFocusEnvironments = [endMeetingButton]
-            topFocusGuide.preferredFocusEnvironments = [buttonTimer]
+            bottomFocusGuide.preferredFocusEnvironments = [buttonTimer]
+//            topFocusGuide.preferredFocusEnvironments = [buttonTimer]
         }
     }
     

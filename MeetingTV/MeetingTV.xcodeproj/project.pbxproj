@@ -24,6 +24,7 @@
 		A4533FF3238C57D70089257A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4533FF2238C57D70089257A /* CloudKit.framework */; };
 		E254E3D423DF677A007224B1 /* TimerConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E254E3D323DF677A007224B1 /* TimerConfigViewController.swift */; };
 		E261A25A238F051F004A7D90 /* Chronometer.m in Sources */ = {isa = PBXBuildFile; fileRef = E261A259238F051F004A7D90 /* Chronometer.m */; };
+		E2DCB9F323E3B9D30059ADB0 /* sf-mono-cufonfonts in Resources */ = {isa = PBXBuildFile; fileRef = E2DCB9F223E3B9D30059ADB0 /* sf-mono-cufonfonts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +66,7 @@
 		E261A259238F051F004A7D90 /* Chronometer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chronometer.m; sourceTree = "<group>"; };
 		E261A25B238F0565004A7D90 /* Chronometer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chronometer.h; sourceTree = "<group>"; };
 		E261A25D23900F28004A7D90 /* MeetingTV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeetingTV-Bridging-Header.h"; sourceTree = "<group>"; };
+		E2DCB9F223E3B9D30059ADB0 /* sf-mono-cufonfonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "sf-mono-cufonfonts"; path = "../../../../../../Downloads/sf-mono-cufonfonts"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 		49EB44BF23871068002F434D /* MeetingTV */ = {
 			isa = PBXGroup;
 			children = (
+				E2DCB9F123E3B9BD0059ADB0 /* fonts */,
 				E261A258238F0500004A7D90 /* Timer */,
 				A4533FF0238C57D00089257A /* MeetingTV.entitlements */,
 				49F09A902399852600B7DFD3 /* Storyboards */,
@@ -171,6 +174,14 @@
 				E261A25B238F0565004A7D90 /* Chronometer.h */,
 			);
 			path = Timer;
+			sourceTree = "<group>";
+		};
+		E2DCB9F123E3B9BD0059ADB0 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E2DCB9F223E3B9D30059ADB0 /* sf-mono-cufonfonts */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +247,7 @@
 			files = (
 				49F09AAC2399862000B7DFD3 /* Timer.storyboard in Resources */,
 				49F09A9F239985D600B7DFD3 /* Localizable.strings in Resources */,
+				E2DCB9F323E3B9D30059ADB0 /* sf-mono-cufonfonts in Resources */,
 				49EB44CE2387106A002F434D /* LaunchScreen.storyboard in Resources */,
 				49EB44CB2387106A002F434D /* Assets.xcassets in Resources */,
 				49F09AA42399860D00B7DFD3 /* Welcome.storyboard in Resources */,

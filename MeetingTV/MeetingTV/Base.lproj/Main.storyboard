@@ -7,6 +7,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SFMonoSemibold.otf">
+            <string>SFMono-Semibold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Meeting View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -29,22 +34,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5g-wN-NWf">
-                                <rect key="frame" x="877" y="974" width="166" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ua5-pc-3GD">
+                                <rect key="frame" x="1012" y="950" width="379" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ua5-pc-3GD">
-                                <rect key="frame" x="1544" y="60" width="286" height="85"/>
                                 <color key="backgroundColor" red="0.32549019610000002" green="0.47843137250000001" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="270" id="eSi-Ni-bJw"/>
-                                    <constraint firstAttribute="height" constant="85" id="vGh-GJ-m1D"/>
-                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="38"/>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" title="00:00:00">
+                                <state key="normal" title="Seet Timer">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="17"/>
                                 </state>
                                 <connections>
@@ -52,10 +48,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOA-wn-bbr">
-                                <rect key="frame" x="1474" y="934" width="356" height="86"/>
+                                <rect key="frame" x="1451" y="950" width="379" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="86" id="HP6-yW-uIi"/>
-                                    <constraint firstAttribute="width" constant="356" id="eRC-yf-5G1"/>
+                                    <constraint firstAttribute="height" constant="70" id="HP6-yW-uIi"/>
+                                    <constraint firstAttribute="width" constant="379" id="eRC-yf-5G1"/>
                                 </constraints>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="End Meeting"/>
@@ -64,7 +60,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7SH-sw-82h">
-                                <rect key="frame" x="90" y="296" width="1740" height="548"/>
+                                <rect key="frame" x="90" y="296" width="1740" height="564"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IeV-Ei-4Vn">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -73,7 +69,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="scaleAspectFit" reuseIdentifier="Cell" id="xsG-LU-HG2" customClass="TopicsCollectionViewCell" customModule="MeetingTV" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="558" height="448"/>
+                                        <rect key="frame" x="0.0" y="58" width="558" height="448"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="w7U-gz-WlT">
                                             <rect key="frame" x="0.0" y="0.0" width="558" height="448"/>
@@ -157,18 +153,34 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Et5-wT-3eL">
+                                <rect key="frame" x="1648" y="95" width="188" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="SFMono-Semibold" family="SF Mono" pointSize="38"/>
+                                <color key="textColor" red="0.0" green="0.2470588235" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="relogio" translatesAutoresizingMaskIntoConstraints="NO" id="Waj-lb-DaL">
+                                <rect key="frame" x="1572" y="85" width="48" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5g-wN-NWf">
+                                <rect key="frame" x="90" y="950" width="166" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.98040527109999998" green="0.98036855460000005" blue="0.98039346930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="7SH-sw-82h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1wC-iX-UZm"/>
-                            <constraint firstItem="Ua5-pc-3GD" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="2zo-a1-DsF"/>
                             <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="hOA-wn-bbr" secondAttribute="trailing" id="4Q8-s3-6OI"/>
                             <constraint firstItem="7SH-sw-82h" firstAttribute="leading" secondItem="wu6-TO-1qx" secondAttribute="leading" id="DtY-JS-2ta"/>
                             <constraint firstItem="7SH-sw-82h" firstAttribute="top" secondItem="XL1-OE-ypc" secondAttribute="bottom" constant="50" id="Sex-Bi-K2Z"/>
-                            <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="Ua5-pc-3GD" secondAttribute="trailing" id="YhZ-G3-64i"/>
                             <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="7SH-sw-82h" secondAttribute="trailing" id="ay4-2a-hKb"/>
+                            <constraint firstItem="XL1-OE-ypc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="95" id="bxI-cz-OPQ"/>
                             <constraint firstItem="hOA-wn-bbr" firstAttribute="top" secondItem="7SH-sw-82h" secondAttribute="bottom" constant="90" id="cSD-vu-Vpw"/>
-                            <constraint firstItem="XL1-OE-ypc" firstAttribute="top" secondItem="Ua5-pc-3GD" secondAttribute="bottom" constant="10" id="d3D-WQ-rpU"/>
                             <constraint firstItem="wu6-TO-1qx" firstAttribute="bottom" secondItem="hOA-wn-bbr" secondAttribute="bottom" id="hh6-ks-OPr"/>
                             <constraint firstItem="XL1-OE-ypc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mRm-mG-XPx"/>
                         </constraints>
@@ -291,5 +303,6 @@
         <image name="arrowtriangle.down.fill" catalog="system" width="32" height="28"/>
         <image name="arrowtriangle.up.fill" catalog="system" width="32" height="28"/>
         <image name="clock" catalog="system" width="32" height="32"/>
+        <image name="relogio" width="48" height="57"/>
     </resources>
 </document>
