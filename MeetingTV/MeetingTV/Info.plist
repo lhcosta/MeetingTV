@@ -38,6 +38,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFMonoRegular.otf</string>
+		<string></string>
 	</array>
 </dict>
 </plist>

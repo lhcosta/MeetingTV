@@ -126,21 +126,17 @@ class TimerConfigViewController: UIViewController {
     }
     
     @IBAction func startButton(_ sender: Any) {
+        self.setUpDelegate?.compareTime(minute: minutes, hour: hours)
         self.setUpDelegate?.setUpTimer()
         
-        performSegue(withIdentifier: "returnMain", sender: self)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vc = segue.destination as? MeetingViewController
-        vc?.hoursSet = hours
-        vc?.minutesSet = minutes
+        dismiss(animated: true)
+        
     }
     
     @IBAction func resetButton(_ sender: Any) {
-        timeLabel.text = "00:00:00"
-        minutes = 0
-        hours = 0
+        self.setUpDelegate?.resetTimer()
+        
+        dismiss(animated: true)
     }
     
     func labelTimerFormat() {
@@ -194,4 +190,6 @@ class TimerConfigViewController: UIViewController {
 
 protocol SetUpTimerDelegate {
     func setUpTimer()
+    func compareTime(minute: Int, hour: Int)
+    func resetTimer()
 }

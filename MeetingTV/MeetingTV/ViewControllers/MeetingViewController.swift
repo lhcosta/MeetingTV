@@ -104,6 +104,15 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         timerStarted = true
     }
     
+    func compareTime(minute: Int, hour: Int) {
+        minutesSet = minute
+        hoursSet = hour
+    }
+    
+    func resetTimer() {
+        timerMeeting?.resetTimer()
+    }
+    
     
     func setupFocus() {
         
@@ -253,6 +262,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         
         if hoursSet == currentHour && minutesSet == currentMinute {
             labelTimer.textColor = .red
+            clock.image = UIImage(named: "RelogioVermelho")
         }
     }
     
@@ -445,6 +455,11 @@ extension MeetingViewController {
                 self.meeting = try decoder.decode(Meeting.self, from: data)
                 self.meetingTittle.text = self.meeting.theme
                 self.topics = self.meeting.selectedTopics
+                topics.insert(Topic(record: nil), at: 0)
+                topics.append(Topic(record: nil))
+                topics.append(Topic(record: nil))
+                topics.append(Topic(record: nil))
+                self.topicsCollectionView.reloadData()
                 
             } catch let error as NSError {
                 print("Decoder -> \(error.userInfo)")
