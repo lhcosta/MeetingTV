@@ -52,7 +52,6 @@
     
     if (_isMeeting) {
         [_delegate updateLabelDelegateMeeting:(chronometerString2)];
-        NSLog(@"aoasoao %@", chronometerString2);
     } else {
         [_delegate updateLabelDelegateTopic:(chronometerString2)];
     }
@@ -71,6 +70,21 @@
     NSString *chronometerString2 = [chronometerString stringByAppendingFormat:@"%@", secondsString];
     
     return chronometerString2;
+}
+
+- (NSInteger*) getHours {
+    return _hours;
+}
+- (NSInteger*) getMinutes {
+    return _minutes;
+}
+
+- (void) resetTimer {
+    _hours = 0;
+    _minutes = 0;
+    _seconds = 0;
+    
+    [_timer invalidate];
 }
 
 - (void)pauseTimer {

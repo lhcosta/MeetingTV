@@ -28,7 +28,7 @@ struct Meeting {
     private(set) var record : CKRecord!
     
     ///Topicos que foram selecionados para reuniao
-    private(set) var selectedTopics : [Topic] = []
+    var selectedTopics : [Topic] = []
 
     ///Duração da reunião
     var duration : String? {

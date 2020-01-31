@@ -29,11 +29,16 @@ class WelcomeViewController: UIViewController {
 
 extension WelcomeViewController : MeetingConnectionPeerDelegate {
     
-    func receiveMeetingFromPeer(data: Data) {
+    func didReceiveMeeting(data: Data) {
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "ShowMeeting", sender: data)
         }
     }
     
+    func willReceiveMeeting(deviceName: String) {
+        
+    }
+    
+
 }
 

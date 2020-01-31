@@ -35,5 +35,8 @@
 - (void)setTimer;
 - (void)updateTimer;
 - (void)pauseTimer;
+- (void)resetTimer;
 - (NSString*)getTime;
+- (NSInteger)getHours;
+- (NSInteger)getMinutes;
 @end

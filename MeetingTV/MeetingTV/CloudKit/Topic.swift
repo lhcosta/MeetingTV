@@ -62,9 +62,9 @@ struct Topic  {
     
     /// Tempo final levado para a discussão da pauta
     /// Este valor é armazenado automaticamente pelo sistema ao término da reunião.
-    var duration: Date? {
+    var duration: String? {
         set { self.record["duration"] = newValue }
-        get { return self.record.value(forKey: "duration") as? Date}
+        get { return self.record.value(forKey: "duration") as? String}
     }
     
     /// Atributo que decide se o tópico vai ou não para a Meeting, setado peli gerente. (criador da Meeting)
@@ -99,7 +99,7 @@ struct Topic  {
     
     /// Guardar o tempo final da pauta quando esta é encerrada na reunião.
     /// - Parameter duration: Tempo em Date (dia/mês/ano vazios).
-    mutating func setDuration(duration: Date) {
+    mutating func setDuration(duration: String) {
         self.duration = duration
         self.record["duration"] = self.duration
     }

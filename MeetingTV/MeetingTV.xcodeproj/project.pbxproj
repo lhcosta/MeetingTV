@@ -11,6 +11,8 @@
 		23B3DA90238EE936003FF10B /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA8F238EE936003FF10B /* MeetingViewController.swift */; };
 		23B3DA92238EEA15003FF10B /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA91238EEA15003FF10B /* Meeting.swift */; };
 		23B3DA94238EEF86003FF10B /* TopicsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */; };
+		497FB2B023E49C68008059D9 /* sf-mono-cufonfonts in Resources */ = {isa = PBXBuildFile; fileRef = 497FB2AF23E49C67008059D9 /* sf-mono-cufonfonts */; };
+		497FB2B123E49C97008059D9 /* CloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967E59F23904F020090DF0F /* CloudManager.m */; };
 		23E39DD923E49DAE00BFC199 /* ConclusionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E39DD823E49DAE00BFC199 /* ConclusionsTableViewCell.swift */; };
 		49EB44C123871068002F434D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C023871068002F434D /* AppDelegate.swift */; };
 		49EB44C623871068002F434D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44C423871068002F434D /* Main.storyboard */; };
@@ -35,6 +37,7 @@
 		23E39DD823E49DAE00BFC199 /* ConclusionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConclusionsTableViewCell.swift; sourceTree = "<group>"; };
 		4967E59E23904F020090DF0F /* CloudManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudManager.h; sourceTree = "<group>"; };
 		4967E59F23904F020090DF0F /* CloudManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudManager.m; sourceTree = "<group>"; };
+		497FB2AF23E49C67008059D9 /* sf-mono-cufonfonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "sf-mono-cufonfonts"; sourceTree = "<group>"; };
 		49EB44BD23871068002F434D /* MeetingTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EB44C023871068002F434D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49EB44C523871068002F434D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +66,7 @@
 		A45097B1238DAB0E009AB71E /* MeetingAdvertiserPeer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAdvertiserPeer.swift; sourceTree = "<group>"; };
 		A4533FF0238C57D00089257A /* MeetingTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetingTV.entitlements; sourceTree = "<group>"; };
 		A4533FF2238C57D70089257A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		E2417BC623E4AF14007CBDE4 /* sf-mono-cufonfonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "sf-mono-cufonfonts"; path = "MeetingTV/fonts/sf-mono-cufonfonts"; sourceTree = "<group>"; };
 		E254E3D323DF677A007224B1 /* TimerConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerConfigViewController.swift; sourceTree = "<group>"; };
 		E261A259238F051F004A7D90 /* Chronometer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chronometer.m; sourceTree = "<group>"; };
 		E261A25B238F0565004A7D90 /* Chronometer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chronometer.h; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 		49EB44B423871068002F434D = {
 			isa = PBXGroup;
 			children = (
+				E2417BC623E4AF14007CBDE4 /* sf-mono-cufonfonts */,
 				49EB44BF23871068002F434D /* MeetingTV */,
 				49EB44BE23871068002F434D /* Products */,
 				A4533FF1238C57D70089257A /* Frameworks */,
@@ -124,6 +129,7 @@
 		49EB44BF23871068002F434D /* MeetingTV */ = {
 			isa = PBXGroup;
 			children = (
+				E2DCB9F123E3B9BD0059ADB0 /* fonts */,
 				E261A258238F0500004A7D90 /* Timer */,
 				A4533FF0238C57D00089257A /* MeetingTV.entitlements */,
 				49F09A902399852600B7DFD3 /* Storyboards */,
@@ -174,6 +180,14 @@
 				E261A25B238F0565004A7D90 /* Chronometer.h */,
 			);
 			path = Timer;
+			sourceTree = "<group>";
+		};
+		E2DCB9F123E3B9BD0059ADB0 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				497FB2AF23E49C67008059D9 /* sf-mono-cufonfonts */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,6 +251,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497FB2B023E49C68008059D9 /* sf-mono-cufonfonts in Resources */,
 				49F09AAC2399862000B7DFD3 /* Timer.storyboard in Resources */,
 				49F09A9F239985D600B7DFD3 /* Localizable.strings in Resources */,
 				49EB44CE2387106A002F434D /* LaunchScreen.storyboard in Resources */,
@@ -253,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497FB2B123E49C97008059D9 /* CloudManager.m in Sources */,
 				23B3DA92238EEA15003FF10B /* Meeting.swift in Sources */,
 				23B3DA90238EE936003FF10B /* MeetingViewController.swift in Sources */,
 				E254E3D423DF677A007224B1 /* TimerConfigViewController.swift in Sources */,
