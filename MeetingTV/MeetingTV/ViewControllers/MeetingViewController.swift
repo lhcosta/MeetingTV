@@ -40,6 +40,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     
     // Timer das pautas
     var topicsTimer: [Chronometer] = []
+    var timerMeeting: Chronometer?
     
     //Flag primeiro Foco - Se existe um foco anterior
     var hasPrevious = false
@@ -81,7 +82,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     
     func setUpTimer() {
         ///Configura o timer geral da Reunião
-        let timerMeeting = Chronometer(delegate: self, isMeeting: true)
+        self.timerMeeting = Chronometer(delegate: self, isMeeting: true)
         timerMeeting?.config()
 
         /// Configura o timer de todas as pautas
@@ -106,11 +107,11 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         bottomFocusGuide.topAnchor.constraint(equalTo: topicsCollectionView.bottomAnchor).isActive = true
         bottomFocusGuide.bottomAnchor.constraint(equalTo: endMeetingButton.topAnchor).isActive = true
         
-        view.addLayoutGuide(topFocusGuide)
-        topFocusGuide.leftAnchor.constraint(equalTo: topicsCollectionView.leftAnchor).isActive = true
-        topFocusGuide.rightAnchor.constraint(equalTo: buttonTimer.leftAnchor).isActive = true
-        topFocusGuide.topAnchor.constraint(equalTo: buttonTimer.topAnchor).isActive = true
-        topFocusGuide.bottomAnchor.constraint(equalTo: buttonTimer.bottomAnchor).isActive = true
+//        view.addLayoutGuide(topFocusGuide)
+//        topFocusGuide.leftAnchor.constraint(equalTo: topicsCollectionView.leftAnchor).isActive = true
+//        topFocusGuide.rightAnchor.constraint(equalTo: buttonTimer.leftAnchor).isActive = true
+//        topFocusGuide.topAnchor.constraint(equalTo: buttonTimer.topAnchor).isActive = true
+//        topFocusGuide.bottomAnchor.constraint(equalTo: buttonTimer.bottomAnchor).isActive = true
     }
     
     
@@ -121,9 +122,11 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         switch nextView {
         case endMeetingButton:
             bottomFocusGuide.preferredFocusEnvironments = [topicsCollectionView]
+        case buttonTimer:
+            bottomFocusGuide.preferredFocusEnvironments = [topicsCollectionView]
         default:
-            bottomFocusGuide.preferredFocusEnvironments = [endMeetingButton]
-            topFocusGuide.preferredFocusEnvironments = [buttonTimer]
+            bottomFocusGuide.preferredFocusEnvironments = [buttonTimer]
+//            topFocusGuide.preferredFocusEnvironments = [buttonTimer]
         }
     }
     
@@ -160,6 +163,24 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     }
     
     
+    @IBAction func endMeeting(_ sender: Any) {
+        
+        meeting.finished = true
+        meeting.duration = buttonTimer.titleLabel?.text
+        timerMeeting?.pauseTimer()
+        
+        for i in 0..<meeting.selectedTopics.count {
+            meeting.selectedTopics[i].duration = topicsTimer[i].getTime()
+            topicsTimer[i].pauseTimer()
+        }
+        
+//        CloudManager.shared().update([meeting.record], completionPerRecord: { (_, error) in
+//            if let error = error {
+//                print(error.localizedDescription)
+//            }
+//        }, completionHandler: {})
+    }
+    
     
     func selectingAnimation(button: UIButton) {
         
@@ -190,10 +211,14 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         }, completion: nil)
     }
     
-    
-    
     @IBAction func openConfig(_ sender: Any) {
-        
+        performSegue(withIdentifier: "openConfig", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? TimerConfigViewController {
+            vc.setUpDelegate = self
+        }
     }
     
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
@@ -319,11 +344,15 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 print("Index Atual: \(indexNext?.row)")
                 
                 /// Guarda o index do Item que está em foco para utiliza-lo como o ultimo Item de fato acessado
-                previousIndex = (indexNext?.row ?? previousIndex)-1
+                if let index = indexNext?.row {
+                    previousIndex = index-1
+                }
                 
+                /// Inicia a contage do Timer do Item atual somente quando o timer for iniciado
                 if timerStarted {
-                    /// Inicia a contage do Timer do Item atual
-                    topicsTimer[(indexNext?.row ?? previousIndex)-1].setTimer()
+                    /// Inicia o Timer é iniciado em relação ao proximo item a ser focado por isso necessita o ( -1 ),
+                    /// caso este item perca a referencia o previousIndex de segurança
+                    topicsTimer[(indexNext?.row ?? (previousIndex+1) )-1].setTimer()
                 }
             }
         } else {
@@ -365,9 +394,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
             UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
                 previousButton.transform = CGAffineTransform(scaleX: 1, y: 1)
             }, completion: nil)
-            
         }
-        
     }
 }
 
@@ -391,6 +418,7 @@ extension MeetingViewController: UICollectionViewDelegateFlowLayout {
         return UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.size.height, right: 0)
     }
 }
+
 
 //MARK:- Decoder Meeting
 extension MeetingViewController {

@@ -28,16 +28,16 @@ struct Meeting {
     private(set) var record : CKRecord!
     
     ///Topicos que foram selecionados para reuniao
-    private(set) var selectedTopics : [Topic] = []
+    var selectedTopics : [Topic] = []
 
     ///Duração da reunião
-    var duration : Int64? {
-        set {
-            self.record.setValue(newValue, forKey: "duration")
+    var duration : String? {
+        get {
+            self.record.value(forKey: "duration") as? String ?? "00:00:00"
         }
         
-        get {
-            return self.record.value(forKey: "duration") as? Int64
+        set {
+            self.record.setValue(newValue, forKey: "duration")
         }
     }
 
@@ -50,7 +50,6 @@ struct Meeting {
         get {
             self.record.value(forKey: "finished") as? Bool ?? false
         }
-        
     }
     
     ///Reunião iniciada
