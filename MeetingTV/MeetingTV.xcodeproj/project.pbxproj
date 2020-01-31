@@ -64,6 +64,7 @@
 		A45097B1238DAB0E009AB71E /* MeetingAdvertiserPeer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAdvertiserPeer.swift; sourceTree = "<group>"; };
 		A4533FF0238C57D00089257A /* MeetingTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetingTV.entitlements; sourceTree = "<group>"; };
 		A4533FF2238C57D70089257A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		E2417BC623E4AF14007CBDE4 /* sf-mono-cufonfonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = "sf-mono-cufonfonts"; path = "MeetingTV/fonts/sf-mono-cufonfonts"; sourceTree = "<group>"; };
 		E254E3D323DF677A007224B1 /* TimerConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerConfigViewController.swift; sourceTree = "<group>"; };
 		E261A259238F051F004A7D90 /* Chronometer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chronometer.m; sourceTree = "<group>"; };
 		E261A25B238F0565004A7D90 /* Chronometer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chronometer.h; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		49EB44B423871068002F434D = {
 			isa = PBXGroup;
 			children = (
+				E2417BC623E4AF14007CBDE4 /* sf-mono-cufonfonts */,
 				49EB44BF23871068002F434D /* MeetingTV */,
 				49EB44BE23871068002F434D /* Products */,
 				A4533FF1238C57D70089257A /* Frameworks */,
@@ -246,9 +248,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				497FB2B023E49C68008059D9 /* sf-mono-cufonfonts in Resources */,
 				49F09AAC2399862000B7DFD3 /* Timer.storyboard in Resources */,
 				49F09A9F239985D600B7DFD3 /* Localizable.strings in Resources */,
-				497FB2B023E49C68008059D9 /* sf-mono-cufonfonts in Resources */,
 				49EB44CE2387106A002F434D /* LaunchScreen.storyboard in Resources */,
 				49EB44CB2387106A002F434D /* Assets.xcassets in Resources */,
 				49F09AA42399860D00B7DFD3 /* Welcome.storyboard in Resources */,

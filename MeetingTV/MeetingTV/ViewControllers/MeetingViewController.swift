@@ -110,7 +110,16 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     }
     
     func resetTimer() {
+        labelTimer.textColor = UIColor(hexString: "#003FFF")
+        clock.image = UIImage(named: "relogio")
         timerMeeting?.resetTimer()
+        labelTimer.text = timerMeeting?.getTime()
+        
+        for i in 0..<topics.count {
+            topicsTimer[i].resetTimer()
+        }
+        
+        labelTimerTopic.text = "00:00:00"
     }
     
     
@@ -137,11 +146,51 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         switch nextView {
         case endMeetingButton:
             bottomFocusGuide.preferredFocusEnvironments = [topicsCollectionView]
+            
+            let animation = CABasicAnimation(keyPath: "shadowOffset")
+            animation.fromValue = nextView.layer.shadowOffset
+            animation.toValue = CGSize(width: 0, height: 20)
+            animation.duration = 0.1
+            nextView.layer.shadowOpacity = 0.3
+            nextView.layer.add(animation, forKey: animation.keyPath)
+            nextView.layer.shadowOffset = CGSize(width: 0, height: 10)
+
+            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                nextView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            }, completion: nil)
+            
         case buttonTimer:
             bottomFocusGuide.preferredFocusEnvironments = [topicsCollectionView]
+            
+            let animation = CABasicAnimation(keyPath: "shadowOffset")
+            animation.fromValue = nextView.layer.shadowOffset
+            animation.toValue = CGSize(width: 0, height: 20)
+            animation.duration = 0.1
+            nextView.layer.shadowOpacity = 0.3
+            nextView.layer.add(animation, forKey: animation.keyPath)
+            nextView.layer.shadowOffset = CGSize(width: 0, height: 10)
+
+            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                nextView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            }, completion: nil)
         default:
             bottomFocusGuide.preferredFocusEnvironments = [buttonTimer]
 //            topFocusGuide.preferredFocusEnvironments = [buttonTimer]
+        }
+        
+        if let previousButton = context.previouslyFocusedItem as? UIButton {
+
+            let animation = CABasicAnimation(keyPath: "shadowOffset")
+            animation.fromValue = previousButton.layer.shadowOffset
+            animation.toValue = CGSize(width: 0, height: 5)
+            animation.duration = 0.1
+            previousButton.layer.add(animation, forKey: animation.keyPath)
+            previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+
+            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                previousButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
+
         }
     }
     
@@ -206,7 +255,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         animation.toValue = CGSize(width: 0, height: 5)
         animation.duration = time + 0.1
         button.layer.add(animation, forKey: animation.keyPath)
-        button.layer.shadowOffset = CGSize(width: 0, height: 8)
+        button.layer.shadowOffset = CGSize(width: 0, height: 5)
         
         UIView.animate(withDuration: time, delay: 0, options: [.curveEaseInOut], animations: {
             button.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
@@ -218,7 +267,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         animation2.duration = time + 0.1
         button.layer.shadowOpacity = 0.3
         button.layer.add(animation2, forKey: animation.keyPath)
-        button.layer.shadowOffset = CGSize(width: 0, height: 20)
+        button.layer.shadowOffset = CGSize(width: 0, height: 10)
 
         UIView.animate(withDuration: time + 0.02, delay: 0.1, options: [.curveEaseInOut], animations: {
             button.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
@@ -340,7 +389,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if let currTopicOnCollection = context.nextFocusedView?.superview?.superview as? TopicsCollectionViewCell {
             UIView.animate(withDuration: 0.2) {
-                currTopicOnCollection.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                currTopicOnCollection.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 currTopicOnCollection.contentView.alpha = 1
             }
         }
@@ -396,10 +445,10 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 animation.duration = 0.1
                 button.layer.shadowOpacity = 0.3
                 button.layer.add(animation, forKey: animation.keyPath)
-                button.layer.shadowOffset = CGSize(width: 0, height: 20)
+                button.layer.shadowOffset = CGSize(width: 0, height: 10)
 
                 UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-                    button.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                    button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
                 }, completion: nil)
             }
         }
@@ -465,6 +514,42 @@ extension MeetingViewController {
                 print("Decoder -> \(error.userInfo)")
             }
         }
+    }
+}
+
+
+//MARK:- UIColor Extension
+@objc extension UIColor {
+    
+    @objc convenience init(hexString: String, alpha: CGFloat = 1.0) {
+        let hexString: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        let scanner = Scanner(string: hexString)
+        
+        if (hexString.hasPrefix("#")) {
+            scanner.scanLocation = 1
+        }
+        
+        var color: UInt32 = 0
+        scanner.scanHexInt32(&color)
+        
+        let mask = 0x000000FF
+        let r = Int(color >> 16) & mask
+        let g = Int(color >> 8) & mask
+        let b = Int(color) & mask
+        let red   = CGFloat(r) / 255.0
+        let green = CGFloat(g) / 255.0
+        let blue  = CGFloat(b) / 255.0
+        self.init(red:red, green:green, blue:blue, alpha:alpha)
+    }
+    
+    @objc func toHexString() -> String {
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+        return String(format:"#%06x", rgb)
     }
 }
 

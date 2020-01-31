@@ -34,7 +34,6 @@ class TimerConfigViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
         addFocus()
         
     }
@@ -44,6 +43,8 @@ class TimerConfigViewController: UIViewController {
             
             switch button {
             case start:
+                topFocus.preferredFocusEnvironments = [buttonDown]
+            case reset:
                 topFocus.preferredFocusEnvironments = [buttonDown]
             case buttonDown:
                 bottomFocus.preferredFocusEnvironments = [start]
@@ -57,10 +58,10 @@ class TimerConfigViewController: UIViewController {
                 animation.duration = 0.1
                 button.layer.shadowOpacity = 0.3
                 button.layer.add(animation, forKey: animation.keyPath)
-                button.layer.shadowOffset = CGSize(width: 0, height: 20)
+                button.layer.shadowOffset = CGSize(width: 0, height: 10)
 
                 UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-                    button.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                    button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
                 }, completion: nil)
         }
         
@@ -84,17 +85,17 @@ class TimerConfigViewController: UIViewController {
         
         /// Configuração do Focus para acesso dos botões superiores - Up / Down
         view.addLayoutGuide(topFocus)
-        topFocus.leftAnchor.constraint(equalTo: start.leftAnchor).isActive = true
-        topFocus.rightAnchor.constraint(equalTo: reset.rightAnchor).isActive = true
+        topFocus.leftAnchor.constraint(equalTo: reset.leftAnchor).isActive = true
+        topFocus.rightAnchor.constraint(equalTo: start.rightAnchor).isActive = true
         topFocus.topAnchor.constraint(equalTo: buttonDown.bottomAnchor).isActive = true
         topFocus.heightAnchor.constraint(equalTo: buttonDown.heightAnchor).isActive = true
         
         /// Configuração do Focus para acesso dos botões inferiores - Start / Reset
         view.addLayoutGuide(bottomFocus)
-                bottomFocus.leftAnchor.constraint(equalTo: start.leftAnchor).isActive = true
-                bottomFocus.rightAnchor.constraint(equalTo: reset.rightAnchor).isActive = true
-                bottomFocus.topAnchor.constraint(equalTo: start.bottomAnchor).isActive = true
-                bottomFocus.heightAnchor.constraint(equalTo: buttonDown.heightAnchor).isActive = true
+        bottomFocus.leftAnchor.constraint(equalTo: reset.leftAnchor).isActive = true
+        bottomFocus.rightAnchor.constraint(equalTo: start.rightAnchor).isActive = true
+        bottomFocus.topAnchor.constraint(equalTo: start.bottomAnchor).isActive = true
+        bottomFocus.heightAnchor.constraint(equalTo: buttonDown.heightAnchor).isActive = true
     }
     
     func addFocusGuide(from origin: UIView, to destination: UIView, direction: UIRectEdge) {

@@ -38,7 +38,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>SFMonoRegular.otf</string>
-		<string></string>
+		<string>SFMonoSemibold.otf</string>
 	</array>
 </dict>
 </plist>
