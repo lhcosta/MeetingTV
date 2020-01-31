@@ -128,13 +128,13 @@ class TimerConfigViewController: UIViewController {
     @IBAction func startButton(_ sender: Any) {
         self.setUpDelegate?.setUpTimer()
         
-        ///Caso o usuário ja tenha iniciado o Timer bloqueia a utilização do Start Novamente
-        if timeAlreadyStarted {
-            start.isEnabled = true
-            start.alpha = 0.5
-        }
-        
-        dismiss(animated: true)
+        performSegue(withIdentifier: "returnMain", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as? MeetingViewController
+        vc?.hoursSet = hours
+        vc?.minutesSet = minutes
     }
     
     @IBAction func resetButton(_ sender: Any) {

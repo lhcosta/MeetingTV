@@ -72,6 +72,13 @@
     return chronometerString2;
 }
 
+- (NSInteger*) getHours {
+    return _hours;
+}
+- (NSInteger*) getMinutes {
+    return _minutes;
+}
+
 - (void)pauseTimer {
     [_timer invalidate];
 }

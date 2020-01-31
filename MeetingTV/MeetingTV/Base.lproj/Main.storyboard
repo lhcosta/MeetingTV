@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="SFMonoRegular.otf">
+            <string>SFMono-Regular</string>
+        </array>
         <array key="SFMonoSemibold.otf">
             <string>SFMono-Semibold</string>
         </array>
@@ -189,7 +192,9 @@
                     <navigationItem key="navigationItem" id="E1S-6w-Rhn"/>
                     <connections>
                         <outlet property="buttonTimer" destination="Ua5-pc-3GD" id="YhX-Lg-O3C"/>
+                        <outlet property="clock" destination="Waj-lb-DaL" id="udD-a6-tiO"/>
                         <outlet property="endMeetingButton" destination="hOA-wn-bbr" id="aH9-ic-cIj"/>
+                        <outlet property="labelTimer" destination="Et5-wT-3eL" id="Nl4-1t-WKE"/>
                         <outlet property="labelTimerTopic" destination="y5g-wN-NWf" id="3gx-PY-fBa"/>
                         <outlet property="meetingTittle" destination="XL1-OE-ypc" id="gSd-Pd-Exp"/>
                         <outlet property="topicsCollectionView" destination="7SH-sw-82h" id="DJO-Ap-hfo"/>
@@ -212,7 +217,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FundoTelaConfig" translatesAutoresizingMaskIntoConstraints="NO" id="5MJ-dR-ana">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PlanoFundo" translatesAutoresizingMaskIntoConstraints="NO" id="5MJ-dR-ana">
                                 <rect key="frame" x="1" y="0.0" width="1920" height="1080"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -239,7 +244,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tL-pY-efD">
-                                <rect key="frame" x="917" y="380.5" width="88" height="56"/>
+                                <rect key="frame" x="917" y="479" width="88" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.31372549020000001" green="0.4941176471" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -250,7 +255,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaZ-mQ-Fan">
-                                <rect key="frame" x="916" y="686.5" width="88" height="56"/>
+                                <rect key="frame" x="917" y="701" width="88" height="56"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.31372549020000001" green="0.4941176471" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -261,21 +266,21 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiS-7G-gGH">
-                                <rect key="frame" x="769" y="502.5" width="382" height="115"/>
+                                <rect key="frame" x="773" y="561" width="376" height="91"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="98"/>
+                                <fontDescription key="fontDescription" name="SFMono-Regular" family="SF Mono" pointSize="76"/>
                                 <color key="textColor" red="0.0" green="0.17254901960784313" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="meeting time             counter" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsJ-YF-XPY">
-                                <rect key="frame" x="783" y="193.5" width="354" height="137"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set meeting timer  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsJ-YF-XPY">
+                                <rect key="frame" x="722" y="295" width="479" height="137"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="57"/>
                                 <color key="textColor" red="0.0" green="0.17254901960784313" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="clock" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zbn-99-7Cy">
-                                <rect key="frame" x="930" y="102.5" width="62" height="62"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="relogioConfig" translatesAutoresizingMaskIntoConstraints="NO" id="zbn-99-7Cy">
+                                <rect key="frame" x="917" y="186" width="88" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.17254901960784313" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
@@ -299,10 +304,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FundoTelaConfig" width="1920" height="1080"/>
+        <image name="PlanoFundo" width="1920" height="1080"/>
         <image name="arrowtriangle.down.fill" catalog="system" width="32" height="28"/>
         <image name="arrowtriangle.up.fill" catalog="system" width="32" height="28"/>
-        <image name="clock" catalog="system" width="32" height="32"/>
         <image name="relogio" width="48" height="57"/>
+        <image name="relogioConfig" width="88" height="104"/>
     </resources>
 </document>

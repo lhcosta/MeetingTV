@@ -17,12 +17,18 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     @IBOutlet weak var buttonTimer: UIButton!
     @IBOutlet weak var labelTimerTopic: UILabel!
     @IBOutlet var endMeetingButton: UIButton!
+    @IBOutlet weak var labelTimer: UILabel!
+    @IBOutlet weak var clock: UIImageView!
     
     /// Título da Meeting
     @IBOutlet var meetingTittle: UILabel!
     
     /// Collection View com os Topics da Meeting
     @IBOutlet var topicsCollectionView: UICollectionView!
+    
+    /// Hora e minuto setados na configuração do Timer
+    var hoursSet = Int()
+    var minutesSet = Int()
     
     /// Meeting em si (Que será passada pelo Multipeer)
     var meeting: Meeting!
@@ -241,7 +247,13 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     }
 
     func updateLabelMeeting(_ stringLabel: String!) {
-        buttonTimer.setTitle(stringLabel, for: .normal)
+        labelTimer.text = stringLabel
+        let currentHour = timerMeeting?.getHours()
+        let currentMinute = timerMeeting?.getMinutes()
+        
+        if hoursSet == currentHour && minutesSet == currentMinute {
+            labelTimer.textColor = .red
+        }
     }
     
     func updateLabelTopic(_ stringLabel: String!) {

@@ -36,4 +36,6 @@
 - (void)updateTimer;
 - (void)pauseTimer;
 - (NSString*)getTime;
+- (NSInteger)getHours;
+- (NSInteger)getMinutes;
 @end
