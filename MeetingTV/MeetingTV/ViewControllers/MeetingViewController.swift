@@ -162,7 +162,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
             return
         }
         
-        selectingAnimation(button: button)
+        selectingAnimation(button: button, flag: false)
         
         if topics[indexPath.row].discussed {
             button.setBackgroundImage(UIImage(named: "uncheckButton"), for: .normal)
@@ -177,7 +177,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     @IBAction func moreInfoButton(_ sender: Any) {
         
         guard let button = sender as? UIButton else { return }
-        selectingAnimation(button: button)
+        selectingAnimation(button: button, flag: false)
     }
     
     
@@ -192,37 +192,6 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
 //            }
 //        }, completionHandler: {})
     }
-    
-    
-    func selectingAnimation(button: UIButton) {
-        
-        var time = 0.06
-        
-        let animation = CABasicAnimation(keyPath: "shadowOffset")
-        animation.fromValue = button.layer.shadowOffset
-        animation.toValue = CGSize(width: 0, height: 5)
-        animation.duration = time + 0.1
-        button.layer.add(animation, forKey: animation.keyPath)
-        button.layer.shadowOffset = CGSize(width: 0, height: 8)
-        
-        UIView.animate(withDuration: time, delay: 0, options: [.curveEaseInOut], animations: {
-            button.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
-        }, completion: nil)
-        
-        let animation2 = CABasicAnimation(keyPath: "shadowOffset")
-        animation2.fromValue = button.layer.shadowOffset
-        animation2.toValue = CGSize(width: 0, height: 20)
-        animation2.duration = time + 0.1
-        button.layer.shadowOpacity = 0.3
-        button.layer.add(animation2, forKey: animation.keyPath)
-        button.layer.shadowOffset = CGSize(width: 0, height: 20)
-
-        UIView.animate(withDuration: time + 0.02, delay: 0.1, options: [.curveEaseInOut], animations: {
-            button.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-            
-        }, completion: nil)
-    }
-    
     
     
     @IBAction func openConfig(_ sender: Any) {
@@ -299,6 +268,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
             cell.topicDescription.text = topics[indexPath.row].description
             cell.topicAuthor.text = topics[indexPath.row].authorName
             cell.conclusions = topics[indexPath.row].conclusions
+            cell.topicPorque = topics[indexPath.row].topicPorque
             cell.contentView.alpha = 0.3
             if topics[indexPath.row].discussed {
                 cell.checkButton.setBackgroundImage(UIImage(named: "checkButton"), for: .normal)
@@ -328,10 +298,37 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
             }
         }
         
+        //
+        // Quando mudamos de cell sem fechar a info
+        //
+        if let _ = context.nextFocusedView?.superview?.superview as? UITableView {}
+        else if let prevTopicOnCollectionFlipped = context.previouslyFocusedView?.superview?.superview?.superview as? TopicsCollectionViewCell, prevTopicOnCollectionFlipped.flipped {
+            
+            UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: [], animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
+                    prevTopicOnCollectionFlipped.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    prevTopicOnCollectionFlipped.contentView.alpha = 0.3
+                }
+                
+                UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.01) {
+                    prevTopicOnCollectionFlipped.infoView.alpha = 0
+                }
+                
+            }, completion: { (_) in
+                prevTopicOnCollectionFlipped.infoView.isHidden = true
+                prevTopicOnCollectionFlipped.closeButton.transform = CGAffineTransform(scaleX: -1, y: 1)
+            })
+            prevTopicOnCollectionFlipped.flipped = false
+        }
+        
+        //
+        // Quando mudamos de cell com a info fechada
+        //
         if let prevTopicOnCollection = context.previouslyFocusedView?.superview?.superview as? TopicsCollectionViewCell, context.nextFocusedIndexPath != context.previouslyFocusedIndexPath {
-            UIView.animate(withDuration: 0.2) {
-                prevTopicOnCollection.transform = CGAffineTransform(scaleX: 1, y: 1)
-                prevTopicOnCollection.contentView.alpha = 0.3
+                UIView.animate(withDuration: 0.2) {
+                    prevTopicOnCollection.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    prevTopicOnCollection.contentView.alpha = 0.3
+//                }
             }
         }
         
@@ -381,20 +378,48 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                     button.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
                 }, completion: nil)
             }
+            /// Quando o foco vai para o botao "close" da info.
+            if let _ = button.superview?.superview?.superview as? TopicsCollectionViewCell {
+                let animation = CABasicAnimation(keyPath: "shadowOffset")
+                animation.fromValue = button.layer.shadowOffset
+                animation.toValue = CGSize(width: 0, height: 20)
+                animation.duration = 0.1
+                button.layer.shadowOpacity = 0.3
+                button.layer.add(animation, forKey: animation.keyPath)
+                button.layer.shadowOffset = CGSize(width: 0, height: 20)
+
+                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                    button.transform = CGAffineTransform(scaleX: -1.3, y: 1.3)
+                }, completion: nil)
+            }
         }
         
         if let previousButton = context.previouslyFocusedItem as? UIButton {
                 
-            let animation = CABasicAnimation(keyPath: "shadowOffset")
-            animation.fromValue = previousButton.layer.shadowOffset
-            animation.toValue = CGSize(width: 0, height: 5)
-            animation.duration = 0.1
-            previousButton.layer.add(animation, forKey: animation.keyPath)
-            previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
-            
-            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-                previousButton.transform = CGAffineTransform(scaleX: 1, y: 1)
-            }, completion: nil)
+            if previousButton.titleLabel?.text != "Close" {
+                let animation = CABasicAnimation(keyPath: "shadowOffset")
+                animation.fromValue = previousButton.layer.shadowOffset
+                animation.toValue = CGSize(width: 0, height: 5)
+                animation.duration = 0.1
+                previousButton.layer.add(animation, forKey: animation.keyPath)
+                previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+                
+                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                    previousButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }, completion: nil)
+            } else {
+                /// Quando o foco sai do botao "close" da info.
+                let animation = CABasicAnimation(keyPath: "shadowOffset")
+                animation.fromValue = previousButton.layer.shadowOffset
+                animation.toValue = CGSize(width: 0, height: 5)
+                animation.duration = 0.1
+                previousButton.layer.add(animation, forKey: animation.keyPath)
+                previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+                
+                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                    previousButton.transform = CGAffineTransform(scaleX: -1, y: 1)
+                }, completion: nil)
+            }
         }
     }
 }
@@ -436,4 +461,34 @@ extension MeetingViewController {
             }
         }
     }
+}
+
+
+func selectingAnimation(button: UIButton, flag: Bool) {
+    
+    var time = 0.06
+    
+    let animation = CABasicAnimation(keyPath: "shadowOffset")
+    animation.fromValue = button.layer.shadowOffset
+    animation.toValue = CGSize(width: 0, height: 5)
+    animation.duration = time + 0.1
+    button.layer.add(animation, forKey: animation.keyPath)
+    button.layer.shadowOffset = CGSize(width: 0, height: 8)
+    
+    UIView.animate(withDuration: time, delay: 0, options: [.curveEaseInOut], animations: {
+        button.transform = CGAffineTransform(scaleX: flag ? -1.1 : 1.1, y: 1.1)
+    }, completion: nil)
+    
+    let animation2 = CABasicAnimation(keyPath: "shadowOffset")
+    animation2.fromValue = button.layer.shadowOffset
+    animation2.toValue = CGSize(width: 0, height: 20)
+    animation2.duration = time + 0.1
+    button.layer.shadowOpacity = 0.3
+    button.layer.add(animation2, forKey: animation.keyPath)
+    button.layer.shadowOffset = CGSize(width: 0, height: 20)
+
+    UIView.animate(withDuration: time + 0.02, delay: 0.1, options: [.curveEaseInOut], animations: {
+        button.transform = CGAffineTransform(scaleX: flag ? -1.3 : 1.3, y: 1.3)
+        
+    }, completion: nil)
 }

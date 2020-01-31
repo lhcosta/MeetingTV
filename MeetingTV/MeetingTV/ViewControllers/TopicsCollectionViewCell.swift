@@ -22,28 +22,49 @@ class TopicsCollectionViewCell: UICollectionViewCell {
     @IBOutlet var checkButton: UIButton!
     @IBOutlet var viewMoreButton: UIButton!
     @IBOutlet var separatorView: UIView!
+    @IBOutlet var conclusionsTableView: UITableView!
+    
     
     @IBOutlet var infoButtonWidth: NSLayoutConstraint!
     @IBOutlet var infoButtonHeight: NSLayoutConstraint!
     @IBOutlet var checkButtonWidth: NSLayoutConstraint!
     @IBOutlet var checkButtonHeight: NSLayoutConstraint!
     
+    @IBOutlet var infoView: UIView!
+    
+    @IBOutlet var closeButton: UIButton!
+    
     
     var toNextCell = false
     
     var conclusions: [String] = []
     
+    var topicPorque: String?
+    
     var thisIndexPath: IndexPath?
     
     let rightFocusGuide = UIFocusGuide()
+    let leftFocusGuide = UIFocusGuide()
     
     var count = 0
     
     var conclusionsArray = [String]()
     
+    var flipped = false
+    
+    
+//    override var preferredFocusedView: UIView? {
+//        if !flipped {
+//            return checkButton
+//        } else {
+//            return closeButton
+//        }
+//    }
     
     override func awakeFromNib() {
         
+        self.conclusionsTableView.delegate = self
+        self.conclusionsTableView.dataSource = self
         self.contentView.clipsToBounds = false
         setupDesigns()
         setupConstraints()
@@ -52,15 +73,22 @@ class TopicsCollectionViewCell: UICollectionViewCell {
         self.layer.shadowOpacity = 0.2
         self.layer.shadowRadius = 5
         self.layer.shadowOffset = CGSize(width: 4, height: 8)
-        self.layer.cornerRadius = 6
+        self.layer.cornerRadius = 18
         
         self.layer.anchorPoint = CGPoint(x: 0.5, y: 0)
+        
+        self.closeButton.transform = CGAffineTransform(scaleX: -1, y: 1)
+        self.conclusionsTableView.transform = CGAffineTransform(scaleX: -1, y: 1)
     }
     
     
     /// View (filha dessa Cell) que entrará em Focus quando esta CollectionViewCell estiver em Focus.
     override var preferredFocusEnvironments: [UIFocusEnvironment] {
-        return [checkButton]
+        if !flipped {
+            return [checkButton]
+        } else {
+            return [closeButton]
+        }
     }
     
     
@@ -85,6 +113,13 @@ class TopicsCollectionViewCell: UICollectionViewCell {
         checkButton.layer.shadowOffset = CGSize(width: 0, height: 5)
         checkButton.clipsToBounds = false
         checkButton.layer.cornerRadius = 7
+        
+        closeButton.layer.masksToBounds = false
+        closeButton.layer.shadowOpacity = 0.2
+        closeButton.layer.shadowRadius = 7
+        closeButton.layer.shadowOffset = CGSize(width: 0, height: 10)
+        closeButton.clipsToBounds = false
+        closeButton.layer.cornerRadius = 7
     }
     
     
@@ -102,41 +137,77 @@ class TopicsCollectionViewCell: UICollectionViewCell {
         addLayoutGuide(rightFocusGuide)
         rightFocusGuide.leftAnchor.constraint(equalTo: checkButton.rightAnchor).isActive = true
         rightFocusGuide.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        rightFocusGuide.topAnchor.constraint(equalTo: checkButton.bottomAnchor).isActive = true
+        rightFocusGuide.topAnchor.constraint(equalTo: conclusionsTableView.topAnchor).isActive = true
         rightFocusGuide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        
+        addLayoutGuide(leftFocusGuide)
+        leftFocusGuide.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
+        leftFocusGuide.rightAnchor.constraint(equalTo: viewMoreButton.leftAnchor).isActive = true
+        leftFocusGuide.topAnchor.constraint(equalTo: conclusionsTableView.topAnchor).isActive = true
+        leftFocusGuide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+    }
+    
+    
+    @IBAction func viewMore(_ sender: Any) {
+        
+        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
+                self.transform = CGAffineTransform(scaleX: -1.2, y: 1.2)
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.01) {
+                self.infoView.isHidden = false
+                self.infoView.alpha = 1
+            }
+            
+        }, completion: { (_) in
+            self.flipped = true
+            self.setNeedsFocusUpdate()
+            self.updateFocusIfNeeded()
+        })
+    }
+    
+    
+    @IBAction func closeInfo(_ sender: Any) {
+        
+        selectingAnimation(button: sender as! UIButton, flag: true)
+        
+        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: [], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
+                self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            }
+            
+            UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.01) {
+                self.infoView.alpha = 0
+            }
+            
+        }, completion: { (_) in
+            self.infoView.isHidden = true
+            self.flipped = false
+            self.setNeedsFocusUpdate()
+            self.updateFocusIfNeeded()
+            self.closeButton.transform = CGAffineTransform(scaleX: -1, y: 1)
+        })
     }
 }
 
 
-//extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        conclusionsArray = []
-//        count = 0
-//
-//        for conclusion in conclusions {
-//            if conclusion != "" {
-//                conclusionsArray.append(conclusion)
-//                count += 1
-//            }
-//        }
-//        print("Array: \(conclusionsArray), conclusions: \(conclusions)")
-//        return count
-//    }
-//
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-//        /// Setamos a textLabel da TableViewCell com a respecticva Conclusion.
-//        print("Con: ", conclusionsArray[indexPath.row])
-//        cell.textLabel?.text = conclusionsArray[indexPath.row]
-//        return cell
-//    }
-//
-//
-//    override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
-//        guard let _ = context.nextFocusedItem as? UITableViewCell else { return }
-//        rightFocusGuide.preferredFocusEnvironments = [checkButton]
-//    }
-//}
+extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.conclusions.count + 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "conclusion") as! ConclusionsTableViewCell
+        if indexPath.row == 0 {
+            cell.conclusionPqLabel.text = self.topicPorque
+        } else {
+            cell.conclusionPqLabel.text = self.conclusions[indexPath.row-1]
+        }
+        
+        return cell
+        
+    }
+}
