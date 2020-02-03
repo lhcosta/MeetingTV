@@ -85,15 +85,15 @@ class TimerConfigViewController: UIViewController {
         
         /// Configuração do Focus para acesso dos botões superiores - Up / Down
         view.addLayoutGuide(topFocus)
-        topFocus.leftAnchor.constraint(equalTo: reset.leftAnchor).isActive = true
-        topFocus.rightAnchor.constraint(equalTo: start.rightAnchor).isActive = true
+        topFocus.leftAnchor.constraint(equalTo: start.leftAnchor).isActive = true
+        topFocus.rightAnchor.constraint(equalTo: reset.rightAnchor).isActive = true
         topFocus.topAnchor.constraint(equalTo: buttonDown.bottomAnchor).isActive = true
         topFocus.heightAnchor.constraint(equalTo: buttonDown.heightAnchor).isActive = true
         
         /// Configuração do Focus para acesso dos botões inferiores - Start / Reset
         view.addLayoutGuide(bottomFocus)
-        bottomFocus.leftAnchor.constraint(equalTo: reset.leftAnchor).isActive = true
-        bottomFocus.rightAnchor.constraint(equalTo: start.rightAnchor).isActive = true
+        bottomFocus.leftAnchor.constraint(equalTo: start.leftAnchor).isActive = true
+        bottomFocus.rightAnchor.constraint(equalTo: reset.rightAnchor).isActive = true
         bottomFocus.topAnchor.constraint(equalTo: start.bottomAnchor).isActive = true
         bottomFocus.heightAnchor.constraint(equalTo: buttonDown.heightAnchor).isActive = true
     }

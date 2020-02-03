@@ -10,11 +10,16 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
 
+    @IBOutlet weak var cardView: UIView!
+    
     //MARK:- Properties
     private var multipeer : MeetingAdvertiserPeer?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.cardView.layer.cornerRadius = 13
+        setShadow(view: self.cardView)
         
         self.multipeer = MeetingAdvertiserPeer()
         self.multipeer?.delegate = self
@@ -24,6 +29,13 @@ class WelcomeViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let viewController = segue.destination as? MeetingViewController else {return}
         viewController.meetingData = sender as? Data
+    }
+    
+    func setShadow (view: UIView){
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.2
+        view.layer.shadowOffset  = CGSize(width: 0.0, height: 3.0)
+        view.layer.shadowRadius = 13
     }
 }
 

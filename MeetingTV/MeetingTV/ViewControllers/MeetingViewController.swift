@@ -110,8 +110,14 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     }
     
     func resetTimer() {
-        labelTimer.textColor = UIColor(hexString: "#003FFF")
-        clock.image = UIImage(named: "relogio")
+        if self.traitCollection.userInterfaceStyle == .light {
+            labelTimer.textColor = UIColor(hexString: "#003FFF")
+            clock.image = UIImage(named: "relogio")
+        } else {
+            labelTimer.textColor = UIColor(hexString: "#9FB9FF")
+            clock.image = UIImage(named: "RelogioDark")
+        }
+        
         timerMeeting?.resetTimer()
         labelTimer.text = timerMeeting?.getTime()
         

@@ -27,6 +27,10 @@
 		A4533FF3238C57D70089257A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4533FF2238C57D70089257A /* CloudKit.framework */; };
 		E254E3D423DF677A007224B1 /* TimerConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E254E3D323DF677A007224B1 /* TimerConfigViewController.swift */; };
 		E261A25A238F051F004A7D90 /* Chronometer.m in Sources */ = {isa = PBXBuildFile; fileRef = E261A259238F051F004A7D90 /* Chronometer.m */; };
+		E2DD982223E8936D00446E02 /* San Francisco Font in Resources */ = {isa = PBXBuildFile; fileRef = E2DD982123E8936D00446E02 /* San Francisco Font */; };
+		E2DD982423E897DD00446E02 /* SFProText-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2DD982323E897D900446E02 /* SFProText-Semibold.ttf */; };
+		E2DD982723E8982400446E02 /* SFMonoRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2DD982523E8981B00446E02 /* SFMonoRegular.otf */; };
+		E2DD982823E8982700446E02 /* SFMonoSemibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2DD982623E8982100446E02 /* SFMonoSemibold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +75,10 @@
 		E261A259238F051F004A7D90 /* Chronometer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Chronometer.m; sourceTree = "<group>"; };
 		E261A25B238F0565004A7D90 /* Chronometer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chronometer.h; sourceTree = "<group>"; };
 		E261A25D23900F28004A7D90 /* MeetingTV-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MeetingTV-Bridging-Header.h"; sourceTree = "<group>"; };
+		E2DD982123E8936D00446E02 /* San Francisco Font */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "San Francisco Font"; sourceTree = "<group>"; };
+		E2DD982323E897D900446E02 /* SFProText-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SFProText-Semibold.ttf"; path = "San Francisco Font/SFProText-Semibold.ttf"; sourceTree = "<group>"; };
+		E2DD982523E8981B00446E02 /* SFMonoRegular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFMonoRegular.otf; sourceTree = "<group>"; };
+		E2DD982623E8982100446E02 /* SFMonoSemibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SFMonoSemibold.otf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +193,10 @@
 		E2DCB9F123E3B9BD0059ADB0 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				E2DD982323E897D900446E02 /* SFProText-Semibold.ttf */,
+				E2DD982523E8981B00446E02 /* SFMonoRegular.otf */,
+				E2DD982623E8982100446E02 /* SFMonoSemibold.otf */,
+				E2DD982123E8936D00446E02 /* San Francisco Font */,
 				497FB2AF23E49C67008059D9 /* sf-mono-cufonfonts */,
 			);
 			path = fonts;
@@ -253,7 +265,11 @@
 			files = (
 				497FB2B023E49C68008059D9 /* sf-mono-cufonfonts in Resources */,
 				49F09AAC2399862000B7DFD3 /* Timer.storyboard in Resources */,
+				E2DD982423E897DD00446E02 /* SFProText-Semibold.ttf in Resources */,
+				E2DD982823E8982700446E02 /* SFMonoSemibold.otf in Resources */,
 				49F09A9F239985D600B7DFD3 /* Localizable.strings in Resources */,
+				E2DD982723E8982400446E02 /* SFMonoRegular.otf in Resources */,
+				E2DD982223E8936D00446E02 /* San Francisco Font in Resources */,
 				49EB44CE2387106A002F434D /* LaunchScreen.storyboard in Resources */,
 				49EB44CB2387106A002F434D /* Assets.xcassets in Resources */,
 				49F09AA42399860D00B7DFD3 /* Welcome.storyboard in Resources */,
