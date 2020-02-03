@@ -39,6 +39,7 @@
 	<array>
 		<string>SFMonoRegular.otf</string>
 		<string>SFMonoSemibold.otf</string>
+		<string>SFProText-Semibold.ttf</string>
 	</array>
 </dict>
 </plist>
