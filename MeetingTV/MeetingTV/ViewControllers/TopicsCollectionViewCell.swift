@@ -75,6 +75,11 @@ class TopicsCollectionViewCell: UICollectionViewCell {
         self.layer.shadowOffset = CGSize(width: 4, height: 8)
         self.layer.cornerRadius = 18
         
+        infoView.layer.shadowOpacity = 0.2
+        infoView.layer.shadowRadius = 5
+        infoView.layer.shadowOffset = CGSize(width: -4, height: 8)
+        infoView.layer.cornerRadius = 18
+        
         self.layer.anchorPoint = CGPoint(x: 0.5, y: 0)
         
         self.closeButton.transform = CGAffineTransform(scaleX: -1, y: 1)
@@ -139,31 +144,36 @@ class TopicsCollectionViewCell: UICollectionViewCell {
         rightFocusGuide.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         rightFocusGuide.topAnchor.constraint(equalTo: conclusionsTableView.topAnchor).isActive = true
         rightFocusGuide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        rightFocusGuide.isEnabled = false
         
         addLayoutGuide(leftFocusGuide)
         leftFocusGuide.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
         leftFocusGuide.rightAnchor.constraint(equalTo: viewMoreButton.leftAnchor).isActive = true
         leftFocusGuide.topAnchor.constraint(equalTo: conclusionsTableView.topAnchor).isActive = true
         leftFocusGuide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        leftFocusGuide.isEnabled = false
     }
     
     
     @IBAction func viewMore(_ sender: Any) {
         
-        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: 0.35, delay: 0, options: [], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
-                self.transform = CGAffineTransform(scaleX: -1.2, y: 1.2)
+                self.transform = CGAffineTransform(scaleX: -1.1, y: 1.1)
             }
             
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.01) {
                 self.infoView.isHidden = false
                 self.infoView.alpha = 1
+                self.layer.shadowOpacity = 0
             }
             
         }, completion: { (_) in
             self.flipped = true
             self.setNeedsFocusUpdate()
             self.updateFocusIfNeeded()
+            self.rightFocusGuide.isEnabled = true
+            self.leftFocusGuide.isEnabled = true
         })
     }
     
@@ -172,13 +182,14 @@ class TopicsCollectionViewCell: UICollectionViewCell {
         
         selectingAnimation(button: sender as! UIButton, flag: true)
         
-        UIView.animateKeyframes(withDuration: 0.4, delay: 0, options: [], animations: {
+        UIView.animateKeyframes(withDuration: 0.35, delay: 0, options: [], animations: {
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
-                self.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
             }
             
             UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.01) {
                 self.infoView.alpha = 0
+                self.layer.shadowOpacity = 0.2
             }
             
         }, completion: { (_) in
@@ -187,6 +198,8 @@ class TopicsCollectionViewCell: UICollectionViewCell {
             self.setNeedsFocusUpdate()
             self.updateFocusIfNeeded()
             self.closeButton.transform = CGAffineTransform(scaleX: -1, y: 1)
+            self.rightFocusGuide.isEnabled = false
+            self.leftFocusGuide.isEnabled = false
         })
     }
 }
@@ -206,6 +219,7 @@ extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
         } else {
             cell.conclusionPqLabel.text = self.conclusions[indexPath.row-1]
         }
+        cell.conclusionPqLabel.sizeToFit()
         
         return cell
         

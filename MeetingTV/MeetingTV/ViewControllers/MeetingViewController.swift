@@ -221,7 +221,6 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         
         guard let button = sender as? UIButton else { return }
         selectingAnimation(button: button, flag: false)
-        selectingAnimation(button: button)
         
         let topic = topics[button.tag]
         
@@ -331,27 +330,31 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         if indexPath.row == 0 || indexPath.row >= topics.count-3 {
             cell.isHidden = true
         } else {
-            cell.topicDescription.text = topics[indexPath.row].description
-            cell.topicAuthor.text = topics[indexPath.row].authorName
-            cell.conclusions = topics[indexPath.row].conclusions
-            cell.topicPorque = topics[indexPath.row].topicPorque
-            cell.contentView.alpha = 0.3
-            if topics[indexPath.row].discussed {
-                cell.checkButton.setBackgroundImage(UIImage(named: "checkButton"), for: .normal)
-            } else {
-                cell.checkButton.setBackgroundImage(UIImage(named: "uncheckButton"), for: .normal)
+            if let _ = topics[indexPath.row].description {
+                cell.topicDescription.text = topics[indexPath.row].description
+                cell.topicAuthor.text = topics[indexPath.row].authorName
+                cell.conclusions = topics[indexPath.row].conclusions
+                cell.topicPorque = topics[indexPath.row].topicPorque
+                cell.contentView.alpha = 0.3
+                if topics[indexPath.row].discussed {
+                    cell.checkButton.setBackgroundImage(UIImage(named: "checkButton"), for: .normal)
+                } else {
+                    cell.checkButton.setBackgroundImage(UIImage(named: "uncheckButton"), for: .normal)
+                }
+                
+                ///1- TableViewCell sendo adicionada pelo código;
+                ///2/3- Setamos o delegate e dataSource da tableView da célula;
+                ///4- Focus será configurado no momento de Front-End.
+    //            cell.conclusionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+    //            cell.conclusionsTableView.delegate = cell
+    //            cell.conclusionsTableView.dataSource = cell
+                cell.thisIndexPath = indexPath
+                
+                //Tag utilizada para identificar o tópico quando escolhido.
+                cell.viewMoreButton.tag = indexPath.row
+                
+                cell.topicDescription.sizeToFit()
             }
-            
-            ///1- TableViewCell sendo adicionada pelo código;
-            ///2/3- Setamos o delegate e dataSource da tableView da célula;
-            ///4- Focus será configurado no momento de Front-End.
-//            cell.conclusionsTableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-//            cell.conclusionsTableView.delegate = cell
-//            cell.conclusionsTableView.dataSource = cell
-            cell.thisIndexPath = indexPath
-            
-            //Tag utilizada para identificar o tópico quando escolhido.
-            cell.viewMoreButton.tag = indexPath.row
         }
         
         return cell
@@ -441,7 +444,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 
                 let animation = CABasicAnimation(keyPath: "shadowOffset")
                 animation.fromValue = button.layer.shadowOffset
-                animation.toValue = CGSize(width: 0, height: 20)
+                animation.toValue = CGSize(width: 0, height: 10)
                 animation.duration = 0.1
                 button.layer.shadowOpacity = 0.3
                 button.layer.add(animation, forKey: animation.keyPath)
@@ -455,14 +458,14 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
             if let _ = button.superview?.superview?.superview as? TopicsCollectionViewCell {
                 let animation = CABasicAnimation(keyPath: "shadowOffset")
                 animation.fromValue = button.layer.shadowOffset
-                animation.toValue = CGSize(width: 0, height: 20)
+                animation.toValue = CGSize(width: 0, height: 10)
                 animation.duration = 0.1
                 button.layer.shadowOpacity = 0.3
                 button.layer.add(animation, forKey: animation.keyPath)
-                button.layer.shadowOffset = CGSize(width: 0, height: 20)
+                button.layer.shadowOffset = CGSize(width: 0, height: 10)
 
                 UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-                    button.transform = CGAffineTransform(scaleX: -1.3, y: 1.3)
+                    button.transform = CGAffineTransform(scaleX: -1.2, y: 1.2)
                 }, completion: nil)
             }
         }
@@ -600,14 +603,14 @@ func selectingAnimation(button: UIButton, flag: Bool) {
     
     let animation2 = CABasicAnimation(keyPath: "shadowOffset")
     animation2.fromValue = button.layer.shadowOffset
-    animation2.toValue = CGSize(width: 0, height: 20)
+    animation2.toValue = CGSize(width: 0, height: 10)
     animation2.duration = time + 0.1
     button.layer.shadowOpacity = 0.3
     button.layer.add(animation2, forKey: animation.keyPath)
-    button.layer.shadowOffset = CGSize(width: 0, height: 20)
+    button.layer.shadowOffset = CGSize(width: 0, height: 10)
 
     UIView.animate(withDuration: time + 0.02, delay: 0.1, options: [.curveEaseInOut], animations: {
-        button.transform = CGAffineTransform(scaleX: flag ? -1.3 : 1.3, y: 1.3)
+        button.transform = CGAffineTransform(scaleX: flag ? -1.2 : 1.2, y: 1.2)
         
     }, completion: nil)
 }
