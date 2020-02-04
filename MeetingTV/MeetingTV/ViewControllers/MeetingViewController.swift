@@ -126,6 +126,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         }
         
         labelTimerTopic.text = "00:00:00"
+        
+        timerStarted = false
     }
     
     
@@ -259,6 +261,9 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? TimerConfigViewController {
             vc.setUpDelegate = self
+            vc.timeAlreadyStarted = timerStarted
+            vc.minutes = minutesSet
+            vc.hours = hoursSet
         }
     }
     

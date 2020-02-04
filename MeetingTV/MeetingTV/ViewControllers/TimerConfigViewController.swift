@@ -35,7 +35,26 @@ class TimerConfigViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         addFocus()
+        if timeAlreadyStarted {
+            start.isEnabled = false
+            start.alpha = 0.6
+        } else {
+            start.isEnabled = true
+            start.alpha = 1
+        }
         
+        var strHour = String(hours)
+        var strMinute = String(minutes)
+        
+        if hours == 0 {
+            strHour = "0\(hours)"
+        }
+        
+        if minutes == 0 {
+            strMinute = "0\(minutes)"
+        }
+        
+        timeLabel.text = "\(strHour):\(strMinute):00"
     }
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
@@ -47,7 +66,11 @@ class TimerConfigViewController: UIViewController {
             case reset:
                 topFocus.preferredFocusEnvironments = [buttonDown]
             case buttonDown:
-                bottomFocus.preferredFocusEnvironments = [start]
+                if timeAlreadyStarted {
+                    bottomFocus.preferredFocusEnvironments = [reset]
+                } else {
+                    bottomFocus.preferredFocusEnvironments = [start]
+                }
             default:
                 print("nada")
             }
@@ -135,9 +158,11 @@ class TimerConfigViewController: UIViewController {
     }
     
     @IBAction func resetButton(_ sender: Any) {
-        self.setUpDelegate?.resetTimer()
-        
-        dismiss(animated: true)
+        if timeAlreadyStarted {
+            self.setUpDelegate?.resetTimer()
+            
+            dismiss(animated: true)
+        }
     }
     
     func labelTimerFormat() {
