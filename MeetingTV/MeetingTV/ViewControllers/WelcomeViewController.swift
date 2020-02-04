@@ -12,18 +12,20 @@ class WelcomeViewController: UIViewController {
 
     @IBOutlet weak var cardView: UIView!
     
-    //MARK:- Properties
-    private var multipeer : MeetingAdvertiserPeer?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.cardView.layer.cornerRadius = 13
         setShadow(view: self.cardView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        self.multipeer = MeetingAdvertiserPeer()
-        self.multipeer?.delegate = self
-        self.multipeer?.startAdvertisingPeer()
+        let multipeer = MeetingAdvertiserPeer()
+        multipeer.delegate = self
+        multipeer.startAdvertisingPeer()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,10 +49,5 @@ extension WelcomeViewController : MeetingConnectionPeerDelegate {
         }
     }
     
-    func willReceiveMeeting(deviceName: String) {
-        
-    }
-    
-
 }
 

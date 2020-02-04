@@ -72,10 +72,10 @@
     return chronometerString2;
 }
 
-- (NSInteger*) getHours {
+- (NSInteger) getHours {
     return _hours;
 }
-- (NSInteger*) getMinutes {
+- (NSInteger) getMinutes {
     return _minutes;
 }
 

@@ -11,11 +11,10 @@ import MultipeerConnectivity
 import CloudKit
 
 protocol MeetingConnectionPeerDelegate : AnyObject {
-    func willReceiveMeeting(deviceName : String)
     func didReceiveMeeting(data : Data)
 }
 
-/// Conexão entre peers para o recebimento de dados enviados
+/// Conexão entre peers para o recebimento de dados enviados, aceitando apenas uma conexão por celular.
 /// - Author: Lucas Costa
 
 class MeetingAdvertiserPeer: NSObject {
@@ -76,9 +75,7 @@ extension MeetingAdvertiserPeer : MCNearbyServiceAdvertiserDelegate {
             invitationHandler(false, self.session)
         } else {
             invitationHandler(true, self.session)
-            self.delegate?.willReceiveMeeting(deviceName: peerID.displayName)
         }
-        
     }  
     
 } 
