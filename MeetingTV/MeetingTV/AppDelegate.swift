@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         userNotCenter.delegate = self
         
         userNotCenter.requestAuthorization(options: [.providesAppNotificationSettings], completionHandler: { (permission, error) in
-            print("===>\(permission)/\(error)")
+            print("===>\(permission)/\(error.debugDescription)")
         })
         
         DispatchQueue.main.async {

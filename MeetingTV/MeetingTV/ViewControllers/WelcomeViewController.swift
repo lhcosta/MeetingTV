@@ -12,9 +12,8 @@ class WelcomeViewController: UIViewController {
 
     @IBOutlet weak var cardView: UIView!
     
-    //MARK:- Properties
-    private var multipeer : MeetingAdvertiserPeer?
-
+    var multipeer : MeetingAdvertiserPeer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,8 +21,13 @@ class WelcomeViewController: UIViewController {
         setShadow(view: self.cardView)
         
         self.multipeer = MeetingAdvertiserPeer()
-        self.multipeer?.delegate = self
-        self.multipeer?.startAdvertisingPeer()
+        multipeer.delegate = self
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        multipeer.startAdvertisingPeer()        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -47,10 +51,5 @@ extension WelcomeViewController : MeetingConnectionPeerDelegate {
         }
     }
     
-    func willReceiveMeeting(deviceName: String) {
-        
-    }
-    
-
 }
 
