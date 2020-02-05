@@ -20,6 +20,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     @IBOutlet weak var labelTimer: UILabel!
     @IBOutlet weak var clock: UIImageView!
     
+    @IBOutlet var collectionViewHeight: NSLayoutConstraint!
+    
     /// Título da Meeting
     @IBOutlet var meetingTittle: UILabel!
     
@@ -72,6 +74,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         topicsCollectionView.clipsToBounds = false
         topicsCollectionView.delegate = self
         topicsCollectionView.dataSource = self
+        
+        collectionViewHeight.constant = (self.view.frame.height*0.34)*1.1
                 
         self.setupFocus()
     }
@@ -333,7 +337,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TopicsCollectionViewCell
         
         cell.isHidden = false
-        if indexPath.row == 0 || indexPath.row >= topics.count-3 {
+        if indexPath.row <= 1 || indexPath.row >= topics.count-2 {
             cell.isHidden = true
         } else {
             if let _ = topics[indexPath.row].description {
@@ -511,19 +515,19 @@ extension MeetingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.height*1.37*0.9, height: collectionView.bounds.height*0.9)
+        return CGSize(width: collectionView.bounds.width*0.28, height: self.view.frame.height*0.34)
 //        return CGSize(width: 568, height: 414)
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return collectionView.frame.size.width * 0.1
+        return collectionView.frame.size.width * 0.04
     }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-        return UIEdgeInsets(top: 0, left: 0, bottom: collectionView.frame.size.height, right: 0)
+        return UIEdgeInsets(top: collectionView.frame.size.height, left: 0, bottom: 0, right: 0)
     }
 }
 
@@ -542,7 +546,7 @@ extension MeetingViewController {
                 self.meetingTittle.text = self.meeting.theme
                 self.topics = self.meeting.selectedTopics
                 topics.insert(Topic(record: nil), at: 0)
-                topics.append(Topic(record: nil))
+                topics.insert(Topic(record: nil), at: 0)
                 topics.append(Topic(record: nil))
                 topics.append(Topic(record: nil))
                 self.topicsCollectionView.reloadData()

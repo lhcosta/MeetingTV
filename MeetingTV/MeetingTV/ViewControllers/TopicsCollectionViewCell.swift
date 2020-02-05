@@ -80,7 +80,7 @@ class TopicsCollectionViewCell: UICollectionViewCell {
         infoView.layer.shadowOffset = CGSize(width: -4, height: 8)
         infoView.layer.cornerRadius = 18
         
-        self.layer.anchorPoint = CGPoint(x: 0.5, y: 0)
+        self.layer.anchorPoint = CGPoint(x: 0.5, y: 1)
         
         self.closeButton.transform = CGAffineTransform(scaleX: -1, y: 1)
         self.conclusionsTableView.transform = CGAffineTransform(scaleX: -1, y: 1)
@@ -130,11 +130,11 @@ class TopicsCollectionViewCell: UICollectionViewCell {
     
     func setupConstraints() {
         /*Numeros "reais"*/
-        self.infoButtonWidth.constant = self.bounds.width*0.4/*0.27*/
-        self.infoButtonHeight.constant = self.bounds.height*0.07
-        
-        self.checkButtonWidth.constant = self.bounds.height*0.08/*0.07*/
-        self.checkButtonHeight.constant = self.bounds.height*0.08/*0.07*/
+        self.infoButtonWidth.constant = self.bounds.width*0.27
+        self.infoButtonHeight.constant = self.bounds.height*0.06
+
+        self.checkButtonWidth.constant = self.bounds.height*0.06/*0.06*/
+        self.checkButtonHeight.constant = self.bounds.height*0.06/*0.06*/
     }
     
     
