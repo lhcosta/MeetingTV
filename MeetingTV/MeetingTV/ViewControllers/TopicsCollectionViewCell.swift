@@ -9,7 +9,7 @@
 import UIKit
 
 /// CollectionView para a exibição dos Topics da Meeting.
-class TopicsCollectionViewCell: UICollectionViewCell {
+class TopicsCollectionViewCell: UICollectionViewCell {    
     
     /// Label da Topic em si.
     @IBOutlet var topicDescription: UILabel!
@@ -29,10 +29,14 @@ class TopicsCollectionViewCell: UICollectionViewCell {
     @IBOutlet var infoButtonHeight: NSLayoutConstraint!
     @IBOutlet var checkButtonWidth: NSLayoutConstraint!
     @IBOutlet var checkButtonHeight: NSLayoutConstraint!
+    @IBOutlet var closeButtonWidth: NSLayoutConstraint!
+    @IBOutlet var closeButtonHeight: NSLayoutConstraint!
     
     @IBOutlet var infoView: UIView!
     
     @IBOutlet var closeButton: UIButton!
+    
+    @IBOutlet var timerTopicLabel: UILabel!
     
     
     var toNextCell = false
@@ -50,7 +54,12 @@ class TopicsCollectionViewCell: UICollectionViewCell {
     
     var conclusionsArray = [String]()
     
-    var flipped = false
+    var flipped = false {
+        didSet {
+            rightFocusGuide.isEnabled = !rightFocusGuide.isEnabled
+            leftFocusGuide.isEnabled = !leftFocusGuide.isEnabled
+        }
+    }
     
     
 //    override var preferredFocusedView: UIView? {
@@ -132,6 +141,9 @@ class TopicsCollectionViewCell: UICollectionViewCell {
         /*Numeros "reais"*/
         self.infoButtonWidth.constant = self.bounds.width*0.27
         self.infoButtonHeight.constant = self.bounds.height*0.06
+        
+        self.closeButtonWidth.constant = self.bounds.width*0.27
+        self.closeButtonHeight.constant = self.bounds.height*0.06
 
         self.checkButtonWidth.constant = self.bounds.height*0.06/*0.06*/
         self.checkButtonHeight.constant = self.bounds.height*0.06/*0.06*/
@@ -140,17 +152,19 @@ class TopicsCollectionViewCell: UICollectionViewCell {
     
     func setupFocus() {
         addLayoutGuide(rightFocusGuide)
-        rightFocusGuide.leftAnchor.constraint(equalTo: checkButton.rightAnchor).isActive = true
+//        rightFocusGuide.leftAnchor.constraint(equalTo: checkButton.rightAnchor).isActive = true
+        rightFocusGuide.widthAnchor.constraint(equalToConstant: 1).isActive = true
         rightFocusGuide.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         rightFocusGuide.topAnchor.constraint(equalTo: conclusionsTableView.topAnchor).isActive = true
-        rightFocusGuide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        rightFocusGuide.bottomAnchor.constraint(equalTo: conclusionsTableView.bottomAnchor).isActive = true
         rightFocusGuide.isEnabled = false
         
         addLayoutGuide(leftFocusGuide)
         leftFocusGuide.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        leftFocusGuide.rightAnchor.constraint(equalTo: viewMoreButton.leftAnchor).isActive = true
+        leftFocusGuide.widthAnchor.constraint(equalToConstant: 1).isActive = true
+//        leftFocusGuide.rightAnchor.constraint(equalTo: viewMoreButton.leftAnchor).isActive = true
         leftFocusGuide.topAnchor.constraint(equalTo: conclusionsTableView.topAnchor).isActive = true
-        leftFocusGuide.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        leftFocusGuide.bottomAnchor.constraint(equalTo: conclusionsTableView.bottomAnchor).isActive = true
         leftFocusGuide.isEnabled = false
     }
     
@@ -172,8 +186,8 @@ class TopicsCollectionViewCell: UICollectionViewCell {
             self.flipped = true
             self.setNeedsFocusUpdate()
             self.updateFocusIfNeeded()
-            self.rightFocusGuide.isEnabled = true
-            self.leftFocusGuide.isEnabled = true
+//            self.rightFocusGuide.isEnabled = true
+//            self.leftFocusGuide.isEnabled = true
         })
     }
     
@@ -198,8 +212,8 @@ class TopicsCollectionViewCell: UICollectionViewCell {
             self.setNeedsFocusUpdate()
             self.updateFocusIfNeeded()
             self.closeButton.transform = CGAffineTransform(scaleX: -1, y: 1)
-            self.rightFocusGuide.isEnabled = false
-            self.leftFocusGuide.isEnabled = false
+//            self.rightFocusGuide.isEnabled = false
+//            self.leftFocusGuide.isEnabled = false
         })
     }
 }
@@ -222,6 +236,5 @@ extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
         cell.conclusionPqLabel.sizeToFit()
         
         return cell
-        
     }
 }

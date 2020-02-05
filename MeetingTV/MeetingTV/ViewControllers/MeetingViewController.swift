@@ -15,7 +15,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     
     /// Label que será exibida o tempo de duração da Meeting/Tópico
     @IBOutlet weak var buttonTimer: UIButton!
-    @IBOutlet weak var labelTimerTopic: UILabel!
+//    @IBOutlet weak var labelTimerTopic: UILabel!
     @IBOutlet var endMeetingButton: UIButton!
     @IBOutlet weak var labelTimer: UILabel!
     @IBOutlet weak var clock: UIImageView!
@@ -31,6 +31,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     /// Hora e minuto setados na configuração do Timer
     var hoursSet = Int()
     var minutesSet = Int()
+    
+    var labelTimerTopic: UILabel!
     
     /// Meeting em si (Que será passada pelo Multipeer)
     var meeting: Meeting!
@@ -191,18 +193,21 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         }
         
         if let previousButton = context.previouslyFocusedItem as? UIButton {
+            
+            // Close button não pode ter essa animação.
+            if previousButton.titleLabel?.text != "Close" {
 
-            let animation = CABasicAnimation(keyPath: "shadowOffset")
-            animation.fromValue = previousButton.layer.shadowOffset
-            animation.toValue = CGSize(width: 0, height: 5)
-            animation.duration = 0.1
-            previousButton.layer.add(animation, forKey: animation.keyPath)
-            previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+                let animation = CABasicAnimation(keyPath: "shadowOffset")
+                animation.fromValue = previousButton.layer.shadowOffset
+                animation.toValue = CGSize(width: 0, height: 5)
+                animation.duration = 0.1
+                previousButton.layer.add(animation, forKey: animation.keyPath)
+                previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
 
-            UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-                previousButton.transform = CGAffineTransform(scaleX: 1, y: 1)
-            }, completion: nil)
-
+                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                    previousButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }, completion: nil)
+            }
         }
     }
     
@@ -379,10 +384,13 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         
         if let currTopicOnCollection = context.nextFocusedView?.superview?.superview as? TopicsCollectionViewCell {
+            // Nao é aqui
             UIView.animate(withDuration: 0.2) {
                 currTopicOnCollection.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 currTopicOnCollection.contentView.alpha = 1
             }
+            
+            self.labelTimerTopic = currTopicOnCollection.timerTopicLabel
         }
         
         //
@@ -399,10 +407,12 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 
                 UIView.addKeyframe(withRelativeStartTime: 0.5, relativeDuration: 0.01) {
                     prevTopicOnCollectionFlipped.infoView.alpha = 0
+                    prevTopicOnCollectionFlipped.layer.shadowOpacity = 0.2
                 }
                 
             }, completion: { (_) in
                 prevTopicOnCollectionFlipped.infoView.isHidden = true
+                // Nao é aqui
                 prevTopicOnCollectionFlipped.closeButton.transform = CGAffineTransform(scaleX: -1, y: 1)
             })
             prevTopicOnCollectionFlipped.flipped = false
@@ -412,6 +422,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         // Quando mudamos de cell com a info fechada
         //
         if let prevTopicOnCollection = context.previouslyFocusedView?.superview?.superview as? TopicsCollectionViewCell, context.nextFocusedIndexPath != context.previouslyFocusedIndexPath {
+            // Nao é aqui
                 UIView.animate(withDuration: 0.2) {
                     prevTopicOnCollection.transform = CGAffineTransform(scaleX: 1, y: 1)
                     prevTopicOnCollection.contentView.alpha = 0.3
@@ -465,6 +476,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 button.layer.add(animation, forKey: animation.keyPath)
                 button.layer.shadowOffset = CGSize(width: 0, height: 10)
 
+                // Nao é aqui
                 UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
                     button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
                 }, completion: nil)
@@ -479,6 +491,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 button.layer.add(animation, forKey: animation.keyPath)
                 button.layer.shadowOffset = CGSize(width: 0, height: 10)
 
+                // Nao é aqui
                 UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
                     button.transform = CGAffineTransform(scaleX: -1.2, y: 1.2)
                 }, completion: nil)
@@ -495,6 +508,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 previousButton.layer.add(animation, forKey: animation.keyPath)
                 previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
                 
+                // Nao é aqui
                 UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
                     previousButton.transform = CGAffineTransform(scaleX: 1, y: 1)
                 }, completion: nil)
@@ -507,6 +521,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 previousButton.layer.add(animation, forKey: animation.keyPath)
                 previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
                 
+                // Nao é aqui
                 UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
                     previousButton.transform = CGAffineTransform(scaleX: -1, y: 1)
                 }, completion: nil)
