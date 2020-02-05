@@ -74,6 +74,7 @@ class TopicsCollectionViewCell: UICollectionViewCell {
         
         self.conclusionsTableView.delegate = self
         self.conclusionsTableView.dataSource = self
+        self.conclusionsTableView.flashScrollIndicators()
         self.contentView.clipsToBounds = false
         setupDesigns()
         setupConstraints()
