@@ -222,7 +222,10 @@ class TopicsCollectionViewCell: UICollectionViewCell {
 extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.conclusions.count + 1
+        if self.conclusions.last != "" {
+            return self.conclusions.count + 1
+        }
+        return self.conclusions.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -230,7 +233,7 @@ extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "conclusion") as! ConclusionsTableViewCell
         if indexPath.row == 0 {
             cell.conclusionPqLabel.text = self.topicPorque
-        } else {
+        } else if self.conclusions[indexPath.row-1] != "" {
             cell.conclusionPqLabel.text = self.conclusions[indexPath.row-1]
         }
         cell.conclusionPqLabel.sizeToFit()

@@ -159,19 +159,19 @@
                                                                 <action selector="closeInfo:" destination="xsG-LU-HG2" eventType="primaryActionTriggered" id="Z3Q-kz-vhb"/>
                                                             </connections>
                                                         </button>
-                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" sectionHeaderHeight="66" sectionFooterHeight="66" translatesAutoresizingMaskIntoConstraints="NO" id="RF0-UE-8cn">
-                                                            <rect key="frame" x="50" y="40" width="458" height="279"/>
-                                                            <color key="backgroundColor" red="0.32497316599999998" green="0.47915506359999999" blue="0.99612778430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" sectionHeaderHeight="66" sectionFooterHeight="66" translatesAutoresizingMaskIntoConstraints="NO" id="RF0-UE-8cn">
+                                                            <rect key="frame" x="50" y="10" width="458" height="339"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <prototypes>
-                                                                <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="conclusion" rowHeight="50" id="ojJ-AA-3b0" customClass="ConclusionsTableViewCell" customModule="MeetingTV" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="66" width="458" height="50"/>
+                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="conclusion" id="ojJ-AA-3b0" customClass="ConclusionsTableViewCell" customModule="MeetingTV" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="66" width="458" height="66"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ojJ-AA-3b0" id="skT-gD-aZc">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="458" height="50"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="458" height="66"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAs-Z5-P3S">
-                                                                                <rect key="frame" x="10" y="13" width="438" height="24"/>
+                                                                                <rect key="frame" x="30" y="21" width="418" height="24"/>
                                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
@@ -179,7 +179,7 @@
                                                                         </subviews>
                                                                         <constraints>
                                                                             <constraint firstItem="PAs-Z5-P3S" firstAttribute="centerY" secondItem="skT-gD-aZc" secondAttribute="centerY" id="6WF-nR-J6w"/>
-                                                                            <constraint firstItem="PAs-Z5-P3S" firstAttribute="leading" secondItem="skT-gD-aZc" secondAttribute="leading" constant="10" id="6gT-AP-Aeo"/>
+                                                                            <constraint firstItem="PAs-Z5-P3S" firstAttribute="leading" secondItem="skT-gD-aZc" secondAttribute="leading" constant="30" id="6gT-AP-Aeo"/>
                                                                             <constraint firstAttribute="trailing" secondItem="PAs-Z5-P3S" secondAttribute="trailing" constant="10" id="pVk-yX-egT"/>
                                                                         </constraints>
                                                                     </tableViewCellContentView>
@@ -205,9 +205,9 @@
                                                         <constraint firstItem="RF0-UE-8cn" firstAttribute="leading" secondItem="YMM-3s-Nzj" secondAttribute="leading" constant="50" id="0Qq-zw-rZx"/>
                                                         <constraint firstAttribute="trailing" secondItem="Jlj-Ch-7Ko" secondAttribute="trailing" constant="40" id="8P4-h4-d0L"/>
                                                         <constraint firstAttribute="trailing" secondItem="RF0-UE-8cn" secondAttribute="trailing" constant="50" id="CGa-Wy-IFg"/>
-                                                        <constraint firstItem="RF0-UE-8cn" firstAttribute="top" secondItem="YMM-3s-Nzj" secondAttribute="top" constant="40" id="Etz-bG-5DV"/>
+                                                        <constraint firstItem="RF0-UE-8cn" firstAttribute="top" secondItem="YMM-3s-Nzj" secondAttribute="top" constant="10" id="Etz-bG-5DV"/>
                                                         <constraint firstItem="Jlj-Ch-7Ko" firstAttribute="trailing" secondItem="lQs-3l-8pA" secondAttribute="trailing" id="OFn-TE-meY"/>
-                                                        <constraint firstItem="lQs-3l-8pA" firstAttribute="bottom" secondItem="RF0-UE-8cn" secondAttribute="bottom" constant="40" id="hSf-1q-yj7"/>
+                                                        <constraint firstItem="lQs-3l-8pA" firstAttribute="bottom" secondItem="RF0-UE-8cn" secondAttribute="bottom" constant="10" id="hSf-1q-yj7"/>
                                                         <constraint firstItem="lQs-3l-8pA" firstAttribute="centerY" secondItem="YMM-3s-Nzj" secondAttribute="bottom" constant="-90" id="k3N-wk-rJx"/>
                                                         <constraint firstItem="Jlj-Ch-7Ko" firstAttribute="centerY" secondItem="YMM-3s-Nzj" secondAttribute="bottom" constant="-50" id="qqh-Mi-dPP"/>
                                                         <constraint firstItem="lQs-3l-8pA" firstAttribute="centerX" secondItem="YMM-3s-Nzj" secondAttribute="centerX" id="x4g-QQ-2Tq"/>
