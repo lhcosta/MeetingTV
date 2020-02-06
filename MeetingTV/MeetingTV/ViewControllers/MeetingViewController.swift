@@ -84,30 +84,28 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
                 
         self.setupFocus()
+        
+        self.decoderMeeting()
+        
+        ///Configura o timer geral da Reunião
+        self.timerMeeting = Chronometer(delegate: self, isMeeting: true)
+
+        /// Configura o timer de todas as pautas
+        for _ in 0..<topics.count {
+            self.topicsTimer.append(Chronometer(delegate: self, isMeeting: false))
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.decoderMeeting()
     }
     
     
     func setUpTimer() {
-        ///Configura o timer geral da Reunião
-        self.timerMeeting = Chronometer(delegate: self, isMeeting: true)
-        timerMeeting?.config()
-
-        /// Configura o timer de todas as pautas
-        self.topicsTimer = []
-        for i in 0..<topics.count {
-            self.topicsTimer.append(Chronometer(delegate: self, isMeeting: false))
-            self.topicsTimer[i].config()
-        }
-
         /// Inicia nos Timers tanto da Reunião quanto de cada tópico
         timerMeeting?.setTimer()
-        topicsTimer[0].setTimer()
+//        topicsTimer[0].setTimer()
         
         timerStarted = true
         self.resetFlag = false
@@ -387,7 +385,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 cell.topicDescription.sizeToFit()
                 
                 if resetFlag {
-                    cell.timerTopicLabel.text = "resetado"
+                    cell.timerTopicLabel.text = "00:00:00"
                 }
                 
                 if indexPath.row == 2 {
@@ -452,25 +450,45 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if hasPrevious {
             /// Verifica se o anterior possui valor, caso contrário o movimento de swipe foi muito rapido entre os Itens
-            if let _ = context.previouslyFocusedIndexPath {
-                if timerStarted {
-                    /// Pausa o Timer do último Item de fato acessado
-                    topicsTimer[previousIndex].pauseTimer()
+            if let previousCell = context.previouslyFocusedView?.superview?.superview as? TopicsCollectionViewCell {
+                guard let nextCell = context.nextFocusedView?.superview?.superview as? TopicsCollectionViewCell else {
+                    return
                 }
+                let nextIndexPath = topicsCollectionView.indexPath(for: nextCell)
                 let indexNext = context.nextFocusedIndexPath
-                print("Index Previous: \(previousIndex+1))")
-                print("Index Atual: \(indexNext?.row)")
                 
-                /// Guarda o index do Item que está em foco para utiliza-lo como o ultimo Item de fato acessado
-                if let index = indexNext?.row {
-                    previousIndex = index-1
-                }
-                
-                /// Inicia a contage do Timer do Item atual somente quando o timer for iniciado
-                if timerStarted {
-                    /// Inicia o Timer é iniciado em relação ao proximo item a ser focado por isso necessita o ( -1 ),
-                    /// caso este item perca a referencia o previousIndex de segurança
-                    topicsTimer[(indexNext?.row ?? (previousIndex+1) )-1].setTimer()
+                if let previousIndexPath = topicsCollectionView.indexPath(for: previousCell) {
+                    print("Index Previous: \(previousIndexPath.row))")
+                    print("Index Atual: \(nextIndexPath!.row)")
+                    
+                    /// Guarda o index do Item que está em foco para utiliza-lo como o ultimo Item de fato acessado
+                    if let index = nextIndexPath?.row {
+                        previousIndex = index
+                    }
+                    
+                    /// Inicia a contage do Timer do Item atual somente quando o timer for iniciado
+                    if timerStarted && nextIndexPath?.row != previousIndexPath.row {
+                        /// Pausa o Timer do último Item de fato acessado
+                        topicsTimer[previousIndexPath.row].pauseTimer()
+                        
+                        /// Inicia o Timer é iniciado em relação ao proximo item a ser focado por isso necessita o ( -1 ),
+                        /// caso este item perca a referencia o previousIndex de segurança
+                        if let _ = nextIndexPath?.row {
+                            topicsTimer[nextIndexPath!.row].setTimer()
+                        }
+                    }
+                } else {
+                    /// Inicia a contage do Timer do Item atual somente quando o timer for iniciado
+                    if timerStarted {
+                        /// Pausa o Timer do último Item de fato acessado
+                        topicsTimer[previousIndex].pauseTimer()
+                        
+                        /// Inicia o Timer é iniciado em relação ao proximo item a ser focado por isso necessita o ( -1 ),
+                        /// caso este item perca a referencia o previousIndex de segurança
+                        if let _ = nextIndexPath?.row {
+                            topicsTimer[nextIndexPath!.row].setTimer()
+                        }
+                    }
                 }
             }
         } else {
