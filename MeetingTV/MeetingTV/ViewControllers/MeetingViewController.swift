@@ -72,6 +72,13 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        let topicIDs = topics.map { (topic) -> String in
+            return topic.recordName
+        }
+        
+        CloudManager.shared().subscribe("Topic", with: NSPredicate(format: "%@ CONTAINS recordName", topicIDs), desiredKeys: ["conclusion"]) { (_, error) in
+            print(error.debugDescription)
+        }
         
         topicsCollectionView.clipsToBounds = false
         topicsCollectionView.delegate = self

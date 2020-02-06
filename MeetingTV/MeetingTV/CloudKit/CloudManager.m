@@ -52,4 +52,5 @@
     [[self publicCloudDatabase] saveSubscription:subscription completionHandler:completion];
 }
 
+
 @end
