@@ -15,7 +15,6 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     
     /// Label que será exibida o tempo de duração da Meeting/Tópico
     @IBOutlet weak var buttonTimer: UIButton!
-//    @IBOutlet weak var labelTimerTopic: UILabel!
     @IBOutlet var endMeetingButton: UIButton!
     @IBOutlet weak var labelTimer: UILabel!
     @IBOutlet weak var clock: UIImageView!
@@ -33,6 +32,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     var minutesSet = Int()
     
     var labelTimerTopic: UILabel!
+    var firstLabelTimerTopic: UILabel!
     
     /// Meeting em si (Que será passada pelo Multipeer)
     var meeting: Meeting!
@@ -69,6 +69,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     var flag = 0
     
     var blurEffectView = UIVisualEffectView()
+    
+    var resetFlag = false
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +87,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         topicsCollectionView.dataSource = self
         
         collectionViewHeight.constant = (self.view.frame.height*0.34)*1.1
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
                 
         self.setupFocus()
     }
@@ -93,11 +97,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         super.viewWillAppear(animated)
         
         self.decoderMeeting()
-
-        ///Este comportamento agora será realizado ao clicar no botão de Iniciar Timer
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
     }
+    
     
     func setUpTimer() {
         ///Configura o timer geral da Reunião
@@ -105,6 +106,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         timerMeeting?.config()
 
         /// Configura o timer de todas as pautas
+        self.topicsTimer = []
         for i in 0..<topics.count {
             self.topicsTimer.append(Chronometer(delegate: self, isMeeting: false))
             self.topicsTimer[i].config()
@@ -115,6 +117,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         topicsTimer[0].setTimer()
         
         timerStarted = true
+        self.resetFlag = false
+        self.hasPrevious = false
     }
     
     func compareTime(minute: Int, hour: Int) {
@@ -138,9 +142,9 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
             topicsTimer[i].resetTimer()
         }
         
-        labelTimerTopic.text = "00:00:00"
-        
         timerStarted = false
+        self.resetFlag = true
+        topicsCollectionView.reloadData()
     }
     
     
@@ -271,6 +275,11 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     
     
     @IBAction func openConfig(_ sender: Any) {
+        
+        self.labelTimerTopic = self.firstLabelTimerTopic
+        self.setNeedsFocusUpdate()
+        self.updateFocusIfNeeded()
+        self.topicsCollectionView.scrollToItem(at: IndexPath(row: 2, section: 0), at: .centeredHorizontally, animated: true)
         performSegue(withIdentifier: "openConfig", sender: self)
     }
     
@@ -302,6 +311,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         }
     }
 
+    
     func updateLabelMeeting(_ stringLabel: String!) {
         labelTimer.text = stringLabel
         let currentHour = timerMeeting?.getHours()
@@ -312,6 +322,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
             clock.image = UIImage(named: "RelogioVermelho")
         }
     }
+    
     
     func updateLabelTopic(_ stringLabel: String!) {
         labelTimerTopic.text = stringLabel
@@ -381,6 +392,14 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 cell.viewMoreButton.tag = indexPath.row
                 
                 cell.topicDescription.sizeToFit()
+                
+                if resetFlag {
+                    cell.timerTopicLabel.text = "resetado"
+                }
+                
+                if indexPath.row == 2 {
+                    self.firstLabelTimerTopic = cell.timerTopicLabel
+                }
             }
         }
         
@@ -391,7 +410,6 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         
         if let currTopicOnCollection = context.nextFocusedView?.superview?.superview as? TopicsCollectionViewCell {
-            // Nao é aqui
             UIView.animate(withDuration: 0.2) {
                 currTopicOnCollection.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 currTopicOnCollection.contentView.alpha = 1
@@ -441,7 +459,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if hasPrevious {
             /// Verifica se o anterior possui valor, caso contrário o movimento de swipe foi muito rapido entre os Itens
-            if let index = context.previouslyFocusedIndexPath {
+            if let _ = context.previouslyFocusedIndexPath {
                 if timerStarted {
                     /// Pausa o Timer do último Item de fato acessado
                     topicsTimer[previousIndex].pauseTimer()
@@ -473,7 +491,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
             if let cell = button.superview?.superview as? TopicsCollectionViewCell {
                 collectionView.isScrollEnabled = false
                 let indexPath = collectionView.indexPath(for: cell)
-                collectionView.scrollToItem(at: indexPath!, at: .centeredHorizontally, animated: true)
+                collectionView.scrollToItem(at: indexPath ?? IndexPath(row: 2, section: 0), at: .centeredHorizontally, animated: true)
                 
                 let animation = CABasicAnimation(keyPath: "shadowOffset")
                 animation.fromValue = button.layer.shadowOffset
