@@ -239,14 +239,14 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     }
     
     
-    @IBAction func moreInfoButton(_ sender: Any) {
-        
-        guard let button = sender as? UIButton else { return }
-        selectingAnimation(button: button, flag: false)
-        
-        let topic = topics[button.tag]
-        
-    }
+//    @IBAction func moreInfoButton(_ sender: Any) {
+//
+//        guard let button = sender as? UIButton else { return }
+//        selectingAnimation(button: button, flag: false)
+//
+//        let topic = topics[button.tag]
+//
+//    }
     
     
     @IBAction func endMeeting(_ sender: Any) {
@@ -255,8 +255,17 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         meeting.duration = buttonTimer.titleLabel?.text
         timerMeeting?.pauseTimer()
         
-        for i in 0..<meeting.selectedTopics.count {
-            meeting.selectedTopics[i].duration = topicsTimer[i].getTime()
+        meeting.duration = timerMeeting?.getTime()
+        
+        topics.remove(at: 0)
+        topics.remove(at: 0)
+        topics.remove(at: topics.count-1)
+        topics.remove(at: topics.count-1)
+        
+        meeting.selectedTopics = topics
+        
+        for i in 0..<topics.count {
+            topics[i].duration = topicsTimer[i].getTime()
             topicsTimer[i].pauseTimer()
         }
         
@@ -264,6 +273,12 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
             if let error = error {
                 print(error.localizedDescription)
             }
+            
+            DispatchQueue.main.async {
+                self.dismiss(animated: true)
+            }
+            
+            
         }, completionHandler: {})
     }
     
