@@ -154,7 +154,6 @@ class TimerConfigViewController: UIViewController {
         self.setUpDelegate?.setUpTimer()
         
         dismiss(animated: true)
-        
     }
     
     @IBAction func resetButton(_ sender: Any) {
@@ -164,6 +163,7 @@ class TimerConfigViewController: UIViewController {
             dismiss(animated: true)
         }
     }
+    
     
     func labelTimerFormat() {
         var stringHours = String()

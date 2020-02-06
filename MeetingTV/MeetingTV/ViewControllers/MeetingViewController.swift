@@ -15,7 +15,6 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     
     /// Label que será exibida o tempo de duração da Meeting/Tópico
     @IBOutlet weak var buttonTimer: UIButton!
-//    @IBOutlet weak var labelTimerTopic: UILabel!
     @IBOutlet var endMeetingButton: UIButton!
     @IBOutlet weak var labelTimer: UILabel!
     @IBOutlet weak var clock: UIImageView!
@@ -53,7 +52,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     var timerMeeting: Chronometer?
     
     //Flag primeiro Foco - Se existe um foco anterior
-    var hasPrevious = false
+    var hasPrevious = true
     
     ///Flag do Botão Iniciar do Timer
     ///O timer de cada pauta é monitorada através do foco para realizar a contagem do timer por pauta somente após o Timer ser iniciado
@@ -69,6 +68,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     var flag = 0
     
     var blurEffectView = UIVisualEffectView()
+    
+    
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +79,9 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         topicsCollectionView.dataSource = self
         
         collectionViewHeight.constant = (self.view.frame.height*0.34)*1.1
+        
+        ///Este comportamento agora será realizado ao clicar no botão de Iniciar Timer
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
                 
         self.setupFocus()
     }
@@ -86,10 +90,6 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         super.viewWillAppear(animated)
         
         self.decoderMeeting()
-
-        ///Este comportamento agora será realizado ao clicar no botão de Iniciar Timer
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
     }
     
     func setUpTimer() {
@@ -151,6 +151,9 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
 //        topFocusGuide.topAnchor.constraint(equalTo: buttonTimer.topAnchor).isActive = true
 //        topFocusGuide.bottomAnchor.constraint(equalTo: buttonTimer.bottomAnchor).isActive = true
     }
+    
+    
+    
     
     
     override func didUpdateFocus(in context: UIFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
@@ -264,6 +267,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     
     
     @IBAction func openConfig(_ sender: Any) {
+        self.setNeedsFocusUpdate()
+        self.updateFocusIfNeeded()
         performSegue(withIdentifier: "openConfig", sender: self)
     }
     
@@ -384,7 +389,6 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didUpdateFocusIn context: UICollectionViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         
         if let currTopicOnCollection = context.nextFocusedView?.superview?.superview as? TopicsCollectionViewCell {
-            // Nao é aqui
             UIView.animate(withDuration: 0.2) {
                 currTopicOnCollection.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 currTopicOnCollection.contentView.alpha = 1
@@ -434,7 +438,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if hasPrevious {
             /// Verifica se o anterior possui valor, caso contrário o movimento de swipe foi muito rapido entre os Itens
-            if let index = context.previouslyFocusedIndexPath {
+            if let _ = context.previouslyFocusedIndexPath {
                 if timerStarted {
                     /// Pausa o Timer do último Item de fato acessado
                     topicsTimer[previousIndex].pauseTimer()
