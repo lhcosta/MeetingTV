@@ -52,7 +52,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     var timerMeeting: Chronometer?
     
     //Flag primeiro Foco - Se existe um foco anterior
-    var hasPrevious = true
+    var hasPrevious = false
     
     ///Flag do Botão Iniciar do Timer
     ///O timer de cada pauta é monitorada através do foco para realizar a contagem do timer por pauta somente após o Timer ser iniciado
