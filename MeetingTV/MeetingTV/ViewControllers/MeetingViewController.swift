@@ -71,6 +71,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     var blurEffectView = UIVisualEffectView()
     
     var resetFlag = false
+    
+    
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +107,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     func setUpTimer() {
         /// Inicia nos Timers tanto da Reunião quanto de cada tópico
         timerMeeting?.setTimer()
-//        topicsTimer[0].setTimer()
+        /// Inicia o Timer na posição da utlima célula focada  na collectio - caso  a ultima seja nil, inicia a primeira (célula 2).
+        topicsTimer[self.currTopicOnCollection?.row ?? 2].setTimer()
         
         timerStarted = true
         self.resetFlag = false
@@ -407,6 +410,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
             }
             
             self.labelTimerTopic = currTopicOnCollection.timerTopicLabel
+            self.currTopicOnCollection = collectionView.indexPath(for: currTopicOnCollection)
         }
         
         //
