@@ -12,20 +12,18 @@
 @implementation Chronometer
 
 // isMeeting - true | false
-- (instancetype)initWithDelegate:(id<UpdateTimerDelegate>) delegate isMeeting:(BOOL)isMeeting{
+- (instancetype)initWithDelegate:(id<UpdateTimerDelegate>) delegate isMeeting: (BOOL) isMeeting{
     self = [super init];
     if (self) {
         _delegate = delegate;
         _isMeeting = isMeeting;
+        
+        _seconds = 0;
+        _minutes = 0;
+        _hours = 0;
     }
     
     return self;
-}
-
-- (void)config {
-    _seconds = 0;
-    _minutes = 0;
-    _hours = 0;
 }
 
 - (void)setTimer {
@@ -50,11 +48,14 @@
     NSString *chronometerString = [hoursString stringByAppendingFormat:@"%@", minutesString];
     NSString *chronometerString2 = [chronometerString stringByAppendingFormat:@"%@", secondsString];
     
-    if (_isMeeting) {
-        [_delegate updateLabelDelegateMeeting:(chronometerString2)];
-    } else {
-        [_delegate updateLabelDelegateTopic:(chronometerString2)];
+    if (_isMeeting ==  YES || _isMeeting == NO) {
+        if (_isMeeting) {
+            [_delegate updateLabelDelegateMeeting:(chronometerString2)];
+        } else {
+            [_delegate updateLabelDelegateTopic:(chronometerString2)];
+        }
     }
+    
     
     
     

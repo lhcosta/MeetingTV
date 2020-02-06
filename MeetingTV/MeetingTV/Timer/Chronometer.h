@@ -31,7 +31,6 @@
 @property (nonatomic, weak) id< UpdateTimerDelegate > delegate;
 @property (nonatomic) BOOL isMeeting;
 
-- (void)config;
 - (void)setTimer;
 - (void)updateTimer;
 - (void)pauseTimer;

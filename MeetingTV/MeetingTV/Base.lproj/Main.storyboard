@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="appleTV" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -82,17 +82,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BEz-Tg-bGF">
-                                                    <rect key="frame" x="206.5" y="135" width="145" height="98"/>
+                                                    <rect key="frame" x="10" y="143" width="538" height="82"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Topic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJJ-V4-GMr">
-                                                            <rect key="frame" x="0.0" y="0.0" width="145" height="69"/>
-                                                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="57"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="538" height="58"/>
+                                                            <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="48"/>
                                                             <color key="textColor" red="0.23549035190000001" green="0.23478874559999999" blue="0.2627489865" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9p7-yS-lNj">
-                                                            <rect key="frame" x="0.0" y="69" width="145" height="29"/>
-                                                            <fontDescription key="fontDescription" name="SFMono-Regular" family="SF Mono" pointSize="24"/>
+                                                            <rect key="frame" x="0.0" y="58" width="538" height="24"/>
+                                                            <fontDescription key="fontDescription" name="SFMono-Regular" family="SF Mono" pointSize="20"/>
                                                             <color key="textColor" red="0.20392480490000001" green="0.2039156258" blue="0.20392188429999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -228,8 +228,10 @@
                                                 <constraint firstItem="BEz-Tg-bGF" firstAttribute="centerY" secondItem="w7U-gz-WlT" secondAttribute="centerY" constant="-40" id="kZP-eJ-DOs"/>
                                                 <constraint firstItem="BEz-Tg-bGF" firstAttribute="centerX" secondItem="w7U-gz-WlT" secondAttribute="centerX" id="ntR-rr-A0N"/>
                                                 <constraint firstItem="YMM-3s-Nzj" firstAttribute="top" secondItem="w7U-gz-WlT" secondAttribute="top" id="pMC-pd-vFg"/>
+                                                <constraint firstAttribute="trailing" secondItem="BEz-Tg-bGF" secondAttribute="trailing" constant="10" id="q6j-Q7-bDK"/>
                                                 <constraint firstAttribute="bottom" secondItem="YMM-3s-Nzj" secondAttribute="bottom" id="sfd-8u-85P"/>
                                                 <constraint firstItem="ld4-sd-MHo" firstAttribute="leading" secondItem="aHT-X5-13i" secondAttribute="leading" id="tRO-lu-oyr"/>
+                                                <constraint firstItem="BEz-Tg-bGF" firstAttribute="leading" secondItem="w7U-gz-WlT" secondAttribute="leading" constant="10" id="zmN-wl-FI1"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <color key="backgroundColor" red="0.9961175323" green="0.99598759410000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
