@@ -69,7 +69,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     
     var blurEffectView = UIVisualEffectView()
     
-    
+    var resetFlag = false
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +80,6 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         
         collectionViewHeight.constant = (self.view.frame.height*0.34)*1.1
         
-        ///Este comportamento agora será realizado ao clicar no botão de Iniciar Timer
         NotificationCenter.default.addObserver(self, selector: #selector(updateTopicCell(_:)), name: NSNotification.Name(rawValue: "topicUpdate"), object: nil)
                 
         self.setupFocus()
@@ -134,6 +133,10 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         labelTimerTopic.text = "00:00:00"
         
         timerStarted = false
+        
+        self.resetFlag = true
+        topicsCollectionView.reloadData()
+        self.resetFlag = false
     }
     
     
@@ -379,6 +382,9 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                 cell.viewMoreButton.tag = indexPath.row
                 
                 cell.topicDescription.sizeToFit()
+                if resetFlag {
+                    cell.timerTopicLabel.text = "00:00:00"
+                }
             }
         }
         
