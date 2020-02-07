@@ -239,14 +239,14 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
     }
     
     
-    @IBAction func moreInfoButton(_ sender: Any) {
-        
-        guard let button = sender as? UIButton else { return }
-        selectingAnimation(button: button, flag: false)
-        
-        let topic = topics[button.tag]
-        
-    }
+//    @IBAction func moreInfoButton(_ sender: Any) {
+//
+//        guard let button = sender as? UIButton else { return }
+//        selectingAnimation(button: button, flag: false)
+//
+//        let topic = topics[button.tag]
+//
+//    }
     
     
     @IBAction func endMeeting(_ sender: Any) {

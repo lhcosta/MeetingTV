@@ -47,11 +47,11 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hOA-wn-bbr">
-                                <rect key="frame" x="1451" y="950" width="379" height="70"/>
+                                <rect key="frame" x="1450" y="950" width="380" height="70"/>
                                 <color key="backgroundColor" red="0.79607843140000001" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="HP6-yW-uIi"/>
-                                    <constraint firstAttribute="width" constant="379" id="eRC-yf-5G1"/>
+                                    <constraint firstAttribute="width" constant="380" id="eRC-yf-5G1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="29"/>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
@@ -257,25 +257,17 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Et5-wT-3eL">
-                                <rect key="frame" x="1648" y="95" width="188" height="46"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFMono-Semibold" family="SF Mono" pointSize="38"/>
-                                <color key="textColor" red="0.0" green="0.2470588235" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="userInterfaceStyle=dark">
-                                    <color key="textColor" red="0.62352941179999999" green="0.72549019609999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </variation>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="relogio" translatesAutoresizingMaskIntoConstraints="NO" id="Waj-lb-DaL">
-                                <rect key="frame" x="1572" y="85" width="48" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="relogio" translatesAutoresizingMaskIntoConstraints="NO" id="Waj-lb-DaL">
+                                <rect key="frame" x="1553" y="68" width="48" height="57"/>
                                 <variation key="userInterfaceStyle=dark" image="RelogioDark"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ua5-pc-3GD">
-                                <rect key="frame" x="976" y="950" width="379" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ua5-pc-3GD">
+                                <rect key="frame" x="975" y="950" width="380" height="70"/>
                                 <color key="backgroundColor" red="0.32549019610000002" green="0.47843137250000001" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="aEx-uo-Qbv"/>
+                                    <constraint firstAttribute="width" constant="380" id="feh-Mg-zVY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="29"/>
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Set Timer">
@@ -285,17 +277,32 @@
                                     <action selector="openConfig:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="ul5-z0-icY"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Et5-wT-3eL">
+                                <rect key="frame" x="1626" y="73.5" width="188" height="46"/>
+                                <fontDescription key="fontDescription" name="SFMono-Semibold" family="SF Mono" pointSize="38"/>
+                                <color key="textColor" red="0.0" green="0.2470588235" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="userInterfaceStyle=dark">
+                                    <color key="textColor" red="0.62352941179999999" green="0.72549019609999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.98040527109999998" green="0.98036855460000005" blue="0.98039346930000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="7SH-sw-82h" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1wC-iX-UZm"/>
                             <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="hOA-wn-bbr" secondAttribute="trailing" id="4Q8-s3-6OI"/>
+                            <constraint firstItem="Et5-wT-3eL" firstAttribute="centerY" secondItem="Waj-lb-DaL" secondAttribute="centerY" id="8AW-lo-akV"/>
                             <constraint firstItem="7SH-sw-82h" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="DtY-JS-2ta"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ua5-pc-3GD" secondAttribute="bottom" id="HhU-sT-zuV"/>
                             <constraint firstItem="7SH-sw-82h" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="UEj-EU-aqV"/>
                             <constraint firstAttribute="trailing" secondItem="7SH-sw-82h" secondAttribute="trailing" id="ay4-2a-hKb"/>
                             <constraint firstItem="XL1-OE-ypc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="95" id="bxI-cz-OPQ"/>
                             <constraint firstItem="wu6-TO-1qx" firstAttribute="bottom" secondItem="hOA-wn-bbr" secondAttribute="bottom" id="hh6-ks-OPr"/>
+                            <constraint firstItem="Waj-lb-DaL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="kNs-3N-Liw"/>
                             <constraint firstItem="XL1-OE-ypc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mRm-mG-XPx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Et5-wT-3eL" secondAttribute="trailing" id="nbA-Hd-8Y8"/>
+                            <constraint firstItem="hOA-wn-bbr" firstAttribute="leading" secondItem="Ua5-pc-3GD" secondAttribute="trailing" constant="95" id="qUf-3D-3Nl"/>
+                            <constraint firstItem="Et5-wT-3eL" firstAttribute="leading" secondItem="Waj-lb-DaL" secondAttribute="trailing" constant="25" id="vZ7-AS-a6g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                         <variation key="userInterfaceStyle=dark">
@@ -335,84 +342,110 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <variation key="userInterfaceStyle=dark" image="PlanoFundoDark"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vh-h9-X07">
-                                <rect key="frame" x="1110" y="854" width="450" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.79607843137254897" green="0.79607843137254897" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="29"/>
-                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" title="Reset">
-                                    <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                                <connections>
-                                    <action selector="resetButton:" destination="inw-k1-ZFc" eventType="primaryActionTriggered" id="5To-Gz-qxa"/>
-                                    <action selector="resetButton:" destination="xXj-38-DCd" eventType="primaryActionTriggered" id="KWP-tW-b9K"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tL-pY-efD">
-                                <rect key="frame" x="916" y="442" width="88" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" red="0.31372549020000001" green="0.4941176471" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" backgroundImage="arrowtriangle.up.fill" catalog="system"/>
-                                <variation key="userInterfaceStyle=dark">
-                                    <color key="tintColor" red="0.31372549020000001" green="0.4941176471" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </variation>
-                                <connections>
-                                    <action selector="timeUp:" destination="xXj-38-DCd" eventType="primaryActionTriggered" id="avH-J0-E7o"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaZ-mQ-Fan">
-                                <rect key="frame" x="916" y="664" width="88" height="56"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" red="0.31372549020000001" green="0.4941176471" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" backgroundImage="arrowtriangle.down.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="timeDown:" destination="xXj-38-DCd" eventType="primaryActionTriggered" id="UTb-Ba-Eju"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiS-7G-gGH">
-                                <rect key="frame" x="772" y="524" width="376" height="91"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFMono-Regular" family="SF Mono" pointSize="76"/>
-                                <color key="textColor" red="0.0" green="0.17254901960784313" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="userInterfaceStyle=dark">
-                                    <color key="textColor" red="0.62352941179999999" green="0.72549019609999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Set meeting timer  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsJ-YF-XPY">
-                                <rect key="frame" x="722" y="295" width="479" height="137"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="57"/>
-                                <color key="textColor" red="0.0" green="0.17254901960784313" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="userInterfaceStyle=dark">
-                                    <color key="textColor" red="0.62352941179999999" green="0.72549019609999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </variation>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="relogioConfig" translatesAutoresizingMaskIntoConstraints="NO" id="zbn-99-7Cy">
-                                <rect key="frame" x="917" y="186" width="88" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="tintColor" red="0.0" green="0.17254901960784313" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <variation key="userInterfaceStyle=dark" image="RelogioDark"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqg-VP-fNJ">
-                                <rect key="frame" x="365" y="854" width="450" height="70"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.32549019607843138" green="0.47843137254901957" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="29"/>
-                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
-                                <state key="normal" title="Start"/>
-                                <connections>
-                                    <action selector="startButton:" destination="xXj-38-DCd" eventType="primaryActionTriggered" id="PTf-5Y-Rku"/>
-                                    <action selector="startButton:" destination="inw-k1-ZFc" eventType="primaryActionTriggered" id="kuB-2f-T9R"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="fBX-WV-a2q">
+                                <rect key="frame" x="705" y="244" width="510" height="552"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Lwp-7j-3v7">
+                                        <rect key="frame" x="0.0" y="0.0" width="510" height="203"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="relogioConfig" translatesAutoresizingMaskIntoConstraints="NO" id="zbn-99-7Cy">
+                                                <rect key="frame" x="211" y="0.0" width="88" height="104"/>
+                                                <color key="tintColor" red="0.0" green="0.17254901960784313" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <variation key="userInterfaceStyle=dark" image="RelogioDark"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set meeting timer  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsJ-YF-XPY">
+                                                <rect key="frame" x="0.0" y="134" width="510" height="69"/>
+                                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="57"/>
+                                                <color key="textColor" red="0.0" green="0.17254901960784313" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="userInterfaceStyle=dark">
+                                                    <color key="textColor" red="0.62352941179999999" green="0.72549019609999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </variation>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="75T-qX-6L1">
+                                        <rect key="frame" x="67" y="303" width="376" height="249"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tL-pY-efD">
+                                                <rect key="frame" x="148" y="2" width="80" height="40"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" red="0.31372549020000001" green="0.4941176471" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                <state key="normal" backgroundImage="arrowtriangle.up.fill" catalog="system"/>
+                                                <variation key="userInterfaceStyle=dark">
+                                                    <color key="tintColor" red="0.31372549020000001" green="0.4941176471" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </variation>
+                                                <connections>
+                                                    <action selector="timeUp:" destination="xXj-38-DCd" eventType="primaryActionTriggered" id="avH-J0-E7o"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LiS-7G-gGH">
+                                                <rect key="frame" x="0.0" y="79" width="376" height="91"/>
+                                                <fontDescription key="fontDescription" name="SFMono-Regular" family="SF Mono" pointSize="76"/>
+                                                <color key="textColor" red="0.0" green="0.17254901960784313" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <nil key="highlightedColor"/>
+                                                <variation key="userInterfaceStyle=dark">
+                                                    <color key="textColor" red="0.62352941179999999" green="0.72549019609999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </variation>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oaZ-mQ-Fan">
+                                                <rect key="frame" x="148" y="207" width="80" height="40"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" red="0.31372549020000001" green="0.4941176471" blue="0.99607843139999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                <state key="normal" backgroundImage="arrowtriangle.down.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="timeDown:" destination="xXj-38-DCd" eventType="primaryActionTriggered" id="UTb-Ba-Eju"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="295" translatesAutoresizingMaskIntoConstraints="NO" id="M9q-TT-jfF">
+                                <rect key="frame" x="362.5" y="942" width="1195" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqg-VP-fNJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="450" height="70"/>
+                                        <color key="backgroundColor" red="0.32549019607843138" green="0.47843137254901957" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="450" id="LNY-Sl-k4f"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="29"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Start"/>
+                                        <connections>
+                                            <action selector="startButton:" destination="xXj-38-DCd" eventType="primaryActionTriggered" id="PTf-5Y-Rku"/>
+                                            <action selector="startButton:" destination="inw-k1-ZFc" eventType="primaryActionTriggered" id="kuB-2f-T9R"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2vh-h9-X07">
+                                        <rect key="frame" x="745" y="0.0" width="450" height="70"/>
+                                        <color key="backgroundColor" red="0.79607843137254897" green="0.79607843137254897" blue="0.79607843137254897" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="FxZ-09-sUG"/>
+                                            <constraint firstAttribute="width" constant="450" id="dso-ew-Sna"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="29"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetButton:" destination="inw-k1-ZFc" eventType="primaryActionTriggered" id="5To-Gz-qxa"/>
+                                            <action selector="resetButton:" destination="xXj-38-DCd" eventType="primaryActionTriggered" id="KWP-tW-b9K"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="fBX-WV-a2q" firstAttribute="centerY" secondItem="keu-Io-EYr" secondAttribute="centerY" constant="-20" id="OqL-8z-Xzs"/>
+                            <constraint firstItem="WrB-AZ-SQb" firstAttribute="top" secondItem="M9q-TT-jfF" secondAttribute="bottom" constant="8" symbolic="YES" id="Wo3-rC-Wcn"/>
+                            <constraint firstItem="M9q-TT-jfF" firstAttribute="centerX" secondItem="keu-Io-EYr" secondAttribute="centerX" id="yeW-4x-3zx"/>
+                            <constraint firstItem="fBX-WV-a2q" firstAttribute="centerX" secondItem="keu-Io-EYr" secondAttribute="centerX" id="zp8-9b-aIk"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="rTB-9u-gsZ"/>
                     </view>
                     <navigationItem key="navigationItem" id="CDf-Et-Cae"/>
