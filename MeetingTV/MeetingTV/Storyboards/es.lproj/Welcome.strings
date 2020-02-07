@@ -1,1 +1,18 @@
 
+/* Class = "UILabel"; text = "1- Choose the topics you want to discuss at \nyour session using the app meeting"; ObjectID = "CN3-vj-yve"; */
+"CN3-vj-yve.text" = "1- Elija los temas que desea discutir en su \nsesión usando la aplicación Meeting";
+
+/* Class = "UILabel"; text = "3- To end the session press the end \nmeeting button and your information will be \nsaved in your meeting app"; ObjectID = "S47-87-nvy"; */
+"S47-87-nvy.text" = "3- Para finalizar la Reunión, presione el botón \n'Finalizar Reunión' y su información se guardará \nen su aplicación Meeting";
+
+/* Class = "UILabel"; text = "Welcome to"; ObjectID = "Urb-ke-5S9"; */
+"Urb-ke-5S9.text" = "Bienvenido a";
+
+/* Class = "UILabel"; text = "Meetings"; ObjectID = "bQU-eN-KDB"; */
+"bQU-eN-KDB.text" = "Meetings";
+
+/* Class = "UILabel"; text = "2- Press the mirror button to mirror your \nmeeting on your tv"; ObjectID = "tPW-fQ-r5w"; */
+"tPW-fQ-r5w.text" = "2- Presione el botón Mirror para reflejar su \nReunión en su televisor";
+
+/* Class = "UILabel"; text = "To begin you must:"; ObjectID = "wAW-YQ-fh3"; */
+"wAW-YQ-fh3.text" = "Para comenzar:";
