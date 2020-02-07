@@ -11,9 +11,9 @@
 		23B3DA90238EE936003FF10B /* MeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA8F238EE936003FF10B /* MeetingViewController.swift */; };
 		23B3DA92238EEA15003FF10B /* Meeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA91238EEA15003FF10B /* Meeting.swift */; };
 		23B3DA94238EEF86003FF10B /* TopicsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */; };
+		23E39DD923E49DAE00BFC199 /* ConclusionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E39DD823E49DAE00BFC199 /* ConclusionsTableViewCell.swift */; };
 		497FB2B023E49C68008059D9 /* sf-mono-cufonfonts in Resources */ = {isa = PBXBuildFile; fileRef = 497FB2AF23E49C67008059D9 /* sf-mono-cufonfonts */; };
 		497FB2B123E49C97008059D9 /* CloudManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4967E59F23904F020090DF0F /* CloudManager.m */; };
-		23E39DD923E49DAE00BFC199 /* ConclusionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E39DD823E49DAE00BFC199 /* ConclusionsTableViewCell.swift */; };
 		49EB44C123871068002F434D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C023871068002F434D /* AppDelegate.swift */; };
 		49EB44C623871068002F434D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49EB44C423871068002F434D /* Main.storyboard */; };
 		49EB44C923871068002F434D /* MeetingTV.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 49EB44C723871068002F434D /* MeetingTV.xcdatamodeld */; };
@@ -392,6 +392,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -453,6 +454,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
