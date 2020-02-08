@@ -11,6 +11,7 @@ import UIKit
 class WelcomeViewController: UIViewController {
 
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var welcomeLabel : UILabel!
     
     var multipeer : MeetingAdvertiserPeer!
     
@@ -22,7 +23,9 @@ class WelcomeViewController: UIViewController {
         
         self.multipeer = MeetingAdvertiserPeer()
         multipeer.delegate = self
-
+        
+        welcomeLabel.text = NSLocalizedString("Welcome\nto Meeting", comment: "")
+        self.changeColorMeetingName()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,3 +56,16 @@ extension WelcomeViewController : MeetingConnectionPeerDelegate {
     
 }
 
+//MARK:- Change color Meeting name
+extension WelcomeViewController {
+    
+    func changeColorMeetingName() {
+        
+        let name = NSLocalizedString("Welcome\nto Meeting", comment: "") as NSString
+        let range = name.range(of: "Meeting")
+        let atributteString = NSMutableAttributedString(string: name as String)
+        atributteString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(named: "MeetingColor")!, range: range)
+        
+        self.welcomeLabel.attributedText = atributteString
+    }    
+}

@@ -6,10 +6,10 @@
 "S47-87-nvy.text" = "3- Para finalizar la Reunión, presione el botón \n'Finalizar Reunión' y su información se guardará \nen su aplicación Meeting";
 
 /* Class = "UILabel"; text = "Welcome to"; ObjectID = "Urb-ke-5S9"; */
-"Urb-ke-5S9.text" = "Bienvenido a";
+"Urb-ke-5S9.text" = "Bienvenido\na Meeting";
 
 /* Class = "UILabel"; text = "Meetings"; ObjectID = "bQU-eN-KDB"; */
-"bQU-eN-KDB.text" = "Meetings";
+"bQU-eN-KDB.text" = "Meeting";
 
 /* Class = "UILabel"; text = "2- Press the mirror button to mirror your \nmeeting on your tv"; ObjectID = "tPW-fQ-r5w"; */
 "tPW-fQ-r5w.text" = "2- Presione el botón Mirror para reflejar su \nReunión en su televisor";
