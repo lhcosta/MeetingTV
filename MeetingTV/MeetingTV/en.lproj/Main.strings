@@ -1,12 +1,42 @@
 
+/* Class = "UIButton"; normalTitle = "Reset"; ObjectID = "2vh-h9-X07"; */
+"2vh-h9-X07.normalTitle" = "Reset";
+
+/* Class = "UILabel"; text = "00:00:00"; ObjectID = "9p7-yS-lNj"; */
+"9p7-yS-lNj.text" = "00:00:00";
+
+/* Class = "UILabel"; text = "00:00:00"; ObjectID = "Et5-wT-3eL"; */
+"Et5-wT-3eL.text" = "00:00:00";
+
+/* Class = "UIButton"; normalTitle = "Close"; ObjectID = "Jlj-Ch-7Ko"; */
+"Jlj-Ch-7Ko.normalTitle" = "Close";
+
+/* Class = "UILabel"; text = "00:00:00"; ObjectID = "LiS-7G-gGH"; */
+"LiS-7G-gGH.text" = "00:00:00";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PAs-Z5-P3S"; */
+"PAs-Z5-P3S.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Set Timer"; ObjectID = "Ua5-pc-3GD"; */
+"Ua5-pc-3GD.normalTitle" = "Set Timer";
+
 /* Class = "UILabel"; text = "Label"; ObjectID = "XL1-OE-ypc"; */
 "XL1-OE-ypc.text" = "Label";
 
-/* Class = "UILabel"; text = "00:00:00"; ObjectID = "iVo-or-c9X"; */
-"iVo-or-c9X.text" = "00:00:00";
+/* Class = "UIButton"; normalTitle = "View more"; ObjectID = "aHT-X5-13i"; */
+"aHT-X5-13i.normalTitle" = "View more";
+
+/* Class = "UIButton"; normalTitle = "Start"; ObjectID = "cqg-VP-fNJ"; */
+"cqg-VP-fNJ.normalTitle" = "Start";
+
+/* Class = "UIButton"; normalTitle = "End Meeting"; ObjectID = "hOA-wn-bbr"; */
+"hOA-wn-bbr.normalTitle" = "End Meeting";
 
 /* Class = "UILabel"; text = "Topic"; ObjectID = "rJJ-V4-GMr"; */
 "rJJ-V4-GMr.text" = "Topic";
+
+/* Class = "UILabel"; text = "Set meeting timer  "; ObjectID = "tsJ-YF-XPY"; */
+"tsJ-YF-XPY.text" = "Set meeting timer  ";
 
 /* Class = "UILabel"; text = "Autor"; ObjectID = "uIo-Ov-Ux3"; */
 "uIo-Ov-Ux3.text" = "Author";

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="appleTV" appearance="light"/>
+    <device id="appleTV" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -89,12 +89,18 @@
                                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="48"/>
                                                             <color key="textColor" red="0.23549035190000001" green="0.23478874559999999" blue="0.2627489865" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="userInterfaceStyle=dark">
+                                                                <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </variation>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9p7-yS-lNj">
                                                             <rect key="frame" x="0.0" y="58" width="538" height="24"/>
                                                             <fontDescription key="fontDescription" name="SFMono-Regular" family="SF Mono" pointSize="20"/>
                                                             <color key="textColor" red="0.20392480490000001" green="0.2039156258" blue="0.20392188429999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
+                                                            <variation key="userInterfaceStyle=dark">
+                                                                <color key="textColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </variation>
                                                         </label>
                                                     </subviews>
                                                 </stackView>
@@ -103,6 +109,9 @@
                                                     <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
                                                     <color key="textColor" red="0.23549035190000001" green="0.23478874559999999" blue="0.2627489865" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="userInterfaceStyle=dark">
+                                                        <color key="textColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </variation>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ld4-sd-MHo">
                                                     <rect key="frame" x="40" y="357" width="473" height="2"/>
@@ -355,18 +364,18 @@
                                 <variation key="userInterfaceStyle=dark" image="PlanoFundoDark"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="fBX-WV-a2q">
-                                <rect key="frame" x="705" y="244" width="510" height="552"/>
+                                <rect key="frame" x="705" y="267.5" width="510" height="505"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Lwp-7j-3v7">
-                                        <rect key="frame" x="0.0" y="0.0" width="510" height="203"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="510" height="156"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="relogioConfig" translatesAutoresizingMaskIntoConstraints="NO" id="zbn-99-7Cy">
-                                                <rect key="frame" x="211" y="0.0" width="88" height="104"/>
+                                                <rect key="frame" x="231" y="0.0" width="48" height="57"/>
                                                 <color key="tintColor" red="0.0" green="0.17254901960784313" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <variation key="userInterfaceStyle=dark" image="RelogioDark"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set meeting timer  " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsJ-YF-XPY">
-                                                <rect key="frame" x="0.0" y="134" width="510" height="69"/>
+                                                <rect key="frame" x="0.0" y="87" width="510" height="69"/>
                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="57"/>
                                                 <color key="textColor" red="0.0" green="0.17254901960784313" blue="0.74901960784313726" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <nil key="highlightedColor"/>
@@ -377,7 +386,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="75T-qX-6L1">
-                                        <rect key="frame" x="67" y="303" width="376" height="249"/>
+                                        <rect key="frame" x="67" y="256" width="376" height="249"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tL-pY-efD">
                                                 <rect key="frame" x="148" y="2" width="80" height="40"/>
