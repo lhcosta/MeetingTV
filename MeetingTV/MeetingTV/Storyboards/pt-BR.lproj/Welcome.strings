@@ -1,9 +1,9 @@
 
 /* Class = "UILabel"; text = "1- Choose the topics you want to discuss at \nyour session using the app meeting"; ObjectID = "CN3-vj-yve"; */
-"CN3-vj-yve.text" = "1- Escolha a Pauta que deseja discutir na \nsua Reunião usando o app Meeting";
+"CN3-vj-yve.text" = "1- Escolha a Pauta que deseja discutir na \nsua Reunião usando o app Meeting Minutes";
 
 /* Class = "UILabel"; text = "3- To end the session press the end \nmeeting button and your information will be \nsaved in your meeting app"; ObjectID = "S47-87-nvy"; */
-"S47-87-nvy.text" = "3- Para encerrar sua Reunião pressione o botão \n'Encerrar Reunião' e suas informações serão salvas \nno app Meeting";
+"S47-87-nvy.text" = "3- Para encerrar sua Reunião pressione o botão \n'Encerrar Reunião' e suas informações serão salvas \nno app Meeting Minutes";
 
 /* Class = "UILabel"; text = "Welcome to"; ObjectID = "Urb-ke-5S9"; */
 "Urb-ke-5S9.text" = "Bem Vindo\nao Meeting";
