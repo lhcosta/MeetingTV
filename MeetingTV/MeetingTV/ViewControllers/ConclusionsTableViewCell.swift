@@ -11,6 +11,7 @@ import UIKit
 class ConclusionsTableViewCell: UITableViewCell {
     
     @IBOutlet var conclusionPqLabel: UILabel!
+    @IBOutlet var circle: UIImageView!
     
     
     override func awakeFromNib() {

@@ -154,7 +154,7 @@
                                                 <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMM-3s-Nzj">
                                                     <rect key="frame" x="0.0" y="0.0" width="558" height="448"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jlj-Ch-7Ko" userLabel="Close">
+                                                        <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jlj-Ch-7Ko" userLabel="Close">
                                                             <rect key="frame" x="348" y="378" width="170" height="40"/>
                                                             <color key="backgroundColor" red="0.32497316599999998" green="0.47915506359999999" blue="0.99612778430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
@@ -172,7 +172,7 @@
                                                             <rect key="frame" x="50" y="10" width="458" height="339"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <prototypes>
-                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="conclusion" id="ojJ-AA-3b0" customClass="ConclusionsTableViewCell" customModule="MeetingTV" customModuleProvider="target">
+                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="conclusion" id="ojJ-AA-3b0" customClass="ConclusionsTableViewCell" customModule="MeetingTV" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="66" width="458" height="66"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ojJ-AA-3b0" id="skT-gD-aZc">
@@ -203,6 +203,7 @@
                                                                         </constraints>
                                                                     </tableViewCellContentView>
                                                                     <connections>
+                                                                        <outlet property="circle" destination="d0w-dc-yhH" id="XVd-AL-nn2"/>
                                                                         <outlet property="conclusionPqLabel" destination="PAs-Z5-P3S" id="f2U-ff-Q8u"/>
                                                                     </connections>
                                                                 </tableViewCell>

@@ -241,4 +241,29 @@ extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+    
+    
+    func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
+        
+        if let previousCell = context.previouslyFocusedView as? ConclusionsTableViewCell {
+            let animation = CABasicAnimation(keyPath: "shadowOffset")
+            animation.fromValue = previousCell.circle.layer.shadowOffset
+            animation.toValue = CGSize(width: 0, height: 5)
+            animation.duration = 0.1
+            previousCell.circle.layer.shadowOpacity = 0.3
+            previousCell.circle.layer.add(animation, forKey: animation.keyPath)
+            previousCell.circle.layer.shadowOffset = CGSize(width: 0, height: 5)
+        }
+        
+        if let nextCell = context.nextFocusedView as? ConclusionsTableViewCell {
+            
+            let animation = CABasicAnimation(keyPath: "shadowOffset")
+            animation.fromValue = nextCell.circle.layer.shadowOffset
+            animation.toValue = CGSize(width: 0, height: 10)
+            animation.duration = 0.1
+            nextCell.circle.layer.shadowOpacity = 0.3
+            nextCell.circle.layer.add(animation, forKey: animation.keyPath)
+            nextCell.circle.layer.shadowOffset = CGSize(width: 0, height: 10)
+        }
+    }
 }

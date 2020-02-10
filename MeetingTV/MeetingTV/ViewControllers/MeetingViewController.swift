@@ -207,7 +207,8 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         if let previousButton = context.previouslyFocusedItem as? UIButton {
             
             // Close button não pode ter essa animação.
-            if previousButton.titleLabel?.text != "Close" {
+            if previousButton.tag != 7 {
+//            if previousButton.titleLabel?.text != NSLocalizedString("Close", comment: "")  {
 
                 let animation = CABasicAnimation(keyPath: "shadowOffset")
                 animation.fromValue = previousButton.layer.shadowOffset
@@ -562,7 +563,8 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if let previousButton = context.previouslyFocusedItem as? UIButton {
                 
-            if previousButton.titleLabel?.text != "Close" {
+            if previousButton.tag != 7 {
+//            if previousButton.titleLabel?.text != NSLocalizedString("Close", comment: "") {
                 let animation = CABasicAnimation(keyPath: "shadowOffset")
                 animation.fromValue = previousButton.layer.shadowOffset
                 animation.toValue = CGSize(width: 0, height: 5)
