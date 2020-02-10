@@ -233,7 +233,7 @@ extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "conclusion") as! ConclusionsTableViewCell
         if indexPath.row == 0 {
-            cell.conclusionPqLabel.text = self.topicPorque
+            cell.conclusionPqLabel.text = self.topicPorque?.isEmpty ?? false ? self.topicPorque : NSLocalizedString("Not specified.", comment: "") 
         } else if self.conclusions[indexPath.row-1] != "" {
             cell.conclusionPqLabel.text = self.conclusions[indexPath.row-1]
         }
