@@ -426,6 +426,8 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if let currTopicOnCollection = context.nextFocusedView?.superview?.superview as? TopicsCollectionViewCell {
             UIView.animate(withDuration: 0.2) {
+                // width : 576.576
+                // height : 420.552
                 currTopicOnCollection.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 currTopicOnCollection.contentView.alpha = 1
             }
@@ -596,8 +598,7 @@ extension MeetingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.width*0.28, height: self.view.frame.height*0.34)
-//        return CGSize(width: 568, height: 414)
+        return CGSize(width: collectionView.bounds.width*0.273, height: self.view.frame.height*0.354)
     }
     
     

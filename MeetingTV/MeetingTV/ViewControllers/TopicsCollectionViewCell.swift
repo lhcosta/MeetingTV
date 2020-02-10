@@ -261,8 +261,6 @@ extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
             }
         }
         
-        // desejavel: 576 x 420
-        // antes: 437.6 x 367.2  (4k)
         
         if let nextCell = context.nextFocusedView as? ConclusionsTableViewCell {
             
