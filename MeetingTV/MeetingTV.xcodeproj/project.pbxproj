@@ -25,11 +25,6 @@
 		A423781723A16FC500700BE1 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A423781623A16FC500700BE1 /* WelcomeViewController.swift */; };
 		A45097B2238DAB0E009AB71E /* MeetingAdvertiserPeer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45097B1238DAB0E009AB71E /* MeetingAdvertiserPeer.swift */; };
 		A4533FF3238C57D70089257A /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4533FF2238C57D70089257A /* CloudKit.framework */; };
-		A4E97E9023EF2A3F00A850F4 /* background1x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E97E8E23EF2A3E00A850F4 /* background1x.png */; };
-		A4E97E9123EF2A3F00A850F4 /* background2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A4E97E8F23EF2A3F00A850F4 /* background2x.png */; };
-		A4F77F8E23EEFF140000AB1E /* TVServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4F77F6D23EEE0AD0000AB1E /* TVServices.framework */; };
-		A4F77F9123EEFF140000AB1E /* ContentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F77F9023EEFF140000AB1E /* ContentProvider.swift */; };
-		A4F77F9523EEFF140000AB1E /* BackgroundTopShelf.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A4F77F8D23EEFF130000AB1E /* BackgroundTopShelf.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E254E3D423DF677A007224B1 /* TimerConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E254E3D323DF677A007224B1 /* TimerConfigViewController.swift */; };
 		E261A25A238F051F004A7D90 /* Chronometer.m in Sources */ = {isa = PBXBuildFile; fileRef = E261A259238F051F004A7D90 /* Chronometer.m */; };
 		E2DD982223E8936D00446E02 /* San Francisco Font in Resources */ = {isa = PBXBuildFile; fileRef = E2DD982123E8936D00446E02 /* San Francisco Font */; };
@@ -37,30 +32,6 @@
 		E2DD982723E8982400446E02 /* SFMonoRegular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2DD982523E8981B00446E02 /* SFMonoRegular.otf */; };
 		E2DD982823E8982700446E02 /* SFMonoSemibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E2DD982623E8982100446E02 /* SFMonoSemibold.otf */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A4F77F9323EEFF140000AB1E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 49EB44B523871068002F434D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A4F77F8C23EEFF130000AB1E;
-			remoteInfo = BackgroundTopShelf;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		A4F77F7623EEE0AD0000AB1E /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				A4F77F9523EEFF140000AB1E /* BackgroundTopShelf.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		23B3DA8C238EE5F8003FF10B /* Topic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
@@ -93,12 +64,7 @@
 		A45097B1238DAB0E009AB71E /* MeetingAdvertiserPeer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingAdvertiserPeer.swift; sourceTree = "<group>"; };
 		A4533FF0238C57D00089257A /* MeetingTV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MeetingTV.entitlements; sourceTree = "<group>"; };
 		A4533FF2238C57D70089257A /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
-		A4E97E8E23EF2A3E00A850F4 /* background1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1x.png; sourceTree = "<group>"; };
-		A4E97E8F23EF2A3F00A850F4 /* background2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background2x.png; sourceTree = "<group>"; };
 		A4F77F6D23EEE0AD0000AB1E /* TVServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TVServices.framework; path = System/Library/Frameworks/TVServices.framework; sourceTree = SDKROOT; };
-		A4F77F8D23EEFF130000AB1E /* BackgroundTopShelf.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = BackgroundTopShelf.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		A4F77F9023EEFF140000AB1E /* ContentProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentProvider.swift; sourceTree = "<group>"; };
-		A4F77F9223EEFF140000AB1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E237AA4623ED959600F0AC6C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		E237AA4823ED959900F0AC6C /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
 		E237AA4A23ED959C00F0AC6C /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
@@ -125,14 +91,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A4F77F8A23EEFF130000AB1E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A4F77F8E23EEFF140000AB1E /* TVServices.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -142,8 +100,8 @@
 				A423781623A16FC500700BE1 /* WelcomeViewController.swift */,
 				23B3DA8F238EE936003FF10B /* MeetingViewController.swift */,
 				23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */,
-				E254E3D323DF677A007224B1 /* TimerConfigViewController.swift */,
 				23E39DD823E49DAE00BFC199 /* ConclusionsTableViewCell.swift */,
+				E254E3D323DF677A007224B1 /* TimerConfigViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -164,7 +122,6 @@
 			children = (
 				E2417BC623E4AF14007CBDE4 /* sf-mono-cufonfonts */,
 				49EB44BF23871068002F434D /* MeetingTV */,
-				A4F77F8F23EEFF140000AB1E /* BackgroundTopShelf */,
 				49EB44BE23871068002F434D /* Products */,
 				A4533FF1238C57D70089257A /* Frameworks */,
 			);
@@ -174,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				49EB44BD23871068002F434D /* MeetingTV.app */,
-				A4F77F8D23EEFF130000AB1E /* BackgroundTopShelf.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -227,25 +183,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A4F77F7A23EEE2540000AB1E /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				A4E97E8E23EF2A3E00A850F4 /* background1x.png */,
-				A4E97E8F23EF2A3F00A850F4 /* background2x.png */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
-		A4F77F8F23EEFF140000AB1E /* BackgroundTopShelf */ = {
-			isa = PBXGroup;
-			children = (
-				A4F77F7A23EEE2540000AB1E /* Images */,
-				A4F77F9023EEFF140000AB1E /* ContentProvider.swift */,
-				A4F77F9223EEFF140000AB1E /* Info.plist */,
-			);
-			path = BackgroundTopShelf;
-			sourceTree = "<group>";
-		};
 		E261A258238F0500004A7D90 /* Timer */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,34 +214,15 @@
 				49EB44B923871068002F434D /* Sources */,
 				49EB44BA23871068002F434D /* Frameworks */,
 				49EB44BB23871068002F434D /* Resources */,
-				A4F77F7623EEE0AD0000AB1E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A4F77F9423EEFF140000AB1E /* PBXTargetDependency */,
 			);
 			name = MeetingTV;
 			productName = MeetingTV;
 			productReference = 49EB44BD23871068002F434D /* MeetingTV.app */;
 			productType = "com.apple.product-type.application";
-		};
-		A4F77F8C23EEFF130000AB1E /* BackgroundTopShelf */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A4F77F9623EEFF140000AB1E /* Build configuration list for PBXNativeTarget "BackgroundTopShelf" */;
-			buildPhases = (
-				A4F77F8923EEFF130000AB1E /* Sources */,
-				A4F77F8A23EEFF130000AB1E /* Frameworks */,
-				A4F77F8B23EEFF130000AB1E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = BackgroundTopShelf;
-			productName = BackgroundTopShelf;
-			productReference = A4F77F8D23EEFF130000AB1E /* BackgroundTopShelf.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -319,9 +237,6 @@
 					49EB44BC23871068002F434D = {
 						CreatedOnToolsVersion = 11.2.1;
 						LastSwiftMigration = 1120;
-					};
-					A4F77F8C23EEFF130000AB1E = {
-						CreatedOnToolsVersion = 11.3.1;
 					};
 				};
 			};
@@ -341,7 +256,6 @@
 			projectRoot = "";
 			targets = (
 				49EB44BC23871068002F434D /* MeetingTV */,
-				A4F77F8C23EEFF130000AB1E /* BackgroundTopShelf */,
 			);
 		};
 /* End PBXProject section */
@@ -362,15 +276,6 @@
 				49EB44CB2387106A002F434D /* Assets.xcassets in Resources */,
 				49F09AA42399860D00B7DFD3 /* Welcome.storyboard in Resources */,
 				49EB44C623871068002F434D /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A4F77F8B23EEFF130000AB1E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A4E97E9023EF2A3F00A850F4 /* background1x.png in Resources */,
-				A4E97E9123EF2A3F00A850F4 /* background2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,23 +301,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A4F77F8923EEFF130000AB1E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A4F77F9123EEFF140000AB1E /* ContentProvider.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		A4F77F9423EEFF140000AB1E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A4F77F8C23EEFF130000AB1E /* BackgroundTopShelf */;
-			targetProxy = A4F77F9323EEFF140000AB1E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		49EB44C423871068002F434D /* Main.storyboard */ = {
@@ -505,7 +394,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -567,7 +456,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_ENTITLEMENTS = YES;
+				CODE_SIGN_ENTITLEMENTS = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -593,83 +482,49 @@
 		49EB44D32387106A002F434D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MeetingTV/MeetingTV.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = 3H798M6N3T;
 				INFOPLIST_FILE = MeetingTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.QuartetoFantastico.Meeting.tvOS;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.QuartetoFantastico.Meeting.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetingTV/MeetingTV-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = Debug;
 		};
 		49EB44D42387106A002F434D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MeetingTV/MeetingTV.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = 3H798M6N3T;
 				INFOPLIST_FILE = MeetingTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.QuartetoFantastico.Meeting.tvOS;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.QuartetoFantastico.Meeting.iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetingTV/MeetingTV-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-			};
-			name = Release;
-		};
-		A4F77F9723EEFF140000AB1E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3H798M6N3T;
-				INFOPLIST_FILE = BackgroundTopShelf/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.QuartetoFantastico.Meeting.tvOS.BackgroundTopShelf;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-			};
-			name = Debug;
-		};
-		A4F77F9823EEFF140000AB1E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3H798M6N3T;
-				INFOPLIST_FILE = BackgroundTopShelf/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.QuartetoFantastico.Meeting.tvOS.BackgroundTopShelf;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.0;
 			};
 			name = Release;
 		};
@@ -690,15 +545,6 @@
 			buildConfigurations = (
 				49EB44D32387106A002F434D /* Debug */,
 				49EB44D42387106A002F434D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A4F77F9623EEFF140000AB1E /* Build configuration list for PBXNativeTarget "BackgroundTopShelf" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A4F77F9723EEFF140000AB1E /* Debug */,
-				A4F77F9823EEFF140000AB1E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
