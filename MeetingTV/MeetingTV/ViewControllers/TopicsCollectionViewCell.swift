@@ -246,6 +246,7 @@ extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didUpdateFocusIn context: UITableViewFocusUpdateContext, with coordinator: UIFocusAnimationCoordinator) {
         
         if let previousCell = context.previouslyFocusedView as? ConclusionsTableViewCell {
+            
             let animation = CABasicAnimation(keyPath: "shadowOffset")
             animation.fromValue = previousCell.circle.layer.shadowOffset
             animation.toValue = CGSize(width: 0, height: 5)
