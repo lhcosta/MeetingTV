@@ -40,7 +40,7 @@
     [[self publicCloudDatabase] addOperation:operation];
 }
 
-- (void) subscribe:(NSString*)recordType withPredicate:(NSPredicate*)predicate desiredKeys:(NSArray<NSString *> *) keys completionHandler:(void (^ _Nullable)(CKSubscription * _Nullable, NSError * _Nullable)) completion{
+- (void) subscribe:(NSString*)recordType withPredicate:(NSPredicate*)predicate desiredKeys:(NSArray<NSString *> *) keys completionHandler:(void (^ _Nullable)(CKSubscription * _Nullable, NSError * _Nullable)) completion {
     
     CKQuerySubscription *subscription = [[CKQuerySubscription alloc] initWithRecordType:recordType predicate:predicate options: CKQuerySubscriptionOptionsFiresOnRecordUpdate];
     

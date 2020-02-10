@@ -76,11 +76,29 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        CKContainer.default().accountStatus{ (status, _) in
+            if status != .available {
+                let alert = UIAlertController(title: "iCloud", message: NSLocalizedString("Please login to your iCloud account so changes can be saved.", comment: ""), preferredStyle: .alert)
+                
+                let later = UIAlertAction(title: NSLocalizedString("Later", comment: ""), style: .cancel) { (_) in
+                    print("mais tarde")
+                }
+                
+                let goToSettings = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .default) { (_) in
+                    UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+                }
+                
+                alert.addAction(goToSettings)
+                alert.addAction(later)
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
         let topicIDs = topics.map { (topic) -> String in
             return topic.recordName
         }
         
-        CloudManager.shared().subscribe("Topic", with: NSPredicate(format: "%@ CONTAINS recordName", topicIDs), desiredKeys: ["conclusion"]) { (_, error) in
+        CloudManager.shared().subscribe("Topic", with: NSPredicate(format: "%@ CONTAINS recordName", topicIDs), desiredKeys: ["conclusions"]) { (_, error) in
             print(error.debugDescription)
         }
         
