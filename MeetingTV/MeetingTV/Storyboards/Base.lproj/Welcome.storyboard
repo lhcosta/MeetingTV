@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="15505" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Ph-uq-Nh1">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="15705" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8Ph-uq-Nh1">
     <device id="appleTV" appearance="dark"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -78,7 +78,7 @@ saved in your meeting app</string>
                                     <color key="backgroundColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urb-ke-5S9">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Meeting" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Urb-ke-5S9">
                                 <rect key="frame" x="726" y="179" width="420" height="182"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="420" id="dyF-CI-56F"/>
@@ -87,23 +87,9 @@ saved in your meeting app</string>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meetings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQU-eN-KDB">
-                                <rect key="frame" x="798.5" y="270.5" width="400" height="91"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="400" id="dws-VH-VPl"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="76"/>
-                                <color key="textColor" red="0.0" green="0.2470588235" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="userInterfaceStyle=dark">
-                                    <color key="textColor" red="0.62352941179999999" green="0.72549019609999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </variation>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.98039215690000003" green="0.98039215690000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="bQU-eN-KDB" firstAttribute="centerY" secondItem="jb5-hV-RDi" secondAttribute="centerY" multiplier="0.585" id="45h-zA-X0z"/>
-                            <constraint firstItem="bQU-eN-KDB" firstAttribute="centerX" secondItem="jb5-hV-RDi" secondAttribute="centerX" multiplier="1.04" id="6oh-rW-ISp"/>
                             <constraint firstItem="GzY-Af-XMc" firstAttribute="centerY" secondItem="jb5-hV-RDi" secondAttribute="centerY" multiplier="1.2" id="NMT-iD-YiC"/>
                             <constraint firstItem="Urb-ke-5S9" firstAttribute="centerX" secondItem="jb5-hV-RDi" secondAttribute="centerX" multiplier="0.975" id="RCl-Lc-dyw"/>
                             <constraint firstItem="Urb-ke-5S9" firstAttribute="centerY" secondItem="jb5-hV-RDi" secondAttribute="centerY" multiplier="0.5" id="UnJ-nP-Da4"/>
@@ -116,6 +102,7 @@ saved in your meeting app</string>
                     </view>
                     <connections>
                         <outlet property="cardView" destination="GzY-Af-XMc" id="lmt-XX-rqn"/>
+                        <outlet property="welcomeLabel" destination="Urb-ke-5S9" id="KNd-GB-7xK"/>
                         <segue destination="WVO-S2-D3b" kind="show" identifier="ShowMeeting" id="SN2-wv-813"/>
                     </connections>
                 </viewController>

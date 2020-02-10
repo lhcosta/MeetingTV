@@ -6,10 +6,7 @@
 "S47-87-nvy.text" = "3- To end the session press the end \nmeeting button and your information will be \nsaved in your Meeting Minutes app";
 
 /* Class = "UILabel"; text = "Welcome to"; ObjectID = "Urb-ke-5S9"; */
-"Urb-ke-5S9.text" = "Welcome to";
-
-/* Class = "UILabel"; text = "Meetings"; ObjectID = "bQU-eN-KDB"; */
-"bQU-eN-KDB.text" = "Meetings";
+"Urb-ke-5S9.text" = "Welcome\nto Meeting";
 
 /* Class = "UILabel"; text = "2- Press the mirror button to mirror your \nmeeting on your tv"; ObjectID = "tPW-fQ-r5w"; */
 "tPW-fQ-r5w.text" = "2- Press the mirror button to mirror your \nmeeting on your tv";

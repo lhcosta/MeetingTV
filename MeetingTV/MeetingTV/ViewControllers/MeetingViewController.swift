@@ -482,7 +482,7 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
                     return
                 }
                 let nextIndexPath = topicsCollectionView.indexPath(for: nextCell)
-                let indexNext = context.nextFocusedIndexPath
+                let _ = context.nextFocusedIndexPath
                 
                 if let previousIndexPath = topicsCollectionView.indexPath(for: previousCell) {
                     print("Index Previous: \(previousIndexPath.row))")
@@ -682,7 +682,7 @@ extension MeetingViewController {
 
 func selectingAnimation(button: UIButton, flag: Bool) {
     
-    var time = 0.06
+    let time = 0.06
     
     let animation = CABasicAnimation(keyPath: "shadowOffset")
     animation.fromValue = button.layer.shadowOffset
