@@ -16,7 +16,19 @@ class ConclusionsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        setupFocus()
+    }
+    
+    
+    func setupFocus() {
+        
+        circle.layer.masksToBounds = false
+        circle.layer.shadowOpacity = 0.3
+        circle.layer.shadowRadius = 1
+        circle.layer.shadowOffset = CGSize(width: 1, height: 2)
+        circle.clipsToBounds = false
+        circle.layer.cornerRadius = 1
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,5 +36,4 @@ class ConclusionsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }

@@ -249,22 +249,35 @@ extension TopicsCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
             
             let animation = CABasicAnimation(keyPath: "shadowOffset")
             animation.fromValue = previousCell.circle.layer.shadowOffset
-            animation.toValue = CGSize(width: 0, height: 5)
+            animation.toValue = CGSize(width: 1, height: 2)
             animation.duration = 0.1
             previousCell.circle.layer.shadowOpacity = 0.3
             previousCell.circle.layer.add(animation, forKey: animation.keyPath)
-            previousCell.circle.layer.shadowOffset = CGSize(width: 0, height: 5)
+            previousCell.circle.layer.shadowOffset = CGSize(width: 1, height: 2)
+            
+            UIView.animate(withDuration: 0.1) {
+                previousCell.circle.transform = CGAffineTransform(scaleX: 1, y: 1)
+                previousCell.circle.tintColor = UIColor(hexString: "#002CBF")
+            }
         }
+        
+        // desejavel: 576 x 420
+        // antes: 437.6 x 367.2  (4k)
         
         if let nextCell = context.nextFocusedView as? ConclusionsTableViewCell {
             
             let animation = CABasicAnimation(keyPath: "shadowOffset")
             animation.fromValue = nextCell.circle.layer.shadowOffset
-            animation.toValue = CGSize(width: 0, height: 10)
+            animation.toValue = CGSize(width: 3, height: 4)
             animation.duration = 0.1
             nextCell.circle.layer.shadowOpacity = 0.3
             nextCell.circle.layer.add(animation, forKey: animation.keyPath)
-            nextCell.circle.layer.shadowOffset = CGSize(width: 0, height: 10)
+            nextCell.circle.layer.shadowOffset = CGSize(width: 3, height: 4)
+            
+            UIView.animate(withDuration: 0.1) {
+                nextCell.circle.transform = CGAffineTransform(scaleX: 1.6, y: 1.6)
+                nextCell.circle.tintColor = UIColor(hexString: "#003FFF")
+            }
         }
     }
 }

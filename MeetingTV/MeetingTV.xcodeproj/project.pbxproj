@@ -100,8 +100,8 @@
 				A423781623A16FC500700BE1 /* WelcomeViewController.swift */,
 				23B3DA8F238EE936003FF10B /* MeetingViewController.swift */,
 				23B3DA93238EEF86003FF10B /* TopicsCollectionViewCell.swift */,
-				E254E3D323DF677A007224B1 /* TimerConfigViewController.swift */,
 				23E39DD823E49DAE00BFC199 /* ConclusionsTableViewCell.swift */,
+				E254E3D323DF677A007224B1 /* TimerConfigViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

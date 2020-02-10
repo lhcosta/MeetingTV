@@ -172,7 +172,7 @@
                                                             <rect key="frame" x="50" y="10" width="458" height="339"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <prototypes>
-                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="conclusion" id="ojJ-AA-3b0" customClass="ConclusionsTableViewCell" customModule="MeetingTV" customModuleProvider="target">
+                                                                <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="conclusion" focusStyle="custom" id="ojJ-AA-3b0" customClass="ConclusionsTableViewCell" customModule="MeetingTV" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="66" width="458" height="66"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ojJ-AA-3b0" id="skT-gD-aZc">
@@ -180,24 +180,24 @@
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PAs-Z5-P3S">
-                                                                                <rect key="frame" x="33" y="21" width="415" height="24"/>
+                                                                                <rect key="frame" x="42" y="21" width="406" height="24"/>
                                                                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
                                                                                 <nil key="textColor"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="d0w-dc-yhH">
-                                                                                <rect key="frame" x="15" y="29.5" width="8" height="7"/>
+                                                                                <rect key="frame" x="15" y="26.5" width="12" height="11"/>
                                                                                 <color key="tintColor" red="0.044117406009999999" green="0.13693514470000001" blue="0.74906426670000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                                 <constraints>
-                                                                                    <constraint firstAttribute="height" constant="8" id="23I-ig-LXs"/>
-                                                                                    <constraint firstAttribute="width" constant="8" id="4mx-Hc-QJf"/>
+                                                                                    <constraint firstAttribute="height" constant="12" id="23I-ig-LXs"/>
+                                                                                    <constraint firstAttribute="width" constant="12" id="4mx-Hc-QJf"/>
                                                                                 </constraints>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <constraints>
-                                                                            <constraint firstItem="PAs-Z5-P3S" firstAttribute="leading" secondItem="d0w-dc-yhH" secondAttribute="trailing" constant="10" id="3Hp-Ut-url"/>
+                                                                            <constraint firstItem="PAs-Z5-P3S" firstAttribute="leading" secondItem="d0w-dc-yhH" secondAttribute="trailing" constant="15" id="3Hp-Ut-url"/>
                                                                             <constraint firstItem="PAs-Z5-P3S" firstAttribute="centerY" secondItem="skT-gD-aZc" secondAttribute="centerY" id="6WF-nR-J6w"/>
-                                                                            <constraint firstItem="d0w-dc-yhH" firstAttribute="centerY" secondItem="skT-gD-aZc" secondAttribute="centerY" id="Sg2-r8-lT2"/>
+                                                                            <constraint firstItem="d0w-dc-yhH" firstAttribute="centerY" secondItem="skT-gD-aZc" secondAttribute="centerY" constant="-1" id="Sg2-r8-lT2"/>
                                                                             <constraint firstItem="d0w-dc-yhH" firstAttribute="leading" secondItem="skT-gD-aZc" secondAttribute="leading" constant="15" id="UXd-ew-MPi"/>
                                                                             <constraint firstAttribute="trailing" secondItem="PAs-Z5-P3S" secondAttribute="trailing" constant="10" id="pVk-yX-egT"/>
                                                                         </constraints>
