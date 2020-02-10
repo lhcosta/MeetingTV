@@ -207,8 +207,7 @@ class MeetingViewController: UIViewController, UpdateTimerDelegate, SetUpTimerDe
         if let previousButton = context.previouslyFocusedItem as? UIButton {
             
             // Close button não pode ter essa animação.
-            if previousButton.titleLabel?.text != "Close" {
-
+            if previousButton.tag != 7 {
                 let animation = CABasicAnimation(keyPath: "shadowOffset")
                 animation.fromValue = previousButton.layer.shadowOffset
                 animation.toValue = CGSize(width: 0, height: 5)
@@ -427,6 +426,8 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         if let currTopicOnCollection = context.nextFocusedView?.superview?.superview as? TopicsCollectionViewCell {
             UIView.animate(withDuration: 0.2) {
+                // width : 576.576
+                // height : 420.552
                 currTopicOnCollection.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
                 currTopicOnCollection.contentView.alpha = 1
             }
@@ -474,6 +475,75 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         
         collectionView.remembersLastFocusedIndexPath = true
         
+        //
+        // Foco customizado dos botoes
+        //
+        if let button = context.nextFocusedItem as? UIButton {
+            if let cell = button.superview?.superview as? TopicsCollectionViewCell {
+                collectionView.isScrollEnabled = false
+                let indexPath = collectionView.indexPath(for: cell)
+                collectionView.scrollToItem(at: indexPath ?? IndexPath(row: 2, section: 0), at: .centeredHorizontally, animated: true)
+                
+                let animation = CABasicAnimation(keyPath: "shadowOffset")
+                animation.fromValue = button.layer.shadowOffset
+                animation.toValue = CGSize(width: 0, height: 10)
+                animation.duration = 0.1
+                button.layer.shadowOpacity = 0.3
+                button.layer.add(animation, forKey: animation.keyPath)
+                button.layer.shadowOffset = CGSize(width: 0, height: 10)
+
+                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                    button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+                }, completion: nil)
+            }
+            /// Quando o foco vai para o botao "close" da info.
+            if let _ = button.superview?.superview?.superview as? TopicsCollectionViewCell {
+                let animation = CABasicAnimation(keyPath: "shadowOffset")
+                animation.fromValue = button.layer.shadowOffset
+                animation.toValue = CGSize(width: 0, height: 10)
+                animation.duration = 0.1
+                button.layer.shadowOpacity = 0.3
+                button.layer.add(animation, forKey: animation.keyPath)
+                button.layer.shadowOffset = CGSize(width: 0, height: 10)
+
+                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                    button.transform = CGAffineTransform(scaleX: -1.2, y: 1.2)
+                }, completion: nil)
+            }
+        }
+        
+        if let previousButton = context.previouslyFocusedItem as? UIButton {
+                
+            if previousButton.tag != 7 {
+                
+                let animation = CABasicAnimation(keyPath: "shadowOffset")
+                animation.fromValue = previousButton.layer.shadowOffset
+                animation.toValue = CGSize(width: 0, height: 5)
+                animation.duration = 0.1
+                previousButton.layer.add(animation, forKey: animation.keyPath)
+                previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+                
+                // Nao é aqui
+                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                    previousButton.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }, completion: nil)
+            } else {
+                /// Quando o foco sai do botao "close" da info.
+                let animation = CABasicAnimation(keyPath: "shadowOffset")
+                animation.fromValue = previousButton.layer.shadowOffset
+                animation.toValue = CGSize(width: 0, height: 5)
+                animation.duration = 0.1
+                previousButton.layer.add(animation, forKey: animation.keyPath)
+                previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+                
+                // Nao é aqui
+                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
+                    previousButton.transform = CGAffineTransform(scaleX: -1, y: 1)
+                }, completion: nil)
+            }
+        }
+        
+        
         if hasPrevious {
             /// Verifica se o anterior possui valor, caso contrário o movimento de swipe foi muito rapido entre os Itens
             if let previousCell = context.previouslyFocusedView?.superview?.superview as? TopicsCollectionViewCell {
@@ -520,75 +590,6 @@ extension MeetingViewController: UICollectionViewDelegate, UICollectionViewDataS
         } else {
             hasPrevious = true
         }
-        
-        //
-        // Foco customizado dos botoes
-        //
-        if let button = context.nextFocusedItem as? UIButton {
-            if let cell = button.superview?.superview as? TopicsCollectionViewCell {
-                collectionView.isScrollEnabled = false
-                let indexPath = collectionView.indexPath(for: cell)
-                collectionView.scrollToItem(at: indexPath ?? IndexPath(row: 2, section: 0), at: .centeredHorizontally, animated: true)
-                
-                let animation = CABasicAnimation(keyPath: "shadowOffset")
-                animation.fromValue = button.layer.shadowOffset
-                animation.toValue = CGSize(width: 0, height: 10)
-                animation.duration = 0.1
-                button.layer.shadowOpacity = 0.3
-                button.layer.add(animation, forKey: animation.keyPath)
-                button.layer.shadowOffset = CGSize(width: 0, height: 10)
-
-                // Nao é aqui
-                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-                    button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-                }, completion: nil)
-            }
-            /// Quando o foco vai para o botao "close" da info.
-            if let _ = button.superview?.superview?.superview as? TopicsCollectionViewCell {
-                let animation = CABasicAnimation(keyPath: "shadowOffset")
-                animation.fromValue = button.layer.shadowOffset
-                animation.toValue = CGSize(width: 0, height: 10)
-                animation.duration = 0.1
-                button.layer.shadowOpacity = 0.3
-                button.layer.add(animation, forKey: animation.keyPath)
-                button.layer.shadowOffset = CGSize(width: 0, height: 10)
-
-                // Nao é aqui
-                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-                    button.transform = CGAffineTransform(scaleX: -1.2, y: 1.2)
-                }, completion: nil)
-            }
-        }
-        
-        if let previousButton = context.previouslyFocusedItem as? UIButton {
-                
-            if previousButton.titleLabel?.text != "Close" {
-                let animation = CABasicAnimation(keyPath: "shadowOffset")
-                animation.fromValue = previousButton.layer.shadowOffset
-                animation.toValue = CGSize(width: 0, height: 5)
-                animation.duration = 0.1
-                previousButton.layer.add(animation, forKey: animation.keyPath)
-                previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
-                
-                // Nao é aqui
-                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-                    previousButton.transform = CGAffineTransform(scaleX: 1, y: 1)
-                }, completion: nil)
-            } else {
-                /// Quando o foco sai do botao "close" da info.
-                let animation = CABasicAnimation(keyPath: "shadowOffset")
-                animation.fromValue = previousButton.layer.shadowOffset
-                animation.toValue = CGSize(width: 0, height: 5)
-                animation.duration = 0.1
-                previousButton.layer.add(animation, forKey: animation.keyPath)
-                previousButton.layer.shadowOffset = CGSize(width: 0, height: 5)
-                
-                // Nao é aqui
-                UIView.animate(withDuration: 0.1, delay: 0, options: [.curveEaseInOut], animations: {
-                    previousButton.transform = CGAffineTransform(scaleX: -1, y: 1)
-                }, completion: nil)
-            }
-        }
     }
 }
 
@@ -597,8 +598,7 @@ extension MeetingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.width*0.28, height: self.view.frame.height*0.34)
-//        return CGSize(width: 568, height: 414)
+        return CGSize(width: collectionView.bounds.width*0.273, height: self.view.frame.height*0.354)
     }
     
     
