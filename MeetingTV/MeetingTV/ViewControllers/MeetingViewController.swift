@@ -616,7 +616,9 @@ extension MeetingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.bounds.width*0.273, height: self.view.frame.height*0.354)
+        let size = CGSize(width: collectionView.bounds.width*0.29, height: self.view.frame.height*0.38)
+        
+        return size
     }
     
     

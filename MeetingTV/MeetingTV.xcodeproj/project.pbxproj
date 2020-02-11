@@ -42,7 +42,7 @@
 		4967E59E23904F020090DF0F /* CloudManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CloudManager.h; sourceTree = "<group>"; };
 		4967E59F23904F020090DF0F /* CloudManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CloudManager.m; sourceTree = "<group>"; };
 		497FB2AF23E49C67008059D9 /* sf-mono-cufonfonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "sf-mono-cufonfonts"; sourceTree = "<group>"; };
-		49EB44BD23871068002F434D /* MeetingTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetingTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		49EB44BD23871068002F434D /* Meeting minutes..app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Meeting minutes..app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		49EB44C023871068002F434D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		49EB44C523871068002F434D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		49EB44C823871068002F434D /* MeetingTV.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeetingTV.xcdatamodel; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 		49EB44BE23871068002F434D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				49EB44BD23871068002F434D /* MeetingTV.app */,
+				49EB44BD23871068002F434D /* Meeting minutes..app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -221,7 +221,7 @@
 			);
 			name = MeetingTV;
 			productName = MeetingTV;
-			productReference = 49EB44BD23871068002F434D /* MeetingTV.app */;
+			productReference = 49EB44BD23871068002F434D /* Meeting minutes..app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -495,7 +495,7 @@
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuartetoFantastico.Meeting.iOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Meeting minutes.";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetingTV/MeetingTV-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -520,7 +520,7 @@
 				);
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.QuartetoFantastico.Meeting.iOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Meeting minutes.";
 				SWIFT_OBJC_BRIDGING_HEADER = "MeetingTV/MeetingTV-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
