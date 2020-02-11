@@ -207,9 +207,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		49EB44BC23871068002F434D /* MeetingTV */ = {
+		49EB44BC23871068002F434D /* Meeting minutes. */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 49EB44D22387106A002F434D /* Build configuration list for PBXNativeTarget "MeetingTV" */;
+			buildConfigurationList = 49EB44D22387106A002F434D /* Build configuration list for PBXNativeTarget "Meeting minutes." */;
 			buildPhases = (
 				49EB44B923871068002F434D /* Sources */,
 				49EB44BA23871068002F434D /* Frameworks */,
@@ -219,7 +219,7 @@
 			);
 			dependencies = (
 			);
-			name = MeetingTV;
+			name = "Meeting minutes.";
 			productName = MeetingTV;
 			productReference = 49EB44BD23871068002F434D /* Meeting minutes..app */;
 			productType = "com.apple.product-type.application";
@@ -240,7 +240,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 49EB44B823871068002F434D /* Build configuration list for PBXProject "MeetingTV" */;
+			buildConfigurationList = 49EB44B823871068002F434D /* Build configuration list for PBXProject "Meeting minutes." */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -255,7 +255,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				49EB44BC23871068002F434D /* MeetingTV */,
+				49EB44BC23871068002F434D /* Meeting minutes. */,
 			);
 		};
 /* End PBXProject section */
@@ -531,7 +531,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		49EB44B823871068002F434D /* Build configuration list for PBXProject "MeetingTV" */ = {
+		49EB44B823871068002F434D /* Build configuration list for PBXProject "Meeting minutes." */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49EB44D02387106A002F434D /* Debug */,
@@ -540,7 +540,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		49EB44D22387106A002F434D /* Build configuration list for PBXNativeTarget "MeetingTV" */ = {
+		49EB44D22387106A002F434D /* Build configuration list for PBXNativeTarget "Meeting minutes." */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				49EB44D32387106A002F434D /* Debug */,

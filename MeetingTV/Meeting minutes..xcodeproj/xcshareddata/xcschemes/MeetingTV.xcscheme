@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "49EB44BC23871068002F434D"
-               BuildableName = "MeetingTV.app"
-               BlueprintName = "MeetingTV"
-               ReferencedContainer = "container:MeetingTV.xcodeproj">
+               BuildableName = "Meeting minutes..app"
+               BlueprintName = "Meeting minutes."
+               ReferencedContainer = "container:Meeting minutes..xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,9 +46,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "49EB44BC23871068002F434D"
-            BuildableName = "MeetingTV.app"
-            BlueprintName = "MeetingTV"
-            ReferencedContainer = "container:MeetingTV.xcodeproj">
+            BuildableName = "Meeting minutes..app"
+            BlueprintName = "Meeting minutes."
+            ReferencedContainer = "container:Meeting minutes..xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,9 +63,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "49EB44BC23871068002F434D"
-            BuildableName = "MeetingTV.app"
-            BlueprintName = "MeetingTV"
-            ReferencedContainer = "container:MeetingTV.xcodeproj">
+            BuildableName = "Meeting minutes..app"
+            BlueprintName = "Meeting minutes."
+            ReferencedContainer = "container:Meeting minutes..xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
